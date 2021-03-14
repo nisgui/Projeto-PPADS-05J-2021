@@ -31,3 +31,11 @@
 <li><a href="#">10. Diagrama de classes de domínio</a></li>
 <li><a href="#">11.</a> </li>
 </ul>
+
+
+
+<h1> 1. Introdução  </h1>
+
+Este é um documento de especificação de requisitos para um aplicativo para recomendação de Filmes, Séries e Livros. Considerando que os serviços de streaming nunca estiveram tão em alta graças à pandemia do coronavírus, bem como, escolher entre milhares de filmes, séries ou livros disponíveis pode ser uma tarefa um tanto quanto estressante. Sendo assim, nossa empresa, optou por criar um aplicativo de recomendação para Filmes, Séries e Livros, capaz de permitir acesso e participação dos nossos colaboradores, de modo a prover interação com contribuições na forma de dicas e recomendações sobre filmes, séries e livros. 
+
+Este documento descreve os requisitos não-funcionais, modela os requisitos funcionais com casos de uso e modela os conceitos do domínio do problema.
