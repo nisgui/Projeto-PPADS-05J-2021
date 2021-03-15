@@ -1,18 +1,10 @@
-
-<table>
-  <thead>
-    <th>title</th>
-    <th>author</th>
-  </thead>
-  <tbody>
-    <tr> <td> Especificação do Aplicativo para Recomendação de Filmes, Séries e Livros</td>
-      <td> Prática Profissional em ADS </td>
-    </tr>
-  </tbody>
-  
-  </table>
-
-
+<h1>Especificação de requisitos </h1>
+<h2> PROJETO: Aplicativo para Recomendação de Filmes, Séries e Livros </h2>
+<h3> Curso de Sistemas de Informação/ Análise e Desenvolvimento de Sistemas </h3> 
+<h3> Prática Profissional em ADS </h3>
+<h3> Turmas 05J </h3>
+<h3>1º semestre de 2021</h3>
+<br>
 Índice
 <ul>
 <li> <a href="#"> 1. Introdução</a></li>
@@ -20,15 +12,14 @@
 <li> <a href="#"> 3. Interessados</a></li>
 <li><a href="#"> 4. Requisitos funcionais</a></li>
 <li> <a href="#">5. Requisitos não-funcionais</a></li>
-<li> <a href="#">6. COTS (Commercial Off-The-Shelf)</a></li>
-<li> <a href="#">7. Casos de uso</li></a></a>
-<li> <a href="#">7.1. Acessar funções restritas</a></li>
-<li><a href="#"> 7.2. Efetuar registro</a></li>
-<li><a href="#">7.3. Efetuar seu próprio pedido</a></li>
-<li><a href="#">7.4. Efetuar pedido para o cliente</a></li>
-<li><a href="#">8. Wireframes</a></li>
-<li><a href="#">9. Diagrama de classes de domínio</a></li>
-<li><a href="#">10.</a> </li>
+<li> <a href="#">6. Casos de uso</li></a></a>
+<li> <a href="#">6.1. Acessar funções restritas</a></li>
+<li><a href="#"> 6.2. Efetuar registro</a></li>
+<li><a href="#">6.3. Efetuar seu próprio pedido</a></li>
+<li><a href="#">6.4. Efetuar pedido para o cliente</a></li>
+<li><a href="#">7. Wireframes</a></li>
+<li><a href="#">8. Diagrama de classes de domínio</a></li>
+<li><a href="#">9.</a> </li>
 </ul>
 
 
