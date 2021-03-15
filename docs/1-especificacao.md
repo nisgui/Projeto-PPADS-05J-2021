@@ -16,26 +16,39 @@
 Índice
 <ul>
 <li> <a href="#"> 1. Introdução</a></li>
-<li><a href="#"> 2. Informações sobre a empresa</a> </li>
-<li> <a href="#">3. Escopo do projeto</a></li>
-<li> <a href="#"> 4. Interessados</a></li>
-<li><a href="#"> 5. Objetivos funcionais</a></li>
-<li> <a href="#">6. Objetivos não-funcionais</a></li>
-<li> <a href="#">7. COTS (Commercial Off-The-Shelf)</a></li>
-<li> <a href="#">8. Casos de uso</li></a></a>
-<li> <a href="#">8.1. Acessar funções restritas</a></li>
-<li><a href="#"> 8.2. Efetuar registro</a></li>
-<li><a href="#">8.3. Efetuar seu próprio pedido</a></li>
-<li><a href="#">8.4. Efetuar pedido para o cliente</a></li>
-<li><a href="#">9. Wireframes</a></li>
-<li><a href="#">10. Diagrama de classes de domínio</a></li>
-<li><a href="#">11.</a> </li>
+<li> <a href="#">2. Escopo do projeto</a></li>
+<li> <a href="#"> 3. Interessados</a></li>
+<li><a href="#"> 4. Requisitos funcionais</a></li>
+<li> <a href="#">5. Requisitos não-funcionais</a></li>
+<li> <a href="#">6. COTS (Commercial Off-The-Shelf)</a></li>
+<li> <a href="#">7. Casos de uso</li></a></a>
+<li> <a href="#">7.1. Acessar funções restritas</a></li>
+<li><a href="#"> 7.2. Efetuar registro</a></li>
+<li><a href="#">7.3. Efetuar seu próprio pedido</a></li>
+<li><a href="#">7.4. Efetuar pedido para o cliente</a></li>
+<li><a href="#">8. Wireframes</a></li>
+<li><a href="#">9. Diagrama de classes de domínio</a></li>
+<li><a href="#">10.</a> </li>
 </ul>
 
 
 
 <h1> 1. Introdução  </h1>
 
-Este é um documento de especificação de requisitos para um aplicativo para recomendação de Filmes, Séries e Livros. Considerando que os serviços de streaming nunca estiveram tão em alta graças à pandemia do coronavírus, bem como, escolher entre milhares de filmes, séries ou livros disponíveis pode ser uma tarefa um tanto quanto estressante. Sendo assim, nossa empresa, optou por criar um aplicativo de recomendação para Filmes, Séries e Livros, capaz de permitir acesso e participação dos nossos colaboradores, de modo a prover interação com contribuições na forma de dicas e recomendações sobre filmes, séries e livros. 
+Este é um documento de especificação de requisitos para um aplicativo para recomendação de Filmes, Séries e Livros. <br>
+Considerando que os serviços de streaming nunca estiveram tão em alta graças à pandemia do coronavírus, bem como, escolher entre milhares de filmes, séries ou livros disponíveis pode ser uma tarefa um tanto quanto estressante. Sendo assim, nossa empresa optou por criar um sistema que deverá permitir o acesso de qualquer pessoa da empresa na plataforma e os mesmos a fazerem avaliações e recomendações de séries, filmes e livros nessa rede social.
 
 Este documento descreve os requisitos não-funcionais, modela os requisitos funcionais com casos de uso e modela os conceitos do domínio do problema.
+
+
+<h1> 2. Escopo do projeto </h1>
+O escopo deste projeto é um sistema web que permite a interação dos colaboradores da empresa entre si, da forma em que eles podem adicionar novos filmes, series e livros que não estiverem fazendo parte da nossa database ainda. A publicidade e venda de tais produtos não fazem parte do objetivo desse projeto. 
+Estamos também levando em consideração a parte da segurança dos usuarios, como informações cadastrais e transacionais estão assegurados contra eventuais invasões ao site do sistema.
+
+<h1> 3. Interessados </h1> 
+Aqueles que irão se beneficiar diretamente e aqueles que serão afetados pelo novo sistema:
+
+Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qualquer cargo e encontrar interesses em comum com outros colaboradores, enviar pedidos de amizade e encontrar novas recomendações de amizade por gostos similiares ao dele, assim criando uma atmosfera amigavel na empresa e estimulando a interação entre os membros.
+
+
+<h1> 4. Objetivos funcionais </h1>
