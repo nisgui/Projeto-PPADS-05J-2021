@@ -42,4 +42,4 @@ Aqueles que irão se beneficiar diretamente e aqueles que serão afetados pelo n
 Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qualquer cargo e encontrar interesses em comum com outros colaboradores, enviar pedidos de amizade e encontrar novas recomendações de amizade por gostos similiares ao dele, assim criando uma atmosfera amigavel na empresa e estimulando a interação entre os membros.
 
 
-<h1> 4. Objetivos funcionais </h1>
+<h1> 4. Requisitos funcionais </h1>
