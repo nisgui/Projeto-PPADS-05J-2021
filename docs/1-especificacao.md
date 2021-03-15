@@ -44,6 +44,42 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 <h1> 4. Requisitos funcionais </h1>
 
-![Optional Text](../docs/diagramas/r1.png)
 
-<img src="../diagramas/r1.png" width="350" title="hover text">
+<img src="https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/r1.png" title="hover text">
+
+<img src="https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/r2.png" title="hover text">
+
+<img src="https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/r3.png" title="hover text">
+
+<img src="https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/r4.png" title="hover text">
+
+<img src="https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/r5.png" title="hover text">
+
+<img src="https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/r6.png" title="hover text">
+
+<img src="https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/r7.png" title="hover text">
+
+<img src="https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/r8.png" title="hover text">
+
+<img src="https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/r9.png" title="hover text">
+
+<img src="https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/r10.png" title="hover text">
+
+<img src="https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/r11.png" title="hover text">
+
+<img src="https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/r12.png" title="hover text">
+
+<img src="https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/r13.png" title="hover text">
+<img src="https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/r14.png" title="hover text">
+
+<img src="https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/r15.png" title="hover text">
+
+<img src="https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/r16.png" title="hover text">
+
+<img src="https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/r17.png" title="hover text">
+
+<img src="https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/r18.png" title="hover text">
+
+<img src="https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/r19.png" title="hover text">
+
+<img src="https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/r20.png" title="hover text">
