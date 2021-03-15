@@ -43,3 +43,7 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 
 <h1> 4. Requisitos funcionais </h1>
+
+![Optional Text](../docs/diagramas/r1.png)
+
+<img src="../diagramas/r1.png" width="350" title="hover text">
