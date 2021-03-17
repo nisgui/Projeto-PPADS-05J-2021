@@ -118,8 +118,8 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 |  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
 |  Ator | Colaborador  |
 |  Pré-condições |  Ser colaborador da empresa |
-|  Fluxo principal | |
-|  Fluxo Alternativo |   |
+|  Fluxo principal | 1 - Usuário acessa a página da rede social. <br /> 2 - Sistema carrega a página principal. <br /> 3 - Usuário clica em "Cadastrar-se". <br /> 4 - Sistema redireciona o usuário para a página de cadastro. <br /> 5 - Usuário preenche os campos: Nome completo, username , senha, data de nascimento, cidade e estado. Finalmente clica em "Cadastrar". <br /> 6 - Sistema valida os campos preenchidos e redireciona para a página principal com o perfil novo logado.|
+|  Fluxo Alternativo |  1 - Dados ja cadastrados - Sistema retorna que os dados já existem. <br /> 2 - Dados incompletos - Sistema retorna que o formulário precisa ser preenchido. |
 
 
 <br>
@@ -135,7 +135,7 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 |  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
 |  Ator | Colaborador  |
 |  Pré-condições |  Ser colaborador da empresa |
-|  Fluxo principal | |
+|  Fluxo principal |  |
 |  Fluxo Alternativo |   |
 
 <br>
