@@ -132,11 +132,11 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 |  |  Descrição  |
 | ------------------- | ------------------- |
-|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Objetivo | Cada membro poderá, a qualquer momento, atualizar os dados do seu perfil.  |
 |  Ator | Colaborador  |
-|  Pré-condições |  Ser colaborador da empresa |
-|  Fluxo principal |  |
-|  Fluxo Alternativo |   |
+|  Pré-condições | Necessário estar cadastrado e logado. |
+|  Fluxo principal | 1- Usuário acessa a página de perfil da rede social. <br /> <br /> 2 - O sistema carrega a tela de perfil do usuário logado. <br /> 3 - Usuário atualiza os campos: Nome completo, senha, data de nascimento, cidade ou estado. Finalmente clicaem "Atualizar Cadastro". <br /> 4 - Sistema valida os campos preenchidos pelo usuário e redireciona para a página principal com o perfil carregado.|
+|  Fluxo Alternativo | 1 - Usuário deixa de preencher algum campo necessário. <br /> 2 - Sistema informa os campos obrigatórios que devem ser preenchidos e não atualiza o perfil do usuário. <br /> 3 - Usuário é mantido no passo 3 do fluxo principal para completar o preenchimento de atualização cadastro antes de prosseguir.|
 
 <br>
 
