@@ -91,7 +91,12 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 # 5. Objetivos não-funcionais
 
----
-title: "Especificação do Sistema Web de Vendas Solar System"
-author: "Prática Profissional em ADS"
----
+| ID  |  Descrição  |
+| ------------------- | ------------------- |
+|  RNF001 |  O sistema deve manter a integridade dos dados fornecidos pelos usuários. |
+|  RNF002 |  A aplicação deve ser responsiva e leve, evitando demoras no carregamento das funcionalidades. |
+|  RNF003 |  O tempo de carregamento de uma página não deve ser superior a 5 segundos. |
+|  RNF004 |  A disponibilidade da aplicação deverá atender o padrão 99,99% em regime 24h/7 |
+|  RNF005 |  O sistema deve apresentar em sua documentação como os dados cadastrais e transacionais serão assegurados |
+|  RNF006 |  O sistema deve funcionar em diversos dispositivos. |
+|  RNF007 |  Os dados do sistema devem ser persistidos em uma base de dados (Relacional ou NoSQL). |
