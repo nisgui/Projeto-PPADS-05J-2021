@@ -24,7 +24,7 @@
 
 
 
-<h1 id = "#introducao"> 1. Introdução  </h1>
+<h1><a href ="#introducao"> 1. Introdução</a>  </h1>
 
 Este é um documento de especificação de requisitos para um aplicativo para recomendação de Filmes, Séries e Livros. <br>
 Considerando que os serviços de streaming nunca estiveram tão em alta graças à pandemia do coronavírus, bem como, escolher entre milhares de filmes, séries ou livros disponíveis pode ser uma tarefa um tanto quanto estressante. Sendo assim, nossa empresa optou por criar um sistema que deverá permitir o acesso de qualquer pessoa da empresa na plataforma e os mesmos a fazerem avaliações e recomendações de séries, filmes e livros nessa rede social.
