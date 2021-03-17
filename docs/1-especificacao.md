@@ -102,5 +102,132 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 |  RNF007 |  Os dados do sistema devem ser persistidos em uma base de dados (Relacional ou NoSQL). |
 
 # 6. Casos de uso
+Registrar-se na rede social
+<br>
 
 ![image](https://user-images.githubusercontent.com/48717700/111547898-a03a9e00-8758-11eb-888d-a63a6cdbc4b8.png)
+
+<br>
+
+RF03 – Atualizar dados do perfil pessoal
+
+<br>
+
+![image](https://user-images.githubusercontent.com/48717700/111548194-1808c880-8759-11eb-86d0-357d212f5b5b.png)
+
+<br>
+
+Nome	RF04 – Avaliar Filmes, Séries e Livros
+
+<br>
+
+![image](https://user-images.githubusercontent.com/48717700/111548217-21923080-8759-11eb-9529-eafe9497b32a.png)
+
+<br>
+
+RF05 – Selecionar item para avaliação
+<br>
+
+![image](https://user-images.githubusercontent.com/48717700/111548234-29ea6b80-8759-11eb-9478-a598c0f56022.png)
+
+<br>
+
+Nome	RF06 – Cadastrar de Conteúdo
+<br>
+
+![image](https://user-images.githubusercontent.com/48717700/111548257-31117980-8759-11eb-897e-059aa4134e98.png)
+
+<br>
+
+Nome	RF10 – Apresentar recomendações para Membros
+<br>
+
+![image](https://user-images.githubusercontent.com/48717700/111548331-4e464800-8759-11eb-9649-0a17fd0742a4.png)
+
+<br>
+
+Nome	RF011 – Oferecer recomendações
+
+<br>
+
+![image](https://user-images.githubusercontent.com/48717700/111548368-5dc59100-8759-11eb-8693-40cbdee24b70.png)
+
+<br>
+
+RF012 – Listar avaliações realizadas
+
+<br>
+
+![image](https://user-images.githubusercontent.com/48717700/111548396-6b7b1680-8759-11eb-859c-e0f9cd8be5ab.png)
+
+<br>
+Nome	RF013 – Propor relacionamento de amizade
+
+<br>
+
+![image](https://user-images.githubusercontent.com/48717700/111548483-88174e80-8759-11eb-845b-f30c77f23319.png)
+
+<br>
+
+RF014 – Adicionar comentários
+
+<br>
+
+![image](https://user-images.githubusercontent.com/48717700/111548510-92394d00-8759-11eb-90e1-c2348d7a4a06.png)
+
+<br>
+
+RF015 – Adicionar “joinha”
+
+<br>
+
+![image](https://user-images.githubusercontent.com/48717700/111548537-9feed280-8759-11eb-8251-f0b69f3e54d2.png)
+
+<br>
+
+Nome	RF016 – Mostrar avaliações e recomendações na página pessoal.
+
+<br>
+
+![image](https://user-images.githubusercontent.com/48717700/111548563-ab41fe00-8759-11eb-8218-88ef4f4953f8.png)
+
+<br>
+
+RF017 – Ver amigos em comum.
+
+<br>
+
+![image](https://user-images.githubusercontent.com/48717700/111548585-b39a3900-8759-11eb-941c-0549ebca4d08.png)
+
+<br>
+
+Nome	RF018 – Receber sugestões de amigos
+
+<br>
+
+![image](https://user-images.githubusercontent.com/48717700/111548639-c4e34580-8759-11eb-9536-b176f24a7931.png)
+
+<br>
+
+Nome	RF019 – Listar avaliações
+
+<br>
+
+![image](https://user-images.githubusercontent.com/48717700/111548684-d3316180-8759-11eb-8823-060258580238.png)
+<br>
+
+
+Nome	RF020 – Consultar relatório gerencial
+
+<br>
+![image](https://user-images.githubusercontent.com/48717700/111548727-df1d2380-8759-11eb-8edd-fe0f2ec3d6b2.png)
+
+
+
+
+
+
+
+
+
+
