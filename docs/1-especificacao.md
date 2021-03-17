@@ -175,7 +175,8 @@ RF014 – Adicionar comentários
 
 <br>
 
-![image](https://user-images.githubusercontent.com/48717700/111548510-92394d00-8759-11eb-90e1-c2348d7a4a06.png)
+![image](https://user-images.githubusercontent.com/48717700/111550224-71bec200-875c-11eb-8422-c445379bd46b.png)
+
 
 <br>
 
@@ -183,7 +184,8 @@ RF015 – Adicionar “joinha”
 
 <br>
 
-![image](https://user-images.githubusercontent.com/48717700/111548537-9feed280-8759-11eb-8251-f0b69f3e54d2.png)
+![image](https://user-images.githubusercontent.com/48717700/111550242-7b482a00-875c-11eb-8730-7ec309a8fcf6.png)
+
 
 <br>
 
@@ -191,7 +193,8 @@ Nome	RF016 – Mostrar avaliações e recomendações na página pessoal.
 
 <br>
 
-![image](https://user-images.githubusercontent.com/48717700/111548563-ab41fe00-8759-11eb-8218-88ef4f4953f8.png)
+![image](https://user-images.githubusercontent.com/48717700/111550260-856a2880-875c-11eb-9624-97c7a8af4dc4.png)
+
 
 <br>
 
@@ -199,7 +202,8 @@ RF017 – Ver amigos em comum.
 
 <br>
 
-![image](https://user-images.githubusercontent.com/48717700/111548585-b39a3900-8759-11eb-941c-0549ebca4d08.png)
+![image](https://user-images.githubusercontent.com/48717700/111550274-8d29cd00-875c-11eb-92db-5037df9f459f.png)
+
 
 <br>
 
@@ -207,7 +211,8 @@ Nome	RF018 – Receber sugestões de amigos
 
 <br>
 
-![image](https://user-images.githubusercontent.com/48717700/111548639-c4e34580-8759-11eb-9536-b176f24a7931.png)
+![image](https://user-images.githubusercontent.com/48717700/111550296-95820800-875c-11eb-9d79-99a860c235c6.png)
+
 
 <br>
 
@@ -215,7 +220,8 @@ Nome	RF019 – Listar avaliações
 
 <br>
 
-![image](https://user-images.githubusercontent.com/48717700/111548684-d3316180-8759-11eb-8823-060258580238.png)
+![image](https://user-images.githubusercontent.com/48717700/111550311-9dda4300-875c-11eb-9917-1b23eda1a7b3.png)
+
 <br>
 
 
@@ -223,13 +229,7 @@ Nome	RF020 – Consultar relatório gerencial
 
 <br>
 
-![image](https://user-images.githubusercontent.com/48717700/111548727-df1d2380-8759-11eb-8edd-fe0f2ec3d6b2.png)
-
-
-
-
-
-
+![image](https://user-images.githubusercontent.com/48717700/111550328-a7fc4180-875c-11eb-8181-f568d9c5c635.png)
 
 
 
