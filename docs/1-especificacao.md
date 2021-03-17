@@ -160,7 +160,8 @@ RF012 – Listar avaliações realizadas
 
 <br>
 
-![image](https://user-images.githubusercontent.com/48717700/111548396-6b7b1680-8759-11eb-859c-e0f9cd8be5ab.png)
+![image](https://user-images.githubusercontent.com/48717700/111550409-cb26f100-875c-11eb-9302-6a3e7b2a10cd.png)
+
 
 <br>
 Nome	RF013 – Propor relacionamento de amizade
