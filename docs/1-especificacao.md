@@ -115,9 +115,9 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 |  |  Descrição  |
 | ------------------- | ------------------- |
-|  Objetivo |   |
-|  Ator |   |
-|  Pré-condições |   |
+|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Ator | Colaborador  |
+|  Pré-condições |  Ser colaborador da empresa |
 |  Fluxo principal | |
 |  Fluxo Alternativo |   |
 
@@ -130,6 +130,14 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 ![image](https://user-images.githubusercontent.com/48717700/111548194-1808c880-8759-11eb-86d0-357d212f5b5b.png)
 
+|  |  Descrição  |
+| ------------------- | ------------------- |
+|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Ator | Colaborador  |
+|  Pré-condições |  Ser colaborador da empresa |
+|  Fluxo principal | |
+|  Fluxo Alternativo |   |
+
 <br>
 
 ## RF04 - Avaliar Filmes, Séries e Livros
@@ -138,12 +146,28 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 ![image](https://user-images.githubusercontent.com/48717700/111548217-21923080-8759-11eb-9529-eafe9497b32a.png)
 
+|  |  Descrição  |
+| ------------------- | ------------------- |
+|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Ator | Colaborador  |
+|  Pré-condições |  Ser colaborador da empresa |
+|  Fluxo principal | |
+|  Fluxo Alternativo |   |
+
 <br>
 
 ## RF05 - Selecionar item para avaliação
 <br>
 
 ![image](https://user-images.githubusercontent.com/48717700/111548234-29ea6b80-8759-11eb-9478-a598c0f56022.png)
+
+|  |  Descrição  |
+| ------------------- | ------------------- |
+|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Ator | Colaborador  |
+|  Pré-condições |  Ser colaborador da empresa |
+|  Fluxo principal | |
+|  Fluxo Alternativo |   |
 
 <br>
 
@@ -152,6 +176,14 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 ![image](https://user-images.githubusercontent.com/48717700/111550027-12f94880-875c-11eb-8b9f-75b621d6f941.png)
 
+|  |  Descrição  |
+| ------------------- | ------------------- |
+|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Ator | Colaborador  |
+|  Pré-condições |  Ser colaborador da empresa |
+|  Fluxo principal | |
+|  Fluxo Alternativo |   |
+
 
 <br>
 
@@ -159,6 +191,14 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 <br>
 
 ![image](https://user-images.githubusercontent.com/48717700/111550131-3de39c80-875c-11eb-8892-a6ac4811c25e.png)
+
+|  |  Descrição  |
+| ------------------- | ------------------- |
+|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Ator | Colaborador  |
+|  Pré-condições |  Ser colaborador da empresa |
+|  Fluxo principal | |
+|  Fluxo Alternativo |   |
 
 
 <br>
@@ -169,6 +209,14 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 ![image](https://user-images.githubusercontent.com/48717700/111548368-5dc59100-8759-11eb-8693-40cbdee24b70.png)
 
+|  |  Descrição  |
+| ------------------- | ------------------- |
+|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Ator | Colaborador  |
+|  Pré-condições |  Ser colaborador da empresa |
+|  Fluxo principal | |
+|  Fluxo Alternativo |   |
+
 <br>
 
 ## RF012 – Listar avaliações realizadas
@@ -176,6 +224,14 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 <br>
 
 ![image](https://user-images.githubusercontent.com/48717700/111550409-cb26f100-875c-11eb-9302-6a3e7b2a10cd.png)
+
+|  |  Descrição  |
+| ------------------- | ------------------- |
+|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Ator | Colaborador  |
+|  Pré-condições |  Ser colaborador da empresa |
+|  Fluxo principal | |
+|  Fluxo Alternativo |   |
 
 
 <br>
@@ -185,6 +241,14 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 ![image](https://user-images.githubusercontent.com/48717700/111548483-88174e80-8759-11eb-845b-f30c77f23319.png)
 
+|  |  Descrição  |
+| ------------------- | ------------------- |
+|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Ator | Colaborador  |
+|  Pré-condições |  Ser colaborador da empresa |
+|  Fluxo principal | |
+|  Fluxo Alternativo |   |
+
 <br>
 
 ## RF014 – Adicionar comentários
@@ -192,6 +256,14 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 <br>
 
 ![image](https://user-images.githubusercontent.com/48717700/111550224-71bec200-875c-11eb-8422-c445379bd46b.png)
+
+|  |  Descrição  |
+| ------------------- | ------------------- |
+|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Ator | Colaborador  |
+|  Pré-condições |  Ser colaborador da empresa |
+|  Fluxo principal | |
+|  Fluxo Alternativo |   |
 
 
 <br>
@@ -202,6 +274,14 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 ![image](https://user-images.githubusercontent.com/48717700/111550242-7b482a00-875c-11eb-8730-7ec309a8fcf6.png)
 
+|  |  Descrição  |
+| ------------------- | ------------------- |
+|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Ator | Colaborador  |
+|  Pré-condições |  Ser colaborador da empresa |
+|  Fluxo principal | |
+|  Fluxo Alternativo |   |
+
 
 <br>
 
@@ -210,6 +290,14 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 <br>
 
 ![image](https://user-images.githubusercontent.com/48717700/111550260-856a2880-875c-11eb-9624-97c7a8af4dc4.png)
+
+|  |  Descrição  |
+| ------------------- | ------------------- |
+|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Ator | Colaborador  |
+|  Pré-condições |  Ser colaborador da empresa |
+|  Fluxo principal | |
+|  Fluxo Alternativo |   |
 
 
 <br>
@@ -220,6 +308,14 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 ![image](https://user-images.githubusercontent.com/48717700/111550274-8d29cd00-875c-11eb-92db-5037df9f459f.png)
 
+|  |  Descrição  |
+| ------------------- | ------------------- |
+|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Ator | Colaborador  |
+|  Pré-condições |  Ser colaborador da empresa |
+|  Fluxo principal | |
+|  Fluxo Alternativo |   |
+
 
 <br>
 
@@ -228,6 +324,14 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 <br>
 
 ![image](https://user-images.githubusercontent.com/48717700/111550296-95820800-875c-11eb-9d79-99a860c235c6.png)
+
+|  |  Descrição  |
+| ------------------- | ------------------- |
+|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Ator | Colaborador  |
+|  Pré-condições |  Ser colaborador da empresa |
+|  Fluxo principal | |
+|  Fluxo Alternativo |   |
 
 
 <br>
@@ -238,6 +342,14 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 ![image](https://user-images.githubusercontent.com/48717700/111550311-9dda4300-875c-11eb-9917-1b23eda1a7b3.png)
 
+|  |  Descrição  |
+| ------------------- | ------------------- |
+|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Ator | Colaborador  |
+|  Pré-condições |  Ser colaborador da empresa |
+|  Fluxo principal | |
+|  Fluxo Alternativo |   |
+
 <br>
 
 
@@ -246,6 +358,14 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 <br>
 
 ![image](https://user-images.githubusercontent.com/48717700/111550328-a7fc4180-875c-11eb-8181-f568d9c5c635.png)
+
+|  |  Descrição  |
+| ------------------- | ------------------- |
+|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Ator | Colaborador  |
+|  Pré-condições |  Ser colaborador da empresa |
+|  Fluxo principal | |
+|  Fluxo Alternativo |   |
 
 
 
