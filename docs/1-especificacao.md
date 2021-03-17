@@ -220,6 +220,7 @@ Nome	RF019 – Listar avaliações
 Nome	RF020 – Consultar relatório gerencial
 
 <br>
+
 ![image](https://user-images.githubusercontent.com/48717700/111548727-df1d2380-8759-11eb-8edd-fe0f2ec3d6b2.png)
 
 
