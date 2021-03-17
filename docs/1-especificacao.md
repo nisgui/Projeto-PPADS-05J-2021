@@ -100,3 +100,7 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 |  RNF005 |  O sistema deve apresentar em sua documentação como os dados cadastrais e transacionais serão assegurados |
 |  RNF006 |  O sistema deve funcionar em diversos dispositivos. |
 |  RNF007 |  Os dados do sistema devem ser persistidos em uma base de dados (Relacional ou NoSQL). |
+
+# 6. Casos de uso
+
+![image](https://user-images.githubusercontent.com/48717700/111547898-a03a9e00-8758-11eb-888d-a63a6cdbc4b8.png)
