@@ -93,7 +93,7 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 | ID  |  Descrição  |
 | ------------------- | ------------------- |
-|  RNF001 |  O sistema deve manter a integridade dos dados fornecidos pelos usuários. |
+|  RNF001 |  O site web do sistema deverá ser visível através da web ou por aplicativos móveis - somente por meio do navegador disponível no dispositivo. |
 |  RNF002 |  A aplicação deve ser responsiva e leve, evitando demoras no carregamento das funcionalidades. |
 |  RNF003 |  O tempo de carregamento de uma página não deve ser superior a 5 segundos. |
 |  RNF004 |  A disponibilidade da aplicação deverá atender o padrão 99,99% em regime 24h/7 |
