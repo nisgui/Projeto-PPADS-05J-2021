@@ -106,14 +106,14 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 <br> 
 
-RF01 - Registrar-se na rede social
+## RF01 - Registrar-se na rede social
 <br>
 
 ![image](https://user-images.githubusercontent.com/48717700/111547898-a03a9e00-8758-11eb-888d-a63a6cdbc4b8.png)
 
 <br>
 
-RF03 - Atualizar dados do perfil pessoal
+## RF03 - Atualizar dados do perfil pessoal
 
 <br>
 
@@ -121,7 +121,7 @@ RF03 - Atualizar dados do perfil pessoal
 
 <br>
 
-RF04 - Avaliar Filmes, Séries e Livros
+## RF04 - Avaliar Filmes, Séries e Livros
 
 <br>
 
@@ -129,14 +129,14 @@ RF04 - Avaliar Filmes, Séries e Livros
 
 <br>
 
-RF05 - Selecionar item para avaliação
+## RF05 - Selecionar item para avaliação
 <br>
 
 ![image](https://user-images.githubusercontent.com/48717700/111548234-29ea6b80-8759-11eb-9478-a598c0f56022.png)
 
 <br>
 
-RF06 – Cadastrar de Conteúdo
+## RF06 – Cadastrar de Conteúdo
 <br>
 
 ![image](https://user-images.githubusercontent.com/48717700/111550027-12f94880-875c-11eb-8b9f-75b621d6f941.png)
@@ -144,7 +144,7 @@ RF06 – Cadastrar de Conteúdo
 
 <br>
 
-RF10 – Apresentar recomendações para Membros
+## RF10 – Apresentar recomendações para Membros
 <br>
 
 ![image](https://user-images.githubusercontent.com/48717700/111550131-3de39c80-875c-11eb-8892-a6ac4811c25e.png)
@@ -152,7 +152,7 @@ RF10 – Apresentar recomendações para Membros
 
 <br>
 
-RF011 – Oferecer recomendações
+## RF011 – Oferecer recomendações
 
 <br>
 
@@ -160,7 +160,7 @@ RF011 – Oferecer recomendações
 
 <br>
 
-RF012 – Listar avaliações realizadas
+## RF012 – Listar avaliações realizadas
 
 <br>
 
@@ -168,7 +168,7 @@ RF012 – Listar avaliações realizadas
 
 
 <br>
-RF013 – Propor relacionamento de amizade
+## RF013 – Propor relacionamento de amizade
 
 <br>
 
@@ -176,7 +176,7 @@ RF013 – Propor relacionamento de amizade
 
 <br>
 
-RF014 – Adicionar comentários
+## RF014 – Adicionar comentários
 
 <br>
 
@@ -185,7 +185,7 @@ RF014 – Adicionar comentários
 
 <br>
 
-RF015 – Adicionar “joinha”
+## RF015 – Adicionar “joinha”
 
 <br>
 
@@ -194,7 +194,7 @@ RF015 – Adicionar “joinha”
 
 <br>
 
-RF016 – Mostrar avaliações e recomendações na página pessoal.
+## RF016 – Mostrar avaliações e recomendações na página pessoal.
 
 <br>
 
@@ -203,7 +203,7 @@ RF016 – Mostrar avaliações e recomendações na página pessoal.
 
 <br>
 
-RF017 – Ver amigos em comum.
+## RF017 – Ver amigos em comum.
 
 <br>
 
@@ -212,7 +212,7 @@ RF017 – Ver amigos em comum.
 
 <br>
 
-RF018 – Receber sugestões de amigos
+## RF018 – Receber sugestões de amigos
 
 <br>
 
@@ -221,7 +221,7 @@ RF018 – Receber sugestões de amigos
 
 <br>
 
-RF019 – Listar avaliações
+## RF019 – Listar avaliações
 
 <br>
 
@@ -230,7 +230,7 @@ RF019 – Listar avaliações
 <br>
 
 
-RF020 – Consultar relatório gerencial
+## RF020 – Consultar relatório gerencial
 
 <br>
 
