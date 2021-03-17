@@ -135,14 +135,16 @@ RF05 – Selecionar item para avaliação
 Nome	RF06 – Cadastrar de Conteúdo
 <br>
 
-![image](https://user-images.githubusercontent.com/48717700/111548257-31117980-8759-11eb-897e-059aa4134e98.png)
+![image](https://user-images.githubusercontent.com/48717700/111550027-12f94880-875c-11eb-8b9f-75b621d6f941.png)
+
 
 <br>
 
 Nome	RF10 – Apresentar recomendações para Membros
 <br>
 
-![image](https://user-images.githubusercontent.com/48717700/111548331-4e464800-8759-11eb-9649-0a17fd0742a4.png)
+![image](https://user-images.githubusercontent.com/48717700/111550131-3de39c80-875c-11eb-8892-a6ac4811c25e.png)
+
 
 <br>
 
