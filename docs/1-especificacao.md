@@ -102,14 +102,14 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 |  RNF007 |  Os dados do sistema devem ser persistidos em uma base de dados (Relacional ou NoSQL). |
 
 # 6. Casos de uso
-Registrar-se na rede social
+RF01 - Registrar-se na rede social
 <br>
 
 ![image](https://user-images.githubusercontent.com/48717700/111547898-a03a9e00-8758-11eb-888d-a63a6cdbc4b8.png)
 
 <br>
 
-RF03 – Atualizar dados do perfil pessoal
+RF03 - Atualizar dados do perfil pessoal
 
 <br>
 
@@ -117,7 +117,7 @@ RF03 – Atualizar dados do perfil pessoal
 
 <br>
 
-Nome	RF04 – Avaliar Filmes, Séries e Livros
+RF04 - Avaliar Filmes, Séries e Livros
 
 <br>
 
@@ -125,14 +125,14 @@ Nome	RF04 – Avaliar Filmes, Séries e Livros
 
 <br>
 
-RF05 – Selecionar item para avaliação
+RF05 - Selecionar item para avaliação
 <br>
 
 ![image](https://user-images.githubusercontent.com/48717700/111548234-29ea6b80-8759-11eb-9478-a598c0f56022.png)
 
 <br>
 
-Nome	RF06 – Cadastrar de Conteúdo
+RF06 – Cadastrar de Conteúdo
 <br>
 
 ![image](https://user-images.githubusercontent.com/48717700/111550027-12f94880-875c-11eb-8b9f-75b621d6f941.png)
@@ -140,7 +140,7 @@ Nome	RF06 – Cadastrar de Conteúdo
 
 <br>
 
-Nome	RF10 – Apresentar recomendações para Membros
+RF10 – Apresentar recomendações para Membros
 <br>
 
 ![image](https://user-images.githubusercontent.com/48717700/111550131-3de39c80-875c-11eb-8892-a6ac4811c25e.png)
@@ -148,7 +148,7 @@ Nome	RF10 – Apresentar recomendações para Membros
 
 <br>
 
-Nome	RF011 – Oferecer recomendações
+RF011 – Oferecer recomendações
 
 <br>
 
@@ -164,7 +164,7 @@ RF012 – Listar avaliações realizadas
 
 
 <br>
-Nome	RF013 – Propor relacionamento de amizade
+RF013 – Propor relacionamento de amizade
 
 <br>
 
@@ -190,7 +190,7 @@ RF015 – Adicionar “joinha”
 
 <br>
 
-Nome	RF016 – Mostrar avaliações e recomendações na página pessoal.
+RF016 – Mostrar avaliações e recomendações na página pessoal.
 
 <br>
 
@@ -208,7 +208,7 @@ RF017 – Ver amigos em comum.
 
 <br>
 
-Nome	RF018 – Receber sugestões de amigos
+RF018 – Receber sugestões de amigos
 
 <br>
 
@@ -217,7 +217,7 @@ Nome	RF018 – Receber sugestões de amigos
 
 <br>
 
-Nome	RF019 – Listar avaliações
+RF019 – Listar avaliações
 
 <br>
 
@@ -226,7 +226,7 @@ Nome	RF019 – Listar avaliações
 <br>
 
 
-Nome	RF020 – Consultar relatório gerencial
+RF020 – Consultar relatório gerencial
 
 <br>
 
