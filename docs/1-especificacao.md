@@ -102,6 +102,10 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 |  RNF007 |  Os dados do sistema devem ser persistidos em uma base de dados (Relacional ou NoSQL). |
 
 # 6. Casos de uso
+> Obs: Requisitos funcionais aqui não representados são porque o caso de uso é repetido ao requisito acima
+
+<br> 
+
 RF01 - Registrar-se na rede social
 <br>
 
