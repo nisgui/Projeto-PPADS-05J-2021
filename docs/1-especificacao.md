@@ -5,6 +5,11 @@
 <h3> Prática Profissional em ADS </h3>
 <h3> Turma 05J </h3>
 <h3>1º semestre de 2021</h3>
+
+* Nicole Francani Godinho. TIA: 31716946
+* Aleixo Afonso da Cunha Menezes Neto
+* Marcos Vinicius Lozardo da Rosa
+
 <br>
 
 
