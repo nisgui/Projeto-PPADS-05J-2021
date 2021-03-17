@@ -113,6 +113,17 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 <br>
 
+|  |  Descrição  |
+| ------------------- | ------------------- |
+|  Objetivo |   |
+|  Ator |   |
+|  Pré-condições |   |
+|  Fluxo principal | |
+|  Fluxo Alternativo |   |
+
+
+<br>
+
 ## RF03 - Atualizar dados do perfil pessoal
 
 <br>
