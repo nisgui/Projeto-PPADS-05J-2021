@@ -7,7 +7,7 @@
 <br>
 Índice
 <ul>
-<li> <a href="#1-introducao"> 1. Introdução</a></li>
+<li> <a href="#-1-introducao"> 1. Introdução</a></li>
 <li> <a href="#escopo">2. Escopo do projeto</a></li>
 <li> <a href="#interessados"> 3. Interessados</a></li>
 <li><a href="#requisitosf"> 4. Requisitos funcionais</a></li>
@@ -25,7 +25,7 @@
 
 <div id= "#introducao"> </div>
 <h1>
-  <a href ="#1-introducao"> 1. Introdução</a>  
+  <a href ="#-1-introducao"> 1. Introdução</a>  
 </h1>
 
 Este é um documento de especificação de requisitos para um aplicativo para recomendação de Filmes, Séries e Livros. <br>
