@@ -148,11 +148,11 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 |  |  Descrição  |
 | ------------------- | ------------------- |
-|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Objetivo | O sistema permite a avaliação de três tipos de ítens: Livro, Série, Filme.  |
 |  Ator | Colaborador  |
-|  Pré-condições |  Ser colaborador da empresa |
-|  Fluxo principal | |
-|  Fluxo Alternativo |   |
+|  Pré-condições |  Usuário estar logado |
+|  Fluxo principal |1 - Usuário acessa página <br /> 2 - Sistema mostra opção de escolha entre: livro, filme ou série <br /> 3 - Usuário seleciona o tipo de item <br /> 4 - Sistema habilita opções de busca <br /> 5 - Usuário escreve na caixa de busca o nome do item <br /> 6 - Sistema retorna os resultados da busca <br /> 7 - Usuário seleciona o item oriundo da busca <br />  8 - Sistema abre uma página do item selecionado <br /> 9 - Usuário atribui nota de 0 a 10 <br /> 10 - Caso ache relevante, usuário escreve comentários <br /> 11 - Sistema indica que a avaliação foi atribuida e comentário postado |
+|  Fluxo Alternativo |  1.1 - Sistema não encontra ocorrência de resultados na busca <br /> 1.2 - Sistema não valida todos os campos <br /> 1.3 -  Sistema indica número de caracteres no comentário |
 
 <br>
 
