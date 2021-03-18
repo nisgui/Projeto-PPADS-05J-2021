@@ -21,10 +21,6 @@
 - [4. Objetivos funcionais](#4-objetivos-funcionais)
 - [5. Objetivos não-funcionais](#5-objetivos-não-funcionais)
 - [6. Casos de uso](#6-casos-de-uso)
-  - [6.1. Acessar funções restritas](#61-acessar-funções-restritas)
-  - [6.2. Efetuar registro](#62-efetuar-registro)
-  - [6.3. Efetuar seu próprio pedido](#63-efetuar-seu-próprio-pedido)
-  - [6.4. Efetuar pedido para o cliente](#64-efetuar-pedido-para-o-cliente)
 - [7. Wireframes](#7-wireframes)
 - [8. Diagrama de classes de domínio](#8-diagrama-de-classes-de-domínio)
 
