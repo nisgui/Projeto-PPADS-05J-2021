@@ -163,11 +163,11 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 |  |  Descrição  |
 | ------------------- | ------------------- |
-|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Objetivo |Para entrar uma avaliação, o membro seleciona o tipo de item (livro, filme ou série), busca pelo nome do item, atribui uma nota de 0 a 10 (somente valores inteiros) e escreve os comentários que julgar relevantes (com limite de 1024 caracteres).  |
 |  Ator | Colaborador  |
-|  Pré-condições |  Ser colaborador da empresa |
-|  Fluxo principal | |
-|  Fluxo Alternativo |   |
+|  Pré-condições |  Usuário estar logado |
+|  Fluxo principal |1 - Usuário acessa página <br /> 2 - Sistema mostra opção de escolha entre: livro, filme ou série <br /> 3 - Usuário seleciona o tipo de item <br /> 4 - Sistema habilita opções de busca <br /> 5 - Usuário escreve na caixa de busca o nome do item <br /> 6 - Sistema retorna os resultados da busca <br /> 7 - Usuário seleciona o item oriundo da busca <br />  8 - Sistema abre uma página do item selecionado <br /> 9 - Usuário atribui nota de 0 a 10 <br /> 10 - Caso ache relevante, usuário escreve comentários <br /> 11 - Sistema indica que a avaliação foi atribuida e comentário postado |
+|  Fluxo Alternativo |  1.1 - Sistema não encontra ocorrência de resultados na busca <br /> 1.2 - Sistema não valida todos os campos <br /> 1.3 -  Sistema indica número de caracteres no comentário |
 
 <br>
 
@@ -178,11 +178,13 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 |  |  Descrição  |
 | ------------------- | ------------------- |
-|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Objetivo | O sistema permite a criação de três tipos de ítens: Livro, Série, Filme.|
 |  Ator | Colaborador  |
-|  Pré-condições |  Ser colaborador da empresa |
-|  Fluxo principal | |
-|  Fluxo Alternativo |   |
+|  Pré-condições |  Usuário estar logado |
+|  Fluxo principal |1 - Usuário entra ná página de cadastro. <br /> 2 - Sistema apresenta tela de cadastro e solicita que escolha entre Livro, série ou filme. <br /> 3 - Usuário escolhe o ítem que deseja cadastrar. <br /> 4 - Sistema apresenta os campos que devem ser preenchidos. <br /> 5 - Usuário preenche as informações necessárias para o cadastro, as informações de avaliação e finalmente clica em "Enviar". <br /> 6 - Sistema valida o preenchimento dos campos e informa que a
+criação foi salva e enviada para aprovação do administrador.|
+|  Fluxo Alternativo |  1 - Usuário deixa de preencher algum campo
+necessário. <br/>  2 - Sistema informa os campos obrigatórios que devem ser preenchidos e não envia para aprovação. <br /> 3 - Usuário é mantido no passo 5 do fluxo principal para completar o preenchimento antes de prosseguir.|
 
 
 <br>
@@ -194,11 +196,11 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 |  |  Descrição  |
 | ------------------- | ------------------- |
-|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
-|  Ator | Colaborador  |
-|  Pré-condições |  Ser colaborador da empresa |
-|  Fluxo principal | |
-|  Fluxo Alternativo |   |
+|  Objetivo | Após o sistema ter pelo menos 10 membros cadastrados e cada membro entrar pelo menos 10 avaliações, o sistema passará a apresentar para cada membro recomendações de filmes, séries e livros que podem ser de seu interesse. |
+|  Ator | Sistema  |
+|  Pré-condições |  Necessário que o sistema tenha 10 membros cadastrados e cada membro tenha pelo menos 10 avaliações |
+|  Fluxo principal | 1.	Sistema valida as avaliações que um membro forneceu <br /> 2.	Com base nas avaliações, apresenta títulos semelhantes aos de seu interesse |
+|  Fluxo Alternativo | 1. O sistema ainda não ter o número necessário para mostrar as recomendações para os membros. |
 
 
 <br>
@@ -211,11 +213,11 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 |  |  Descrição  |
 | ------------------- | ------------------- |
-|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
-|  Ator | Colaborador  |
-|  Pré-condições |  Ser colaborador da empresa |
-|  Fluxo principal | |
-|  Fluxo Alternativo |   |
+|  Objetivo | O sistema deverá utilizar um algoritmo colaborativo para oferecer as recomendações a um determinado membro. Isto quer dizer que o sistema deverá identificar membros que têm um perfil semelhante com base nas avaliações já realizadas e oferecer recomendações com base no que estes membros avaliaram bem |
+|  Ator | Sistema  |
+|  Pré-condições |  Necessário existir uma ou mais recomendações de perfil semelhante.|
+|  Fluxo principal | 1.	Executar algoritmo que examine perfis semelhantes; <br /> 2.	Selecionar as recomendações já realizadas; <br /> 3.	Apresentar lista de recomendações ao usuário; |
+|  Fluxo Alternativo |  1. Não existir nenhum perfil com semelhanças com o seu. |
 
 <br>
 
@@ -227,11 +229,11 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 |  |  Descrição  |
 | ------------------- | ------------------- |
-|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Objetivo | Cada membro terá uma página pessoal que listará todas as avaliações que ele já realizou. Os membros logados poderão pesquisar por outros membros pelo nome e acessar as suas páginas pessoais |
 |  Ator | Colaborador  |
-|  Pré-condições |  Ser colaborador da empresa |
-|  Fluxo principal | |
-|  Fluxo Alternativo |   |
+|  Pré-condições |  Necessário estar cadastrado e logado. |
+|  Fluxo principal | 1.	Apresentar sua página pessoal com todas as avaliações realizadas. <br /> 2.	Permitir pesquisar outros membros; <br /> 3.	Visualizar paginas pessoais de outros membros;|
+|  Fluxo Alternativo |  1. O membro ainda não possuir nenhuma avaliação. |
 
 
 <br>
@@ -243,11 +245,11 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 |  |  Descrição  |
 | ------------------- | ------------------- |
-|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Objetivo | Cada membro poderá propor relacionamento de amizade a outro membro. O relacionamento de amizade será estabelecido quando o outro membro aceitar a proposta|
 |  Ator | Colaborador  |
-|  Pré-condições |  Ser colaborador da empresa |
-|  Fluxo principal | |
-|  Fluxo Alternativo |   |
+|  Pré-condições | Estar Logado, pesquisar membros ou receber sugestões. |
+|  Fluxo principal | 1- Usuário pesquisa outro membro e propõe amizade <br /> 2 - Sistema exibe que solicitação foi enviada. <br /> 3 - Sistema envia solicitação para o outro usuário. |
+|  Fluxo Alternativo | 1- Usuário pesquisa outro membro e propõe amizade. <br /> 2 - Sistema exibe sugestões de amizade. <br /> 3 - Usuário propõe amizade para o outro membro.|
 
 <br>
 
@@ -261,9 +263,9 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 | ------------------- | ------------------- |
 |  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
 |  Ator | Colaborador  |
-|  Pré-condições |  Ser colaborador da empresa |
-|  Fluxo principal | |
-|  Fluxo Alternativo |   |
+|  Pré-condições |  Necessário estar cadastrado e logado. |
+|  Fluxo principal |1 - Usuário acessa a avaliação de outro membro <br /> 2 - Sistema apresenta a página do avaliação. 3 - Usuário adiciona o comentário e clica em "Publicar". <br /> 4 - Sistema valida comentário e publica o mesmo. |
+|  Fluxo Alternativo | 1 - Usuário clica em publicar com o campo de comentário vazio. <br />  2. Sistema avisa que o comentário não pode estar vazio |
 
 
 <br>
@@ -276,11 +278,11 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 |  |  Descrição  |
 | ------------------- | ------------------- |
-|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Objetivo | Um membro poderá das um "joinha" nas avaliações de outro membro. Em cada avaliação aparecerá o número de "joinhas" que ela já recebeu. O membro que deu o “joinha” para a avaliação poderá retirá-lo posteriormente se assim desejar. |
 |  Ator | Colaborador  |
-|  Pré-condições |  Ser colaborador da empresa |
-|  Fluxo principal | |
-|  Fluxo Alternativo |   |
+|  Pré-condições |  Necessário estar cadastrado e logado. |
+|  Fluxo principal | 1. Membro entrar no perfil de uma de suas amizades. <br /> 	2. Clicar no botão “Ver Avaliações” <br /> 3. Na página “Avaliações”, listar as avaliações realizadas por outros membros; <br /> 4.	Clicar no botão “Adicionar “joinha” <br /> 5.	Somar o número de “joinha” na avaliação|
+|  Fluxo Alternativo | 1.	Clicar no botão “Ver Avaliações”; <br /> 2.	Na página “Avaliações”, listar as avaliações realizadas por outros membros; <br /> 3.	Clicar no botão “Remover “joinha”; <br /> 4.	Subtrair o número de “joinha” na avaliação;  |
 
 
 <br>
@@ -293,11 +295,11 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 |  |  Descrição  |
 | ------------------- | ------------------- |
-|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
-|  Ator | Colaborador  |
-|  Pré-condições |  Ser colaborador da empresa |
-|  Fluxo principal | |
-|  Fluxo Alternativo |   |
+|  Objetivo | A página pessoal de um membro mostrará, além das avaliações que ele fez, uma lista com os seus amigos e o número de recomendações que ele já recebeu |
+|  Ator | Sistema  |
+|  Pré-condições | Necessário estar cadastrado e logado. |
+|  Fluxo principal | 1. Membro entrar no seu perfil ou no de outro membro <br /> 2.	Listar avaliações realizadas pelo usuário; 3.	Listar seus amigos com o número de recomendações que recebeu.|
+|  Fluxo Alternativo |  1. Membro ainda não ter nenhuma avaliação e nenhum amigo. |
 
 
 <br>
@@ -310,11 +312,11 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 |  |  Descrição  |
 | ------------------- | ------------------- |
-|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
+|  Objetivo | Quando um membro acessar a página de outro, o sistema deverá mostrar os amigos que eles têm em comum.  |
 |  Ator | Colaborador  |
-|  Pré-condições |  Ser colaborador da empresa |
-|  Fluxo principal | |
-|  Fluxo Alternativo |   |
+|  Pré-condições |  Necessário estar cadastrado e logado |
+|  Fluxo principal | 1. Entrar na pagina pessoal de outro membro. <br /> 2. Mostrar lista de amigos em comum; |
+|  Fluxo Alternativo | 1. Membro ainda não ter nenhum amigo em comum. |
 
 
 <br>
@@ -327,11 +329,11 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 |  |  Descrição  |
 | ------------------- | ------------------- |
-|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
-|  Ator | Colaborador  |
-|  Pré-condições |  Ser colaborador da empresa |
-|  Fluxo principal | |
-|  Fluxo Alternativo |   |
+|  Objetivo | Sempre que um membro acessar o sistema, ele deverá receber a sugestão de 3 membros que poderiam ser seus amigos. O critério será sugerir membros que têm preferências semelhantes, com base nas avaliações já realizadas. |
+|  Ator | Sistema  |
+|  Pré-condições |  Membro ter feito alguma prévia avaliação. |
+|  Fluxo principal |1.	Listar sugestões de amigos segundo critérios de preferencias; |
+|  Fluxo Alternativo |  1. Membro não tem nada em comum com outros membros. <br /> 2. Membro ainda não ter feito nenhuma avaliação |
 
 
 <br>
@@ -344,11 +346,11 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 |  |  Descrição  |
 | ------------------- | ------------------- |
-|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
-|  Ator | Colaborador  |
-|  Pré-condições |  Ser colaborador da empresa |
-|  Fluxo principal | |
-|  Fluxo Alternativo |   |
+|  Objetivo | Cada filme, série e livro deverá ter uma página no sistema que reunirá todas as avaliações já realizadas daquele item, ordenadas pelo número de "joinhas" recebidos.  |
+|  Ator | Sistema  |
+|  Pré-condições |  Necessário existir filmes, série ou livro cadastrados no sistema. |
+|  Fluxo principal |1. Entrar na página pessoal de um membro. <br /> 2.	Clicar no link “Mais avaliados”; <br /> 3.	Na página de “Mais avaliados”, listar filmes, séries e livros ordenados por quantidade de avaliações.|
+|  Fluxo Alternativo | |
 
 <br>
 
@@ -361,10 +363,10 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 |  |  Descrição  |
 | ------------------- | ------------------- |
-|  Objetivo | O sistema deverá permitir que qualquer pessoa da empresa pode se registrar nesta rede social  |
-|  Ator | Colaborador  |
-|  Pré-condições |  Ser colaborador da empresa |
-|  Fluxo principal | |
+|  Objetivo | O sistema deverá permitir que o gerente do serviço consulte: a. O número médio de amigos dos membros da rede social. b. Uma lista com os 10 membros mais conectados (com o maior número de amigos). c. Um gráfico mostrando a relação entre o número de amigos e o estado onde mora. |
+|  Ator | Administrador  |
+|  Pré-condições |  Estar logado com perfil de gerente |
+|  Fluxo principal |1. Logar com o perfil de um gerente <br /> 2.	Listar os números médios de amigos de cada membro <br /> 3.	Listar o número de membros mais conectados com maior número de amigos. <br /> 4.	Mostrar gráfico com membros com o numero de amigos e estado onde mora. |
 |  Fluxo Alternativo |   |
 
 
