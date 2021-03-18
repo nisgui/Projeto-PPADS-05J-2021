@@ -368,4 +368,10 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 
 
+# 7. Diagramas de sequência
 
+# 8. Wireframes
+
+# 9. Diagrama de classes de domínio
+
+# 10. Diagrama de classes
