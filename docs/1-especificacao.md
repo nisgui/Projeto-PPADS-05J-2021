@@ -374,4 +374,8 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 # 9. Diagrama de classes de domínio
 
+
+![image](https://user-images.githubusercontent.com/48717700/111570142-e86eb600-8782-11eb-80a1-4b8463257a00.png)
+
+
 # 10. Diagrama de classes
