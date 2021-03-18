@@ -183,8 +183,7 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 |  Pré-condições |  Usuário estar logado |
 |  Fluxo principal |1 - Usuário entra ná página de cadastro. <br /> 2 - Sistema apresenta tela de cadastro e solicita que escolha entre Livro, série ou filme. <br /> 3 - Usuário escolhe o ítem que deseja cadastrar. <br /> 4 - Sistema apresenta os campos que devem ser preenchidos. <br /> 5 - Usuário preenche as informações necessárias para o cadastro, as informações de avaliação e finalmente clica em "Enviar". <br /> 6 - Sistema valida o preenchimento dos campos e informa que a
 criação foi salva e enviada para aprovação do administrador.|
-|  Fluxo Alternativo |  1 - Usuário deixa de preencher algum campo
-necessário. <br/>  2 - Sistema informa os campos obrigatórios que devem ser preenchidos e não envia para aprovação. <br /> 3 - Usuário é mantido no passo 5 do fluxo principal para completar o preenchimento antes de prosseguir.|
+| Fluxo Alternativo |  1 - Usuário deixa de preencher algum campo necessário. <br/>  2 - Sistema informa os campos obrigatórios que devem ser preenchidos e não envia para aprovação. <br /> 3 - Usuário é mantido no passo 5 do fluxo principal para completar o preenchimento antes de prosseguir.|
 
 
 <br>
