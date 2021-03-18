@@ -231,6 +231,7 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 
 <br>
+
 ## RF013 – Propor relacionamento de amizade
 
 <br>
