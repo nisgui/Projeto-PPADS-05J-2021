@@ -386,9 +386,6 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 ![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/cadastroitem.png)
 
-## RF10 – Apresentar recomendações para Membros
-
-## RF011 – Oferecer recomendações
 
 ## RF012 – Listar avaliações realizadas
 
@@ -402,20 +399,19 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 ## RF014 – Adicionar comentários
 
-![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/comentario.png)
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/comentario2.png)
 
 
 ## RF015 – Adicionar “joinha”
 
-## RF016 – Mostrar avaliações e recomendações na página pessoal.
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/joinha.png)
 
-## RF017 – Ver amigos em comum.
-
-## RF018 – Receber sugestões de amigos
-
-## RF019 – Listar avaliações
 
 ## RF020 – Consultar relatório gerencial
+
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/gerente.png)
+
+
 
 # 8. Wireframes
 
