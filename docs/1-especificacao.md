@@ -394,7 +394,7 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 ## RF013 – Propor relacionamento de amizade
 
-![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/amizade.png)
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/amizade2.png)
 
 
 ## RF014 – Adicionar comentários
