@@ -386,15 +386,7 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 ![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/cadastroitem.png)
 
-![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/aprovarItemWireframe.png)
 
-## RF10 – Apresentar recomendações para Membros
-
-
-
-## RF011 – Oferecer recomendações
-
-![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/homeWireframe.png)
 
 ## RF012 – Listar avaliações realizadas
 
@@ -443,6 +435,16 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 ![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/cadastrarItemWireframe.png)
 
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/aprovarItemWireframe.png)
+
+
+## RF10 – Apresentar recomendações para Membros
+
+
+
+## RF011 – Oferecer recomendações
+
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/homeWireframe.png)
 
 ## RF012 – Listar avaliações realizadas e Pesquisar membro
 
