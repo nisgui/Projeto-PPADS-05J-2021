@@ -380,6 +380,8 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 ## RF04 - Avaliar Filmes, Séries e Livros
 
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/avaliar.png)
+
 ## RF06 – Cadastrar de Conteúdo
 
 ## RF10 – Apresentar recomendações para Membros
