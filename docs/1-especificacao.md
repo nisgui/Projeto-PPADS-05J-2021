@@ -465,6 +465,13 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 ![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/paginaItemWireframe.png)
 
+## RF016 – Mostrar avaliações e recomendações na página pessoal.
+
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/profileUsuario.png)
+
+## RF018 – Receber sugestões de amigos
+
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/homeWireframe.png)
 
 ## RF020 – Consultar relatório gerencial
 
