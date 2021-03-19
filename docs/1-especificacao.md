@@ -424,4 +424,7 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 # 10. Diagrama de classes
 
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/Diagrama%20de%20classes.png)
+
+
 
