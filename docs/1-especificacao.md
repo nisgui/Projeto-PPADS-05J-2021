@@ -43,6 +43,10 @@ Aqueles que irão se beneficiar diretamente e aqueles que serão afetados pelo n
 
 Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qualquer cargo e encontrar interesses em comum com outros colaboradores, enviar pedidos de amizade e encontrar novas recomendações de amizade por gostos similiares ao dele, assim criando uma atmosfera amigavel na empresa e estimulando a interação entre os membros.
 
+Administradores: Serão responsáveis por validar o cadastro das avaliações, validando ou não devido aos seus critérios.
+
+Gerente: Serão capazes de visualizar um relatório das informações relevantes, como número de amizades de um membro, gráfico mostrando a relação entre número de amigos e estados onde moram, e etc.
+
 
 # 4. Objetivos funcionais
 
@@ -98,6 +102,10 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 |  RNF005 |  O sistema deve apresentar em sua documentação como os dados cadastrais e transacionais serão assegurados |
 |  RNF006 |  O sistema deve funcionar em diversos dispositivos. |
 |  RNF007 |  Os dados do sistema devem ser persistidos em uma base de dados (Relacional ou NoSQL). |
+|  RNF008 |  O sistema deverá ser implementado em um provedor de serviços na internet (ex: AWS, Heroku). |
+|  RNF009 |  O sistema deverá apresentar um campo de comentário com limite de 1024 caracteres. |
+|  RNF010 |  O sistema deverá apresentar um tempo resposta para o caso de falha no sistema de 0.5 milissegundos. |
+
 
 # 6. Casos de uso
 > Obs: Requisitos funcionais aqui não representados são porque o caso de uso é repetido ao requisito acima
