@@ -386,6 +386,15 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 ![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/cadastroitem.png)
 
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/aprovarItemWireframe.png)
+
+## RF10 – Apresentar recomendações para Membros
+
+
+
+## RF011 – Oferecer recomendações
+
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/homeWireframe.png)
 
 ## RF012 – Listar avaliações realizadas
 
@@ -414,6 +423,51 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 
 # 8. Wireframes
+
+## RF01 - Registrar-se na rede social
+
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/registroWireframe.png)
+
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/login.png)
+
+## RF03 - Atualizar dados do perfil pessoal
+
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/atualizarperfilWireframe.png)
+
+
+## RF04 - Avaliar Filmes, Séries e Livros
+
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/avaliarWireframe.png)
+
+## RF06 – Cadastrar de Conteúdo
+
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/cadastrarItemWireframe.png)
+
+
+## RF012 – Listar avaliações realizadas e Pesquisar membro
+
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/pesquisarWireframe.png)
+
+
+## RF013 – Propor relacionamento de amizade
+
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/profileUsuario.png)
+
+
+## RF014 – Adicionar comentários
+
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/comentariosWireframe.png)
+
+
+## RF015 – Adicionar “joinha”
+
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/paginaItemWireframe.png)
+
+
+## RF020 – Consultar relatório gerencial
+
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/dashboardGerenteWireframe.png)
+
 
 # 9. Diagrama de classes de domínio
 
