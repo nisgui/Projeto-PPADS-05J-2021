@@ -402,6 +402,9 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 ## RF014 – Adicionar comentários
 
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/comentario.png)
+
+
 ## RF015 – Adicionar “joinha”
 
 ## RF016 – Mostrar avaliações e recomendações na página pessoal.
