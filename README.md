@@ -9,3 +9,10 @@
 * Nicole Francani Godinho. TIA: 31716946
 * Aleixo Afonso da Cunha Menezes Neto
 * Marcos Vinicius Lozardo da Rosa
+
+
+Recado para o professor:
+
+Especificação dentro da pasta docs/especificacao.md
+
+link para Trello: https://trello.com/b/40HUlR1a/projeto-ppads ou https://trello.com/b/40HUlR1a
