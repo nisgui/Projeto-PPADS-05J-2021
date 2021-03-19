@@ -392,7 +392,13 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 ## RF012 – Listar avaliações realizadas
 
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/listar.png)
+
+
 ## RF013 – Propor relacionamento de amizade
+
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/amizade.png)
+
 
 ## RF014 – Adicionar comentários
 
