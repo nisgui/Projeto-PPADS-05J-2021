@@ -438,10 +438,6 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 ![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/aprovarItemWireframe.png)
 
 
-## RF10 – Apresentar recomendações para Membros
-
-
-
 ## RF011 – Oferecer recomendações
 
 ![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/homeWireframe.png)
