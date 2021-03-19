@@ -374,6 +374,36 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 ![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/registro.png)
 
+## RF03 - Atualizar dados do perfil pessoal
+
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/atualizar.png)
+
+## RF04 - Avaliar Filmes, Séries e Livros
+
+## RF06 – Cadastrar de Conteúdo
+
+## RF10 – Apresentar recomendações para Membros
+
+## RF011 – Oferecer recomendações
+
+## RF012 – Listar avaliações realizadas
+
+## RF013 – Propor relacionamento de amizade
+
+## RF014 – Adicionar comentários
+
+## RF015 – Adicionar “joinha”
+
+## RF016 – Mostrar avaliações e recomendações na página pessoal.
+
+## RF017 – Ver amigos em comum.
+
+## RF018 – Receber sugestões de amigos
+
+## RF019 – Listar avaliações
+
+## RF020 – Consultar relatório gerencial
+
 # 8. Wireframes
 
 # 9. Diagrama de classes de domínio
