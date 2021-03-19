@@ -370,6 +370,10 @@ Colaboradores: Conseguirão navegar pelo site qualquer pessoa da empresa e de qu
 
 # 7. Diagramas de sequência
 
+## RF01 - Registrar-se na rede social
+
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/registro.png)
+
 # 8. Wireframes
 
 # 9. Diagrama de classes de domínio
