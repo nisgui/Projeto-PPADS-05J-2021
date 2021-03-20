@@ -491,7 +491,7 @@ Gerente: Serão capazes de visualizar um relatório das informações relevantes
 
 # 10. Diagrama de classes
 
-![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/Diagrama%20de%20classes.png)
+![image](https://github.com/nisgui/Projeto-PPADS-05J-2021/blob/main/docs/driagramas/diagrama%20classes2.png)
 
 
 
