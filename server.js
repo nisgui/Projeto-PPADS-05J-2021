@@ -28,6 +28,7 @@ var socketIO = require("socket.io")(http);
 var socketID = "";
 var users = [];
 
+
 var mainURL = "http://localhost:3000";
 
 socketIO.on("connection", function(socket){
@@ -36,8 +37,10 @@ socketIO.on("connection", function(socket){
 
 	});
 
-http.listen(3000, function() {
-	console.log("Server started.");
+const port = process.env.PORT || 3000;
+
+http.listen(port, function() {
+	console.log('Server started.', port);
 
 	mongoClient.connect("mongodb+srv://nicolefrancani:projetoPPADS26@projetoads.gfm0w.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", function(error, client){
 		var database = client.db("my_social_network");
