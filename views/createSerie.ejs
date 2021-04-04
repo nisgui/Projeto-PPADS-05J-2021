@@ -1,0 +1,125 @@
+<%- include ("includes/header") %>
+
+<section>
+	<div class="gap gray-bg">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row" id="page-contents">
+						<div class="col-md-3">
+							<%- include ("includes/left-sidebar") %>
+						</div>
+						
+						<div class="col-md-6">
+							<div class="central-meta">
+								<div class="editing-info">
+								
+									<h5 class="f-title"> <i class="ti-info-all"></i> Cadastrar Serie </h5>
+									
+									<form onsubmit="return createSerie(this);"> 
+
+										<input name="tipo" type="hidden" value="serie">
+										
+										<div class="form-group">
+											<input type="text" name="name" required />
+											<label class="control-label"> Título </label>
+											<i class="mtrl-select"></i>
+											<br><br>
+										</div>
+										
+
+										<div class="form-group">
+											<input type="text" name="diretor" required />
+											<label class="control-label"> Diretor(es) </label>
+											<i class="mtrl-select"></i>
+											<br><br>
+										</div>
+
+										<div class="form-group">
+											<input type="text" name="elenco" required />
+											<label class="control-label"> Elenco Principal </label>
+											<i class="mtrl-select"></i>
+											<br><br>
+										</div>
+
+										<div class="form-group">
+											<input type="text" name="pais" required/>
+											<label class="control-label"> País</label>
+											<i class="mtrl-select"></i>
+											<br><br>
+										</div>
+										
+										<div class="form-group">
+											<input type="number" name="ano" min="1900" max="2099" step="1" value="2021" required />
+											<label class="control-label"> Ano de lançamento </label>
+											<i class="mtrl-select"></i>
+											<br><br>
+										</div>
+
+                                        <div class="form-group">
+											<input type="number" name="temporadas" required />
+											<label class="control-label"> Número de temporadas </label>
+											<i class="mtrl-select"></i>
+											<br><br>
+										</div>
+
+										<div class="form-group">
+											<input type="file" name="image" accept="image/*">
+											<label class="control-label"> Poster serie </label>
+											<i class="mtrl-select"></i>
+											<br><br>
+										</div>
+
+										
+										<button type="submit" class="mtr-btn" name="submit">
+											<span> Salvar </span>
+										</button>										
+									</form>
+									
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	function createSerie(form){
+		form.submit.setAttribute("disabled", "disabled");
+		
+		var ajax = new XMLHttpRequest();
+		ajax.open("POST", "/createSerie", true);
+		
+		ajax.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+				form.submit.removeAttribute("disabled");
+				
+				var response = JSON.parse(this.responseText);
+				alert(response.message);
+				
+				if(response.status == "success"){
+					form.name.value = "";
+					form.diretor.value= "";
+                    form.elenco.value = "";
+                    form.pais.value = "";
+					form.ano.value= "";
+                    form.temporadas.value= "";
+					form.image.value= "";
+					form.tipo.value= "";
+
+				}
+			}
+		};
+		
+		var formData = new FormData(form);
+		formData.append("accessToken", localStorage.getItem("accessToken"));
+		ajax.send(formData);
+		return false;
+	}
+</script>
+
+<%- include ("includes/foooter") %>

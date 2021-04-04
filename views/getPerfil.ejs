@@ -1,0 +1,100 @@
+<%- include ("../views/includes/header") %>
+<section>
+	<div class="feature-photo">
+
+		<figure>
+			<img class="cover-photo" id="cover-photo" style="width: 100%; height: 300px; ">
+		</figure>
+
+		<div class="add-btn">
+				<span class= "seguidores" id="seguidores"></span>
+			</div>
+
+
+		<div class="container-fluid">
+		<div class="row merged2">
+			<div class="col-md-2">
+				<div class="user-avatar">
+					<figure>
+					<img class="profile-image" id="profile-image" style="width: 100%; height: 150px; object-fit=cover;">
+					</figure>
+				</div>
+			</div>
+			<div class="col-md-10">
+				<div class="timeline-info">
+			<ul>
+				<li class="admin-name">
+					<h5 class="user-name" id="user-name" style="padding-top: 20px; padding-bottom: 20px;"></h5>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+	
+	
+	<section>
+		<div class="gap gray-bg">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="row" id="page-container">
+						
+						<ul>
+						<p style="font-size: 21px; font-style: italic; color: black;" > Dados do perfil: </p>
+
+						<p class = "username" id = "username" style="font-size: 21px;"></p> 
+						<p class = "date" id = "date" style="font-size: 21px;"> </p> 
+						<p class = "email" id = "email" style="font-size: 21px;"> </p> 
+						<p class = "estado" id = "estado" style="font-size: 21px;"> </p> 
+						<p class = "cidade" id = "cidade" style="font-size: 21px;"> </p>
+
+
+
+
+						</ul>
+
+
+							
+							<div class="col-md-3">
+
+							</div>
+			
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+<script>
+	var meuPerfil = true;
+
+	function getPerfil(){
+		document.querySelector(".cover-photo").setAttribute("src", mainURL + "/" + window.user.coverPhoto);
+		document.querySelector(".profile-image").setAttribute("src", mainURL + "/" + window.user.profileImage);
+
+		document.querySelector(".user-name").innerHTML = window.user.name;
+		document.querySelector(".username").innerHTML = window.user.username;
+		document.querySelector(".date").innerHTML = window.user.date;
+		document.querySelector(".email").innerHTML = window.user.email;
+		document.querySelector(".cidade").innerHTML = window.user.cidade;
+		document.querySelector(".estado").innerHTML = window.user.estado;
+		document.querySelector(".seguidores").innerHTML = window.user.friends.length + " Amigos";
+
+	}
+		
+
+	</script>
+
+</script>
+
+
+
+
+
+<%- include ("../views/includes/foooter") %>

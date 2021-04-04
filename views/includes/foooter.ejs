@@ -1,0 +1,224 @@
+<footer>
+		<div class="container">
+
+			<div class="row">
+					Viewster &copy; <%= new Date().getFullYear() %>
+				</div>
+
+		</div>
+
+</footer>
+</div>
+
+<div class="modal fade" id="replyModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title"> Reply</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true"> &times; </span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form onsubmit="return doPostReply(this)">
+						<input type="hidden" name="postId"> <br>
+						<input type="hidden" name="commentId">
+						<textarea name="reply" placeholder="Post your reply"></textarea>
+						<button type="submit"> Post</button>
+					</form>				
+				</div>
+			</div>
+		</div>
+	</div>
+<script src="/public/js/jquery-3.3.1.min.js"></script>
+<script src="/public/js/script.js"></script>
+<script src="/public/js/main.min.js"></script>
+<script src="/public/js/socket.io.js"></script>
+
+<script>
+		window.user = null;
+		var socketIO = io("http://localhost:3000");
+
+
+			
+		function getUser(){
+			if(localStorage.getItem("accessToken")){
+				var ajax = new XMLHttpRequest();
+				ajax.open("POST", "/getUser", true);
+
+				ajax.onreadystatechange = function(){
+					if(this.readyState == 4 && this.status == 200){
+						var response = JSON.parse(this.responseText);
+
+						if(response.status == "success") {
+							window.user = response.data;
+
+							if(typeof isUpdateProfile !== "undefined" && isUpdateProfile){
+									showProfileData();
+							}
+
+							if(typeof isHomePage !== "undefined" && isHomePage){
+								showAddPost();
+								showNewsfeed();
+							}
+							if(typeof isSearchResults !== "undefined" && isSearchResults){
+								showSearchResults();
+							}
+
+							if(typeof createAverageNota !== "undefined" && createAverageNota){
+								createAverageNota();
+							}
+							if(typeof isFriends !== "undefined" && isFriends){
+								showFriends();
+							}
+							if(typeof isPages !== "undefined" && isPages){
+								getPages();
+							}
+
+							if(typeof isAvaliacao !== "undefined" && isAvaliacao){
+								getAvaliacao();
+							}
+							if(typeof isMovies !== "undefined" && isMovies){
+								getMovies();
+							}
+
+							if(typeof isBook !== "undefined" && isBook){
+								getBookComments();
+							}
+
+							if(typeof isSeries !== "undefined" && isSeries){
+								getSeries();
+							}
+							if(typeof isPageDetail !== "undefined" && isPageDetail){
+								getPageDetail();
+							}
+							if(typeof isGroups !== "undefined" && isGroups){
+								getGroups();
+							}
+
+							if(typeof isGroupDetail !== "undefined" && isGroupDetail){
+								getGroupDetail();
+							}
+
+							if(typeof isNotifications !== "undefined" && isNotifications){
+								showNotifications();
+							}
+							if(typeof isEditPost !== "undefined" && isEditPost){
+								showPostData();
+							}
+							if(typeof isUserDetail !== "undefined" && isUserDetail){
+								getUserDetails();
+							}
+							if(typeof meuPerfil !== "undefined" && meuPerfil){
+								getPerfil();
+							}
+							if(typeof showPosts !== "undefined" && showPosts){
+								getPosts();
+							}
+
+
+
+
+						} else{
+							localStorage.removeItem("accessToken");
+						}
+						showMainMenu();
+					}
+				};
+
+				var formData = new FormData();
+				formData.append("accessToken", localStorage.getItem("accessToken"));
+				ajax.send(formData);
+			} else{
+				showMainMenu();
+			}
+		}
+
+		function showMainMenu(){
+			var html = "";
+
+			if(localStorage.getItem("accessToken")){
+				
+
+
+
+
+
+				html += '<li>';
+				html += '<a>Itens</a>';
+				html += '<ul>';
+					html += '<li>';
+					html += '<a href="/pages">Livros</a>';
+					html += '</li>';
+					html += '<li>';
+					html += '<a href="/movies">Filmes</a>';
+					html += '</li>';
+					html += '<li>';
+					html += '<a href="/series">Series</a>';
+					html += '</li>';
+				html += '</ul>';
+
+				html += '</li>';
+
+				html += '<li>';
+				html += '<a href="/groups">Grupos</a>';
+				html += '</li>';
+
+
+
+				
+
+				
+				
+				html += '<li>';
+					
+					html += '<div class= "col-sm-12">';
+						
+				html += '<img src="' + mainURL + "/" + window.user.profileImage +'"  style="width:45px; height:45px; object-fit: cover; border-radius: 50%; margin-top: 7px;">';
+				html += '<p class = "footer-name">@'+  window.user.username + '</p>';
+				html += '</div>';
+				html += '<ul> ';
+
+					html += '<li>';
+						html += '<a href="/getPerfil"><i class="ti-user"></i> Perfil</a>';
+					html += '</li>';
+					html += '<li>';
+						html += '<a href="/updateProfile"><i class="ti-pencil-alt"></i>Atualizar Perfil</a>';
+					html += '</li>';
+				html += '</ul">';
+				html += '</li>';
+				html += '<li>';
+				html += '<a href="/logout" onclick="return doLogout();"><i class="ti-power-off"></i>Logout</a>';
+				html += '</li>';
+
+
+						
+
+
+			
+			} else{
+				html += '<li>';
+				html += '<a href="/login">Login</a>';
+				html += '</li>';
+
+				html += '<li>';
+				html += '<a href="/">Registrar-se</a>';
+				html += '</li>';
+			}
+
+			document.getElementById("main-menu").innerHTML = html;
+			}
+			function doLogout(){
+				localStorage.removeItem("accessToken");
+				return true;
+			}
+			window.onload = function(){
+				getUser();
+			};
+
+			window.onerror = function(file, line, error){
+				alert(file + " " + line + "" + error);
+			};
+		</script>
+
+		</html>

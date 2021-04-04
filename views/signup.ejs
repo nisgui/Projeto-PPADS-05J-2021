@@ -1,0 +1,236 @@
+<html>
+<head>
+  <title> Social Network </title>
+
+  <link rel="stylesheet" href= "/public/css/main.min.css">
+  <link rel="stylesheet" href= "/public/css/style.css">
+  <link rel="stylesheet" href= "/public/css/color.css">
+  <link rel="stylesheet" href= "/public/css/responsive.css">
+
+  </head>
+  <body>
+  		<div class="theme-layout">
+  		<div class="container-fluid pdng0">
+  			<div class="row merged">
+  				<div class="offset-md-3 col-md-6">
+  					<div class="login-reg-bg2">
+  						<div class="log-reg-area sign">
+  						<h2 class ="log-title">Registro membro</h2>
+
+  						<form onsubmit="return doRegister(this);">
+  						<div class="form-group">
+  						 	<input type="text" required name= "name" />
+  						  	<label class="control-label">Nome</label>
+  						  	<i class="mtrl-select"></i>
+  						</div>
+
+  						<div class="form-group">
+  							<input type="text" required name="username" />
+  							<label class="control-label">Username</label>
+  							<i class="mtrl-select"></i>
+  						</div>
+
+              <div class="form-group">
+                <input type="date" required name="date" max="2001-07-16" title="Apenas maiores de 18 anos"/>
+                <label class="control-label">Data de nascimento</label>
+                <i class="mtrl-select"></i>
+              </div>
+
+              <div class="form-group">
+                <input type="text" class="form-control cpf-mask" required name="cpf" placeholder="          Ex.: 000.000.000-00">
+                <label class="control-label">CPF</label>
+                <i class="mtrl-select"></i>
+              </div>
+
+  						<div class="form-group">
+  							<input type="email" required name="email" />
+  							<label class="control-label">Email</label>
+  							<i class="mtrl-select"></i>
+  						</div>
+
+
+            <label for="temas">Temas de interesse:</label>
+                <select name = "temas" id = "temas" multiple>
+                <option value="AngularJS">AngularJS</option>
+                <option value="artificial intelligence">artificial intelligence</option>
+                <option value="backpropagation">backpropagation</option>
+                <option value="Bayes' Theorem">Bayes' Theorem</option>
+                <option value="Bayesian network">Bayesian network</option>
+                <option value="bias">bias</option>
+                <option value="Big Data">Big Data</option>
+                <option value="binomial distribution">binomial distribution</option>
+                <option value="chi-square test">chi-square test</option>
+                <option value="classification">classification</option>
+                <option value="clustering">clustering</option>
+                <option value="coefficient"></option>
+                <option value="computational linguistics">coefficient</option>
+                <option value="confidence interval">confidence interval</option>
+                <option value="continuous variable">continuous variable</option>
+                <option value="correlation">correlation</option>
+                <option value="covariance">covariance</option>
+                <option value="cross-validation">cross-validation</option>
+                <option value="D3">D3</option>
+                <option value="data engineer">data engineer</option>
+                <option value="data mining">data mining</option>
+                <option value="data science">data science</option>
+                <option value="data structure">data structure</option>
+                <option value="data wrangling">data wrangling</option>
+                <option value="decision trees">decision trees</option>
+                <option value="deep learning">deep learning</option>
+                <option value="dependent variable">dependent variable</option>
+                <option value="dimension reduction">dimension reduction</option>
+                <option value="discrete variable">discrete variable</option>
+                <option value="econometrics">econometrics</option>
+                <option value="feature">feature</option>
+                <option value="feature engineering">feature engineering</option>
+                <option value="GATE">GATE</option>
+                <option value="gradient boosting">gradient boosting</option>
+                <option value="gradient descent">gradient descent</option>
+                <option value="histogram">histogram</option>
+                <option value="independent variable">independent variable</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="k-means clustering">k-means clustering</option>
+                <option value="k-nearest neighbors">k-nearest neighbors</option>
+                <option value="latent variable">latent variable</option>
+                <option value="lift">lift</option>
+                <option value="linear algebra">linear algebra</option>
+                <option value="linear regression">linear regression</option>
+                <option value="logarithm">logarithm</option>
+                <option value="logistic regression">logistic regression</option>
+                <option value="machine learning">machine learning</option>
+                <option value="machine learning model">machine learning model</option>
+                <option value="Markov Chain">Markov Chain</option>
+                <option value="MATLAB">MATLAB</option>
+                <option value="matrix">matrix</option>
+                <option value="mean">mean</option>
+                <option value="Mean Absolute Error">Mean Absolute Error</option>
+                <option value="Mean Squared Error">Mean Squared Error</option>
+                <option value="median">median</option>
+                <option value="mode">mode</option>
+                <option value="model">model</option>
+                <option value="Monte Carlo method">Monte Carlo method</option>
+                <option value="moving average">moving average</option>
+                <option value="n-gram">n-gram</option>
+                <option value="naive Bayes classifier">naive Bayes classifier</option>
+                <option value="neural network">neural network</option>
+                <option value="normal distribution">normal distribution</option>
+                <option value="NoSQL">NoSQL</option>
+                <option value="null hypothesis">null hypothesis</option>
+                <option value="objective function">objective function</option>
+                <option value="overfitting">overfitting</option>
+                <option value="P value">P value</option>
+                <option value="PageRank">PageRank</option>
+                <option value="Pandas">Pandas</option>
+                <option value="perceptron">perceptron</option>
+                <option value="Perl">Perl</option>
+                <option value="pivot table">pivot table</option>
+                <option value="Poisson distribution">Poisson distribution</option>
+                <option value="posterior distribution">posterior distribution</option>
+                <option value="predictive analytics">predictive analytics</option>
+                <option value="predictive modeling">predictive modeling</option>
+                <option value="principal component analysis">principal component analysis</option>
+                <option value="prior distribution">prior distribution</option>
+                <option value="probability distribution">probability distribution</option>
+                <option value="Python">Python</option>
+                <option value="quantile, quartile">quantile, quartile</option>
+                <option value="R">R</option>
+                <option value="random forest">random forest</option>
+                <option value="regression">regression</option>
+                <option value="reinforcement learning">reinforcement learning</option>
+                <option value="Root Mean Squared Error">Root Mean Squared Error</option>
+                <option value="Ruby">Ruby</option>
+                <option value="S curve">S curve</option>
+                <option value="SAS">SAS</option>
+                <option value="scalar">scalar</option>
+                <option value="scripting">scripting</option>
+                <option value="serial correlation">serial correlation</option>
+                <option value="shell">shell</option>
+                <option value="spatiotemporal data">spatiotemporal data</option>
+                <option value="SPSS">SPSS</option>
+                <option value="SQL">SQL</option>
+                <option value="standard deviation">standard deviation</option>
+                <option value="standard normal distribution">standard normal distribution</option>
+                <option value="standardized score">standardized score</option>
+                <option value="Stata">Stata</option>
+                <option value="strata, stratified sampling">strata, stratified sampling</option>
+                <option value="supervised learning">supervised learning</option>
+                <option value="support vector machine">support vector machine</option>
+                <option value="t-distribution">t-distribution</option>
+                <option value="Tableau">Tableau</option>
+                <option value="time series data">time series data</option>
+                <option value="UIMA">UIMA</option>
+                <option value="unsupervised learning">unsupervised learning</option>
+                <option value="variance ">variance</option>
+                <option value="vector">vector</option>
+                <option value="vector space">vector space</option>
+                <option value="Weka">Weka</option>
+            </select>
+
+  						<div class="form-group">
+  							<input type="password"required name="password" />
+  							<label class= "control-label">Password</label>
+  							<i class="mtrl-select"></i>
+  						</div>
+
+  						<div class="form-radio">
+  							<div class="radio">
+  								<label>
+  									<input type="radio" name="gender" value="Male" checked />
+  									<i class="check-box"></i> Male 
+  									</label>
+  							</div>
+  							<div class="radio">
+  								<label>
+  									<input type="radio" name="gender" value="Female" />
+  									<i class="check-box"></i> Female 
+  									</label>
+  							</div>
+  						</div>
+
+  						<a href="/login">Você ja tem uma conta?</a>
+  						<div class="submit-btns">
+  							<button class="mtr-btn signup" name="submit" type="submit">
+  								<span>Register</span>
+  							</button>
+  						</div>
+  					</form>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+</div>
+</div>
+
+	<script>
+		function doRegister(form){
+		form.submit.setAttribute("disabled", "disabled");
+		form.submit.innerHTML = "<span>Loading...</span>";
+
+		var ajax = new XMLHttpRequest();
+		ajax.open("POST", "/signup", true);
+
+		ajax.onreadystatechange = function() {
+			if(this.readyState == 4 && this.status == 200){
+				form.submit.removeAttribute("disabled");
+				form.submit.innerHTML ="<span>Register</span>";
+
+				var response = JSON.parse(this.responseText);
+				alert(response.message);
+
+				if(response.status == "sucess"){
+					window.location.href = "/login";
+				}
+			}
+		};
+
+		ajax.send(new FormData(form));
+		return false;
+	}
+	</script>
+
+</body>
+
+</html>
+
+
+

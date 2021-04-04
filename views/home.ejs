@@ -1,0 +1,272 @@
+<%- include("includes/header") %>
+
+	<section>
+		<div class="gap grap-bg">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="row" id="page-contents">
+
+							<div class="col-md-3">
+								<%- include ("includes/left-sidebar") %>
+							</div>
+							
+							<div class="col-md-6">
+								<div class="tab-content">
+									
+							<div id="add-post-box"></div>
+
+								
+
+							<ul class="liked-pages2" id="all-pages"></ul>
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+	<script>
+		var isHomePage = true;
+
+		function doPost(form){
+			var ajax = new XMLHttpRequest();
+			ajax.open("POST", "/addPost", true);
+
+			ajax.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status == 200){
+
+					var response = JSON.parse(this.responseText);
+
+					alert(response.message);
+
+					if(response.status == "success"){
+						document.getElementById("form-add-post").querySelector("input[name='image']").value= "";
+						document.getElementById("form-add-post").querySelector("input[name='video']").value= "";
+						document.getElementById("form-add-post").querySelector("textarea[name='caption']").value= "";
+
+						document.getElementById("post-img-preview").style.display = "none";
+						document.getElementById("post-video-preview").style.display = "none";
+
+						showNewsfeed();
+						
+					}
+				}
+			};
+
+			var formData = new FormData(form);
+			formData.append("accessToken", localStorage.getItem("accessToken"));
+			ajax.send(formData);
+
+			return false;
+		}
+
+
+			
+		//show newsfeed
+		function showNewsfeed(){
+			var ajax = new XMLHttpRequest();
+				ajax.open("POST", "/getNewsfeed", true);
+				
+				ajax.onreadystatechange = function(){
+					if(this.readyState == 4 && this.status == 200){
+						var response = JSON.parse(this.responseText);			
+				
+					var html = "";
+					for (var a=0; a < response.data.length; a++){
+						var data = response.data[a];
+						
+						html += '<div class="central-meta item">';
+						html += '<div class="user-post">';
+						html += '<div class="friend-info">';
+						html += '<figure>';
+						html += '<img src="' + mainURL + "/" + data.user.profileImage + '" style="width:45px; heidht:45px; object-fit:cover;">';
+						html += '</figure>';
+						html += '<div class="friend-name">';
+						
+						html += '<ins>';
+						html += '<a href="/user/' + data.user._id + '">';
+						html += data.user.name;
+						html += '<br>';
+						
+						html += '</a>';
+						html += '</ins>';
+						
+
+						var createdAt = new Date(data.createdAt);
+						var date = createdAt.getDate() + "";
+						date = date.padStart(2, "0") + " " + months[createdAt.getMonth()] + ", " + createdAt.getFullYear();
+						
+						html += '<span>Published: ' + date + '</span>';						
+						html += '</div>';	
+						html += '<div class="post-meta">';
+						html += '<div class="description">';
+						html += '<p>';
+						html += data.caption;
+						html += '</p>';
+						html += '</div>';
+						//html += '<a class= "add-btn" href="/post/' + data._id + '">Editar</a>';
+						//html += '<br> </br>';
+			//html += '<button type="button" class= "add-btn2" onclick="doDelete(\'' + data._id + '\');">Delete</button>';
+			//html += '<button type="button" class= "add-btn2" data-id="' + data._id + '" onclick="doDelete(this);">Delete</button>'			
+								if(data.image != ""){
+									html += '<img src="' + mainURL + "/" + data.image + '">';
+								}
+							if(data.video != ""){
+								html += '<video style="height:359px; width:100%;" controls src="' + mainURL + "/" + data.video + '"></video>';
+							}
+							
+						html += createLikesSection(data);	
+						
+						html += '</div>';						
+						html += '</div>';
+						
+						html += createCommentsSection(data);
+						
+						html += '</div>';
+						html += '</div>';
+					}
+					document.getElementById("newsfeed").innerHTML = html;					
+				}
+			};
+			
+			
+			var formData = new FormData();
+			formData.append("accessToken", localStorage.getItem("accessToken"));
+			ajax.send(formData);
+		}
+
+
+		
+	/*	
+		var isPages = true;
+		function getPages(){
+			var ajax = new XMLHttpRequest();
+			ajax.open("POST", "/getPages", true);
+				
+			ajax.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status == 200){
+					var response = JSON.parse(this.responseText);
+					
+					if(response.status == "error"){
+						alert(response.message);
+						return;
+					}
+					
+					var html = "";
+					for (var a = 0; a < response.data.length; a++){
+						var data = response.data[a];
+						
+						html += '<li>';
+						html += '<div class="f-page">';
+						html += '<figure>';
+						html += '<a href="/page/' + data._id + '">';
+						html += '</a>';
+						
+						html += '<em>' + data.likers.length + ' likes </em>';
+						html += '</figure>';
+
+						if(data.image != ""){
+									html += '<img src="' + mainURL + "/" + data.image + '">';
+								}
+						
+						html += '<div class="page-infos2">';
+						html += '<h4><a href="/page/' + data._id + '">' + data.name + '</a></h4>';
+						html += '<p> Local de publicação: <span>' + data.autor + '</span></p>';
+						html += '<p>Ano de publicação: <span>' + data.ano + '</span></p>';
+						html += '<p>URL: <span>' + data.editora + '</span></p>';
+						html += '<p>Resumo: <span>' + data.pais + '</span></p>';
+
+					
+						html += '</div>';
+						html += '</div>';
+						html += '</li>';
+					}
+					document.getElementById("all-pages").innerHTML = html;
+				}
+			};
+			
+		var formData = new FormData();
+		formData.append("accessToken", localStorage.getItem("accessToken"));
+		ajax.send(formData);		
+		}	 
+		*/
+
+		var isAvaliacao = true;
+		function getAvaliacao(){
+			var ajax = new XMLHttpRequest();
+			ajax.open("POST", "/getAvaliacao", true);
+				
+			ajax.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status == 200){
+					var response = JSON.parse(this.responseText);
+					
+					if(response.status == "error"){
+						alert(response.message);
+						return;
+					}
+					
+					var html = "";
+					for (var a = 0; a < response.data.length; a++){
+						var data = response.data[a];
+						html += '<div class="avaliacaopage">';
+						html += '<li>';
+							html += createCommentsSection2(data);
+						html += '<div class="">';
+							
+						html += '<figure>';
+						html += '<a href="/page/' + data._id + '">';
+						html += '</a>';
+						
+						
+						html += '</figure>';
+
+						if(data.image != ""){
+									html += '<img src="' + mainURL + "/" + data.image + '" style="width: 300px;  object-fit: cover;>';
+								}
+						
+						html += '<div class="page-infos2">';
+						html += '<h4><a href="/page/' + data._id + '">' + data.name + '</a></h4>';
+						html += '<p> Local de publicação: <span>' + data.autor + '</span></p>';
+						html += '<p>Ano de publicação: <span>' + data.ano + '</span></p>';
+						html += '<p>URL: <span>' + data.editora + '</span></p>';
+						html += '<p>Resumo: <span>' + data.pais + '</span></p>';
+
+						
+
+						
+
+							html += '</div>';						
+							html += '</div>';
+							
+						html += '</div>';
+						html += '</div>';
+						html += '</li>';
+						html += '</div>';
+					}
+					document.getElementById("all-pages").innerHTML = html;
+				}
+			};
+			
+		var formData = new FormData();
+		formData.append("accessToken", localStorage.getItem("accessToken"));
+		ajax.send(formData);		
+		}	 
+		
+
+
+
+	</script>
+
+
+
+
+
+<%- include("includes/foooter") %>
