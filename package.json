@@ -23,5 +23,7 @@
     "unirest": "^0.6.0"
   },
   "devDependencies": {},
-  "description": ""
+  "engines": {
+    "node": ">=12.18.4"
+  }
 }
