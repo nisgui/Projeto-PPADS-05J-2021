@@ -1,0 +1,348 @@
+<div class="col-md-6">
+    <div class="tab-content">
+        
+<div id="add-post-box"></div>
+
+    
+
+<ul class="liked-pages2" id="all-pages"></ul>
+<ul class="liked-pages2" id="all-movies"></ul>
+<ul class="liked-pages2" id="all-series"></ul>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+<input type="hidden" id="_id" value="<%= _id %>">
+
+
+<script>
+
+    
+
+var showTimeline = true;
+		
+function getTimeline(){
+    var ajax = new XMLHttpRequest();
+    ajax.open("POST", "/getTimeline", true);
+    
+    ajax.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            var response = JSON.parse(this.responseText);
+
+
+            var html = "";
+
+            // pegando os ids de amizade
+            var ids_friends = [];
+            var status_friends = [];
+            console.log("aaaaa", window.user.groups);
+            for (var a = 0; a < window.user.groups.length; a++) {
+   
+                   var data = window.user.groups[a];
+                   console.log(data);
+                
+                    
+                
+                
+                
+
+            }
+            console.log(user.friends);
+            
+            
+            console.log("NOW",ids_friends);
+
+            
+            
+            
+                    for (var a = 0; a < response.data.length; a++){
+                        var data = response.data[a];
+                        //const found = user.friends.some(item => item._id === data.user._id);
+                        //console.log(found);
+                        // validando se é amigo ou não
+                        
+
+                        
+                        
+                        
+
+                            html += '<div class="avaliacaopage">';
+                        html += '<li>';
+                            html += createFriendAvaliacao(data);
+                    
+                        html += '<div class="">';
+                            
+                        html += '<div class="">';
+                            
+                        html += '<figure>';
+                        html += '<a href="/page/' + data._id + '">';
+                        html += '</a>';
+
+                        
+
+                        if(data.image != ""){
+                                    html += '<img src="' + mainURL + "/" + data.image + '" style="width: 300px;  object-fit: cover;>';
+                                }
+                        
+                                html += '<div class="page-infos2">';
+                        html += '<h4><a href="/page/' + data._id + '">' + data.name + '</a></h4>';
+                        html += '<p> Local de publicação: <span>' + data.autor + '</span></p>';
+                        html += '<p>Ano de publicação: <span>' + data.ano + '</span></p>';
+                        html += '<p>URL: <span>' + data.editora + '</span></p>';
+                        html += '<p>Resumo: <span>' + data.pais + '</span></p>';
+
+                        
+
+                        
+
+                            html += '</div>';						
+                            html += '</div>';
+                            
+                        html += '</div>';
+                        html += '</div>';
+                        html += '</li>';
+                        html += '</div>';
+                            
+                       
+                        
+                        
+                        
+                        
+
+            }
+            document.getElementById("all-pages").innerHTML = html;
+        }
+    };
+    
+    var formData = new FormData();
+    formData.append("accessToken", localStorage.getItem("accessToken"));
+    formData.append("_id", document.getElementById("_id").value);
+
+    ajax.send(formData);			
+}
+/////////////////////////////////////////////////////////////////////////////////
+var showTimeline2 = true;
+
+function getTimeline2(){
+    var ajax = new XMLHttpRequest();
+    ajax.open("POST", "/getTimeline2", true);
+    
+    ajax.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            var response = JSON.parse(this.responseText);
+
+
+            var html = "";
+
+            // pegando os ids de amizade
+            var ids_friends = [];
+            var status_friends = [];
+            console.log("aaaaa", window.user.groups);
+            for (var a = 0; a < window.user.groups.length; a++) {
+   
+                   var data = window.user.groups[a];
+                   console.log(data);
+                
+                    ids_friends.push(data._id);
+                
+                
+                
+
+            }
+            console.log(user.friends);
+            
+            
+            console.log("NOW",ids_friends);
+            
+           
+            
+            
+            
+                    for (var a = 0; a < response.data.length; a++){
+                        var data = response.data[a];
+                        //const found = user.friends.some(item => item._id === data.user._id);
+                        //console.log(found);
+                        // validando se é amigo ou não
+               
+                        console.log("UHUHUHUHUHUH",ids_friends);
+
+                        
+                        
+                        
+
+                            html += '<div class="avaliacaopage">';
+                        html += '<li>';
+                            html += createFriendAvaliacao(data);
+                    
+                        html += '<div class="">';
+                            
+                        html += '<div class="">';
+                            
+                        html += '<figure>';
+                        html += '<a href="/page/' + data._id + '">';
+                        html += '</a>';
+
+                        
+
+                        if(data.image != ""){
+                                    html += '<img src="' + mainURL + "/" + data.image + '" style="width: 300px;  object-fit: cover;>';
+                                }
+                        
+                                html += '<div class="page-infos2">';
+                            html += '<p>Tipo: <span>' + data.tipo + '</span></p>';
+                        html += '<h4><a href="/page/' + data._id + '">' + data.name + '</a></h4>';
+                        html += '<p> Diretor: <span>' + data.diretor + '</span></p>';
+                        html += '<p>Ano de publicação: <span>' + data.ano + '</span></p>';
+                        html += '<p>Elenco: <span>' + data.elenco + '</span></p>';
+                        
+                        html += '<p>País: <span>' + data.pais + '</span></p>';
+
+                        
+
+                        
+
+                            html += '</div>';						
+                            html += '</div>';
+                            
+                        html += '</div>';
+                        html += '</div>';
+                        html += '</li>';
+                        html += '</div>';
+                            
+                        
+                        
+                        
+                        
+                        
+
+            }
+            document.getElementById("all-movies").innerHTML = html;
+        }
+    };
+    
+    var formData = new FormData();
+    formData.append("accessToken", localStorage.getItem("accessToken"));
+    formData.append("_id", document.getElementById("_id").value);
+
+    ajax.send(formData);			
+}
+
+var showTimeline3 = true;
+
+function getTimeline3(){
+    var ajax = new XMLHttpRequest();
+    ajax.open("POST", "/getTimeline3", true);
+    
+    ajax.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            var response = JSON.parse(this.responseText);
+
+            
+            var html = "";
+
+            // pegando os ids de amizade
+            var ids_friends = [];
+            var status_friends = [];
+            console.log("aaaaa", window.user.groups);
+            for (var a = 0; a < window.user.groups.length; a++) {
+   
+                   var data = window.user.groups[a];
+                   console.log(data);
+                
+                    ids_friends.push(data._id);
+                
+                
+                
+
+            }
+            console.log(user.friends);
+            
+            
+            
+            
+            
+                    for (var a = 0; a < response.data.length; a++){
+                        var data = response.data[a];
+                        //const found = user.friends.some(item => item._id === data.user._id);
+                        //console.log(found);
+                        // validando se é amigo ou não
+                        
+                        console.log("UHUHUHUHUHUH",ids_friends);
+                    
+
+                       
+                        
+                        
+                            
+
+                            html += '<div class="avaliacaopage">';
+                        html += '<li>';
+                            html += createFriendAvaliacao(data);
+                    
+                        html += '<div class="">';
+                            
+                        html += '<div class="">';
+                            
+                        html += '<figure>';
+                        html += '<a href="/page/' + data._id + '">';
+                        html += '</a>';
+
+                        
+
+                        if(data.image != ""){
+                                    html += '<img src="' + mainURL + "/" + data.image + '" style="width: 300px;  object-fit: cover;>';
+                                }
+                        
+                                html += '<div class="page-infos2">';
+                            html += '<p>Tipo: <span>' + data.tipo + '</span></p>';
+                        html += '<h4><a href="/page/' + data._id + '">' + data.name + '</a></h4>';
+                        html += '<p> Diretor: <span>' + data.diretor + '</span></p>';
+                        html += '<p>Ano de publicação: <span>' + data.ano + '</span></p>';
+                        html += '<p>Elenco: <span>' + data.elenco + '</span></p>';
+                        html += '<p>Número de temporadas: <span>' + data.temporadas + '</span></p>';
+                        html += '<p>País: <span>' + data.pais + '</span></p>';
+
+                        
+
+                        
+
+                            html += '</div>';						
+                            html += '</div>';
+                            
+                        html += '</div>';
+                        html += '</div>';
+                        html += '</li>';
+                        html += '</div>';
+                            
+                        
+                        
+                        
+                        
+                        
+
+            }
+                
+            
+            document.getElementById("all-series").innerHTML = html;
+        }
+    };
+    
+    var formData = new FormData();
+    formData.append("accessToken", localStorage.getItem("accessToken"));
+    formData.append("_id", document.getElementById("_id").value);
+
+    ajax.send(formData);			
+}
+
+
+
+
+
+
+
+</script>

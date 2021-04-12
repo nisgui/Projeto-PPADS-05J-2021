@@ -12,11 +12,11 @@
 
 
 		<div class="container-fluid">
-		<div class="row merged">
+		<div class="row merged2">
 			<div class="col-md-2">
 				<div class="user-avatar">
 					<figure>
-					<img class="profile-image" id="profile-image" style="width: 100%; height: 150px; object-fit=cover;">
+					<img class="profile-image" id="profile-image" style="width: 100%; height: 150px; object-fit:cover;">
 					</figure>
 				</div>
 			</div>
@@ -25,7 +25,7 @@
 			<ul>
 				<li class="admin-name">
 					<h5 class="user-name" id="user-name" style="padding-top: 20px; padding-bottom: 20px;"></h5>
-					<h6 class="caption" id="caption";"></h5>
+					<h6 class="caption" id="caption"></h5>
 				</li>
 
 			</ul>
@@ -35,65 +35,32 @@
 </div>
 </div>
 	
-	<section>
-		<div class="gap gray-bg">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row" id="page-container">
+<div class="col-md-12">
+	<div class="row" id="page-contents">
 
-						<ul>
-						<p style="font-size: 21px; font-style: italic; color: black;" > Dados do perfil: </p>
+		<div class="col-md-3">
+			<ul>
+				<p style="font-size: 23px; font-style: italic; color: black;" > Dados do perfil: </p>
 
-						<p class = "username" id = "username" style="font-size: 21px;"></p> 
-						<p class = "date" id = "date" style="font-size: 21px;"> </p> 
-						<p class = "email" id = "email" style="font-size: 21px;"> </p> 
-						<p class = "estado" id = "estado" style="font-size: 21px;"> </p> 
-						<p class = "cidade" id = "cidade" style="font-size: 21px;"> </p>
+				<p style="font-size: 21px; color :black;" > Username: </p> <p class = "username" id = "username" style="font-size: 18px;"></p> 
+				<p style="font-size: 21px; color :black;"> Data de aniversário: </p><p class = "date" id = "date" style="font-size: 18px;"> </p> 
+				<p style="font-size: 21px; color :black;"> Email: </p><p class = "email" id = "email" style="font-size: 18px;"> </p> 
+				<p style="font-size: 21px; color :black;"> Estado: </p><p class = "estado" id = "estado" style="font-size: 18px;"> </p> 
+				<p style="font-size: 21px; color :black;"> Cidade: </p><p class = "cidade" id = "cidade" style="font-size: 18px;"> </p>
 
 
-						</ul>
 
-							
-							<div class="col-md-3">
 
-							</div>
+				</ul>
 			
-							
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
-	</section>
+		
+		<%- include ("../views/includes/friend-page") %>
 
-	<section>
-		<div class="gap grap-bg">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row" id="page-contents">
-
-							<div class="col-md-3">
-							</div>
+		
 							
-							<div class="col-md-6">
-
-							<div id="add-post-box"></div>
-
-								<div class="loadMore" id="newsfeed">
-
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-	<input type="hidden" id="_id" value="<%= _id %>">
+			
+		
 
 <script>
 		var isUserDetail = true;
@@ -109,96 +76,46 @@
 					
 					document.getElementById("cover-photo").setAttribute("src", mainURL + '/' + response.data.coverPhoto);
 					document.getElementById("profile-image").setAttribute("src", mainURL + '/' + response.data.profileImage);
-					document.getElementById("seguidores").innerHTML = response.data.friends.length + " Amigos";
-					document.getElementById("user-name").innerHTML = response.data.name;
+					
+					document.getElementById("user-name").innerHTML = response.data.username;
 					document.getElementById("estado").innerHTML = response.data.estado;
 					document.getElementById("cidade").innerHTML = response.data.cidade;
 					document.getElementById("date").innerHTML = response.data.date;
 					document.getElementById("email").innerHTML = response.data.email;
-				}
-			};
-			
-			var formData = new FormData();
-			formData.append("accessToken", localStorage.getItem("accessToken"));
-			formData.append("_id", document.getElementById("_id").value);
-			ajax.send(formData);			
-		}
+					var status_array = [];
+					for (var a = 0; a < response.data.friends.length; a++) {
+						var data = response.data.friends[a];
+						console.log(data);
 
-		var showPosts = true;
-		
-		function getPosts(){
-			var ajax = new XMLHttpRequest();
-			ajax.open("POST", "/getPosts", true);
-			
-			ajax.onreadystatechange = function(){
-				if(this.readyState == 4 && this.status == 200){
-					var response = JSON.parse(this.responseText);
-
-
-					var html ="";
-					
-					var html = "";
-					for (var a=0; a < response.data.length; a++){
-						var data = response.data[a];
-						
-							html += '<div class="central-meta item">';
-							html += '<div class="user-post">';
-							html += '<div class="friend-info">';
-						
-							html += '<figure>';
-							html += '<img src="' + mainURL + "/" + data.user.profileImage + '" style="width:45px; heidht:45px; object-fit:cover;">';
-							html += '</figure>';
-						
-							html += '<div class="friend-name">';
-							html += '<ins>';
-							html += '<a href="/user/' + data.user._id + '">';
-							html += data.user.name;
-							html += '</a>';
-							html += '</ins>';
-							
-							var createdAt = new Date(data.createdAt);
-							var date = createdAt.getDate() + "";
-							date = date.padStart(2, "0") + " " + months[createdAt.getMonth()] + ", " + createdAt.getFullYear();
-							
-							html += '<span> Published:' + date + '</span>';
-							html += '</div>';
-							html += '<div class="post-meta">';
-						
-							html += '<div class="description>">';
-							html += '<p>';
-							html += data.caption;
-							html += '</p>';
-							html += '</div>';
-							
-						if(data.image != ""){
-							html += '<img src="' + mainURL + "/" + data.image + '">';
-						}
-						if(data.video != ""){
-							html += '<video style="height:395px; width:100%;" controls src="' + mainURL + "/" + data.video + '"></video>';
-						}
-						
-						html += createLikesSection(data);
-						html += '</div>';
-						html += '</div>';
-						
-						html += createCommentsSection(data);						
-						html += '</div>';
-						html += '</div>';
+						status_array.push(data.status);
 					}
-					document.getElementById("newsfeed").innerHTML = html;
+					var contar = 0;
+					for(y = 0; y < status_array.length; y++){
+						if(status_array[y] == "Accepted"){
+							contar++;
+						}
+					}
+					console.log("accepted aparece " +  contar  + " vezes!");
+
+					document.getElementById("seguidores").innerHTML = contar + " Amigos";
+					
 				}
 			};
 			
 			var formData = new FormData();
 			formData.append("accessToken", localStorage.getItem("accessToken"));
 			formData.append("_id", document.getElementById("_id").value);
-
 			ajax.send(formData);			
 		}
 
 		
 
-	</script>
+		
+		
+
+		
+
+
 
 </script>
 

@@ -1282,6 +1282,19 @@ header.sticky {
     width: 100%;
 }
 
+.widget-title2{
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    color: #424242;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    padding: 20px 20px 10px;
+    position: relative;
+    text-transform: uppercase;
+    width: 100%;
+}
+
 .sidebar .widget-title {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     color: #424242;
@@ -2243,6 +2256,16 @@ footer::before {
 .widget {
     float: left;
     width: 100%;
+    
+}
+
+
+
+
+.friends-widget{
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    width: 200px;
 }
 
 .foot-logo > p {
@@ -2290,11 +2313,42 @@ footer::before {
     margin-bottom: 32px;
 }
 
-.widget-title {
-    float: left;
-    margin-bottom: 35px;
+.box-friend{
+    border: 1px solid #5d6371;
+    border-radius: 1px;
+    padding: 5px 0;
+    height: 100px;
+    display: inline-block;
+    position: relative;
     width: 100%;
+    margin-bottom: 30px;
+    background: #fdfdfd;
+    border: 1px solid #ede9e9;
+    border-radius: 3px;
+    height: 350px;
+    overflow-y: scroll;
+
 }
+
+.box-friend::-webkit-scrollbar-track{
+    box-shadow: inset 0 0 5px #524f4a;
+    border-radius: 13px;
+
+}
+
+.box-friend::-webkit-scrollbar{
+    width: 10px;
+    height: 13px;
+    
+    
+  }
+
+
+  .box-friend::-webkit-scrollbar-thumb{
+    background: linear-gradient(to bottom right, transparent,#8d8b85);
+    border-radius: 6px;
+  }
+
 
 footer .widget-title h4 {
     color: #424242;
@@ -4509,6 +4563,9 @@ a.forgot-pwd {
     padding-left: 0;
     width: 100%;
     text-align: left;
+    display: flex;
+    flex-direction: column-reverse;
+    
 }
 
 .liked-pages2 > li {
@@ -4523,6 +4580,8 @@ a.forgot-pwd {
     padding-bottom: 40px;
     margin-top: 20px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column-reverse;
 
 }
 
@@ -5658,6 +5717,7 @@ canvas {
 
 .fixed-sidebar .ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y {
     background-color: transparent !important;
+    overflow-y: scroll;
 }
 
 .chat-friendz .chat-box {

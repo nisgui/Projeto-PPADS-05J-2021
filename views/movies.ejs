@@ -66,6 +66,13 @@
 					html += '<p>País: <span>' + data.pais + '</span></p>';
 					html += '<p>Ano de lançamento: <span>' + data.ano + '</span></p>';
 
+					html += '</div>';						
+							html += '</div>';
+							html += createLikesSection2(data);
+						
+							html += "<div id='post-comments-" + data._id + "'>";
+							html += createCommentsMovie(data);
+
 					html += '</div>';
 					html += '</div>';
 					html += '</li>';

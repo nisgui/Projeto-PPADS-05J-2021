@@ -1,0 +1,49 @@
+<div class="box-friend">
+    <h4 class="widget-title2" >Friends</h4>
+        
+            
+           
+    <div id="scrolling-wrapper2">
+
+        <div id="friends-widget">
+
+        </div>
+
+</div>
+
+        
+
+          
+
+
+
+
+<script>
+    var isFriendsWidget = true;
+    function showFriendsWidget() {
+        var html = "";
+        for (var a = 0; a < window.user.friends.length; a++) {
+           
+            var data = window.user.friends[a];
+            if (data.status == "Accepted"){
+                html += '<li style="display: flex;">';
+            html += '<figure>';
+                html += '<a href="/user/' + data._id + '">';
+            html += '<img src="' + mainURL + '/' + data.profileImage + '" style="width: 40px; height: 40px; object-fit: cover; border-radius: 50%;">';
+            html += '</a>';
+            html += '</figure>';
+            html += '<div class="friend-meta">';
+            html += '<h4 style="margin-top: 10px;">';
+            html += '<a href="/user/' + data._id + '" style="color: #088dcd;">' + data.name + '</a>';
+            html += '</h4>';
+            html += '</div>';
+            
+            html += '</li>';
+
+            }
+
+            
+        }
+        document.getElementById("friends-widget").innerHTML = html;
+    }
+</script>

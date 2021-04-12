@@ -57,10 +57,10 @@
 									showProfileData();
 							}
 
-							if(typeof isHomePage !== "undefined" && isHomePage){
-								showAddPost();
-								showNewsfeed();
-							}
+							// if(typeof isHomePage !== "undefined" && isHomePage){
+							// 	showAddPost();
+							// 	showNewsfeed();
+							// }
 							if(typeof isSearchResults !== "undefined" && isSearchResults){
 								showSearchResults();
 							}
@@ -75,8 +75,27 @@
 								getPages();
 							}
 
+							if(typeof showMovies !== "undefined" && showMovies){
+								getFilmes();
+							}
+
+							if(typeof showSeries !== "undefined" && showSeries){
+								getSeriesPerfil();
+							}
+
 							if(typeof isAvaliacao !== "undefined" && isAvaliacao){
 								getAvaliacao();
+							}
+							if(typeof friendsProfile !== "undefined" && friendsProfile){
+								getFriendsProfile();
+							}
+
+							if(typeof isAvaliacao2 !== "undefined" && isAvaliacao2){
+								getAvaliacaoMovie();
+							}
+
+							if(typeof isAvaliacao3 !== "undefined" && isAvaliacao3){
+								getAvaliacaoSerie();
 							}
 							if(typeof isMovies !== "undefined" && isMovies){
 								getMovies();
@@ -115,6 +134,22 @@
 							if(typeof showPosts !== "undefined" && showPosts){
 								getPosts();
 							}
+							if(typeof showTimeline !== "undefined" && showTimeline){
+								getTimeline();
+							}
+							if(typeof showTimeline2 !== "undefined" && showTimeline2){
+								getTimeline2();
+							}
+							if(typeof showTimeline3 !== "undefined" && showTimeline3){
+								getTimeline3();
+							}
+							if(typeof isFriendsWidget !== "undefined" && isFriendsWidget){
+								showFriendsWidget();
+							}
+
+							if(typeof teste !== "undefined" && teste){
+								test();
+							}
 
 
 
@@ -144,9 +179,8 @@
 
 
 
-				html += '<li>';
-				html += '<a>Itens</a>';
-				html += '<ul>';
+
+
 					html += '<li>';
 					html += '<a href="/pages">Livros</a>';
 					html += '</li>';
@@ -156,13 +190,8 @@
 					html += '<li>';
 					html += '<a href="/series">Series</a>';
 					html += '</li>';
-				html += '</ul>';
 
-				html += '</li>';
 
-				html += '<li>';
-				html += '<a href="/groups">Grupos</a>';
-				html += '</li>';
 
 
 

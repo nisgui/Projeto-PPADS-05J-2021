@@ -60,7 +60,7 @@
 				html += '<h4>';
 				html += '<a href="/user/' + data.username + '" style="color: #088dcd;">' + data.name + '</a>';
 				html += '</h4>';
-				if (!data.sendByMe && data.status == "Pending") {
+				if (data.sentByMe == false && data.status == "Pending") {
 					html += '<a href="javascript:void(0);" data-id="' + data._id + '" onclick="doAccept(this)"; class="add-butn more-action" style="border-radius: 3px;">Accept</a>';
 				}
 				html += '<a href="javascript:void(0);" data-id="' + data._id + '" onclick="doUnfriend(this)"; class="add-butn btn-unfriend" style="border-radius: 3px;">Unfriend</a>';

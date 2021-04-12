@@ -28,6 +28,7 @@
 </section>
 
 <script>
+	
 	 var isPages = true;
 	 function getPages(){
 		var ajax = new XMLHttpRequest();
@@ -41,6 +42,7 @@
 					alert(response.message);
 					return;
 				}
+				
 				
 				var html = "";
 				for (var a = 0; a < response.data.length; a++){
@@ -65,6 +67,13 @@
 					html += '<p>Editora: <span>' + data.editora + '</span></p>';
 					html += '<p>País: <span>' + data.pais + '</span></p>';
 					html += '<p>Ano de lançamento: <span>' + data.ano + '</span></p>';
+
+					
+							html += '</div>';						
+							html += '</div>';
+							html += createLikesSection2(data);
+							html += "<div id='post-comments-" + data._id + "'>";
+							html += createCommentsSection(data);
 
 					html += '</div>';
 					html += '</div>';

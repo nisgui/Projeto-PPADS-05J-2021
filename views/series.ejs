@@ -67,6 +67,12 @@
 					html += '<p>Ano de lançamento: <span>' + data.ano + '</span></p>';
                     html += '<p>Número de temporadas: <span>' + data.temporadas + '</span></p>';
 
+					html += '</div>';						
+							html += '</div>';
+							html += createLikesSection2(data);
+							html += "<div id='post-comments-" + data._id + "'>";
+							html += createCommentsSerie(data);
+
 					html += '</div>';
 					html += '</div>';
 					html += '</li>';

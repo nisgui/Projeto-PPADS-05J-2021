@@ -152,8 +152,8 @@ http.listen(port, function() {
 							"estado": estado,
 							"cidade": cidade,
 							"password": hash,
-							"profileImage": "public/assets/css/images/book-icon.png",
-							"coverPhoto": "public/assets/css/images/background-work.jpg",
+							"profileImage": "",
+							"coverPhoto": "",
 							"dob": "",
 							"city": "",
 							"country": "",
@@ -275,7 +275,7 @@ http.listen(port, function() {
 				} else {
 					if(request.files.coverPhoto.size > 0 && request.files.coverPhoto.type.includes("image")){
 						//previous cover photo remove
-						if(user.coverPhoto != "" && user.coverPhoto !="public/assets/css/images/background-work.jpg"){
+						if(user.coverPhoto != ""){
 							fileSystem.unlink(user.coverPhoto, function(error){
 								
 							});
@@ -322,7 +322,7 @@ http.listen(port, function() {
 				} else {
 					if(request.files.profileImage.size > 0 && request.files.profileImage.type.includes("image")){
 						//previous cover photo remove
-						if(user.profileImage != "" && user.profileImage !="public/img/profile.jpg"){
+						if(user.profileImage != ""){
 							fileSystem.unlink(user.profileImage, function(error){
 								
 							});
@@ -937,6 +937,7 @@ http.listen(port, function() {
 			}
 		});
 	});
+
 	//share Post
 	app.post("/sharePost", function(request, result){
 			
@@ -1185,7 +1186,18 @@ app.get("/friends", function (request, result) {
 										"isRead": true,
 										"createdAt": new Date().getTime()
 									}
+									
+								}
+							});
 
+							database.collection("users").updateOne({
+								"accessToken": accessToken
+							}, {
+								$push: {
+									"groups": {
+										"_id": user._id
+									}
+									
 								}
 							});
 
@@ -1249,6 +1261,15 @@ app.get("/friends", function (request, result) {
 						}
 						else {
 							database.collection("users").updateOne({
+								"accessToken": accessToken
+							}, {
+								$pull: {
+									"groups": {
+										"_id": user._id
+									}
+								}
+							});
+							database.collection("users").updateOne({
 								"_id": ObjectId(_id)
 							}, {
 								$pull: {
@@ -1290,7 +1311,7 @@ app.get("/friends", function (request, result) {
 			var editora = request.fields.editora;
 			var pais = request.fields.pais;
 			var image = request.fields.image;
-			var tipo = request.fields.image;
+			var tipo = request.fields.tipo;
 
 
 
@@ -1395,7 +1416,9 @@ app.get("/friends", function (request, result) {
 									"notaAvaliacao": notaAvaliacao,
 									"name": user.name,
 									"profileImage": user.profileImage,
-									"replies": []
+									"replies": [],
+									"comments2": [],
+									"likers2": []
 								}
 							}
 						}, function (error, data) {
@@ -1422,12 +1445,409 @@ app.get("/friends", function (request, result) {
 										"notaAvaliacao": notaAvaliacao,
 										"name": user.name,
 										"profileImage": user.profileImage,
-										"replies": []
+										"replies": [],
+										"comments2": [],
+										"likers2": []
 									}
 								}
 							});
 
 							database.collection("pages").findOne({
+								"_id": ObjectId(_id)
+							}, function (error, updatePost) {
+								result.json({
+									"status": "success",
+									"message": "Avaliação postada.",
+									"updatePost": updatePost
+								});
+							});
+						});
+
+					}
+				});
+			}
+		});
+	});
+
+	//POST COMMENT NA AVALIACAO
+	app.post("/avaliacaoComment", function (request, result) {
+
+		var accessToken = request.fields.accessToken;
+		var _id = request.fields._id;
+		var commentId = request.fields.commentId;
+		var reply = request.fields.reply;
+		var createdAt = new Date().getTime();
+
+		database.collection("users").findOne({
+			"accessToken": accessToken
+		}, function (error, user) {
+			if (user == null) {
+				result.json({
+					"status": "error",
+					"message": "User has been logged out. Please login again."
+				});
+			} else {
+
+				database.collection("pages").findOne({
+					"_id": ObjectId(_id)
+				}, function (error, page) {
+					if (page == null) {
+						result.json({
+							"status": "error",
+							"message": "Page does not exist."
+						});
+					} else {
+
+						var replyId = ObjectId();
+
+						database.collection("pages").updateOne({
+							$and: [{
+								"_id": ObjectId(_id)
+							}, {
+								"comments._id": ObjectId(commentId)
+							}]
+						}, {
+							$push: {
+								"comments.$.comments2": {
+									"_id": replyId,
+									"user": {
+										"_id": user._id,
+										"name": user.name,
+										"profileImage": user.profileImage,
+									},
+									"reply": reply,
+									"createdAt": createdAt
+								}
+							}
+						}, function (error, data) {
+
+							database.collection("users").updateOne({
+								$and: [{
+									"_id": page.user._id
+								}, {
+									"pages._id": page._id
+								}, {
+									"pages.comments._id": ObjectId(commentId)
+								}]
+							}, {
+								$push: {
+									"pages.$.comments.$[].comments2": {
+										"_id": replyId,
+										"user": {
+											"_id": user._id,
+											"name": user.name,
+											"profileImage": user.profileImage,
+										},
+										"reply": reply,
+										"createdAt": createdAt
+									}
+								}
+							
+							});
+
+							database.collection("pages").findOne({
+								"_id": ObjectId(_id)
+							}, function (error, updatePost) {
+								result.json({
+									"status": "success",
+									"message": "Comentário da avaliação foi postado.",
+									"updatePost": updatePost
+								});
+							});
+						});
+
+					}
+				});
+			}
+		});
+	});
+
+	//comment MOVIES section
+	app.post("/pqp", function (request, result) {
+
+		var accessToken = request.fields.accessToken;
+		var _id = request.fields._id;
+		var reply = request.fields.comment;
+		var commentId = request.fields.commentId;
+		var createdAt = new Date().getTime();
+
+		database.collection("users").findOne({
+			"accessToken": accessToken
+		}, function (error, user) {
+			if (user == null) {
+				result.json({
+					"status": "error",
+					"message": "User has been logged out. Please login again."
+				});
+			} else {
+
+				database.collection("pages").findOne({
+					"_id": ObjectId(_id)
+				}, function (error, page) {
+					if (page == null) {
+						result.json({
+							"status": "error",
+							"message": "page não existe."
+						});
+					} else {
+
+						var commentId = ObjectId();
+
+
+						database.collection("pages").updateOne({
+							"comments._id": ObjectId(commentId)
+						}, {
+							$push: {
+								"comments.$.comments2": {
+									"_id": replyId,
+									"user": {
+										"_id": user._id,
+										"name": user.name,
+										"profileImage": user.profileImage,
+									},
+									"reply": reply,
+									"createdAt": createdAt
+								}
+							}
+						}, function (error, data) {
+
+							
+							database.collection("users").updateOne({
+								$and: [{
+									"_id": movie.user._id
+								}, {
+									"pages._id": movie._id
+								}, {
+									"pages.comments._id": ObjectId(commentId)
+								}]
+							}, {
+								$push: {
+									"pages.$.comments.$[].comments2": {
+										"_id": replyId,
+										"user": {
+											"_id": user._id,
+											"name": user.name,
+											"profileImage": user.profileImage,
+										},
+										"reply": reply,
+										"createdAt": createdAt
+									}
+								}
+							});
+
+							database.collection("pages").findOne({
+								"_id": ObjectId(_id)
+							}, function (error, updatePost) {
+								result.json({
+									"status": "success",
+									"message": "Avaliação postada.",
+									"updatePost": updatePost
+								});
+							});
+						});
+
+					}
+				});
+			}
+		});
+	});
+
+	//comment MOVIES section
+	app.post("/movieComment", function (request, result) {
+
+		var accessToken = request.fields.accessToken;
+		var _id = request.fields._id;
+		var comment = request.fields.comment;
+		var notaAvaliacao = request.fields.notaAvaliacao;
+		var createdAt = new Date().getTime();
+
+		database.collection("users").findOne({
+			"accessToken": accessToken
+		}, function (error, user) {
+			if (user == null) {
+				result.json({
+					"status": "error",
+					"message": "User has been logged out. Please login again."
+				});
+			} else {
+
+				database.collection("movies").findOne({
+					"_id": ObjectId(_id)
+				}, function (error, movie) {
+					if (movie == null) {
+						result.json({
+							"status": "error",
+							"message": "Filme não existe."
+						});
+					} else {
+
+						var commentId = ObjectId();
+
+						database.collection("movies").updateOne({
+							"_id": ObjectId(_id)
+						}, {
+							$push: {
+								"notaAvaliacao": {
+									"notaAvaliacao": notaAvaliacao
+								}
+							}
+						});
+						database.collection("movies").updateOne({
+							"_id": ObjectId(_id)
+						}, {
+							$push: {
+								"comments": {
+									"_id": commentId,
+									"user": {
+										"_id": user._id,
+										"name": user.name,
+										"profileImage": user.profileImage,
+									},
+									"comment": comment,
+									"createdAt": createdAt,
+									"userId": user._id,
+									"notaAvaliacao": notaAvaliacao,
+									"name": user.name,
+									"profileImage": user.profileImage,
+									"replies": []
+								}
+							}
+						}, function (error, data) {
+
+							
+							database.collection("users").updateOne({
+								$and: [{
+									"_id": movie.user._id
+								}, {
+									"movies._id": movie._id
+								}]
+							}, {
+								$push: {
+									"movies.$[].comments": {
+										"_id": commentId,
+										"user": {
+											"_id": user._id,
+											"name": user.name,
+											"profileImage": user.profileImage,
+										},
+										"comment": comment,
+										"createdAt": createdAt,
+										"userId": user._id,
+										"notaAvaliacao": notaAvaliacao,
+										"name": user.name,
+										"profileImage": user.profileImage,
+										"replies": []
+									}
+								}
+							});
+
+							database.collection("movies").findOne({
+								"_id": ObjectId(_id)
+							}, function (error, updatePost) {
+								result.json({
+									"status": "success",
+									"message": "Avaliação postada.",
+									"updatePost": updatePost
+								});
+							});
+						});
+
+					}
+				});
+			}
+		});
+	});
+
+	//comment SERIES section
+	app.post("/serieComment", function (request, result) {
+
+		var accessToken = request.fields.accessToken;
+		var _id = request.fields._id;
+		var comment = request.fields.comment;
+		var notaAvaliacao = request.fields.notaAvaliacao;
+		var createdAt = new Date().getTime();
+
+		database.collection("users").findOne({
+			"accessToken": accessToken
+		}, function (error, user) {
+			if (user == null) {
+				result.json({
+					"status": "error",
+					"message": "User has been logged out. Please login again."
+				});
+			} else {
+
+				database.collection("series").findOne({
+					"_id": ObjectId(_id)
+				}, function (error, serie) {
+					if (serie == null) {
+						result.json({
+							"status": "error",
+							"message": "Serie não existe."
+						});
+					} else {
+
+						var commentId = ObjectId();
+
+						database.collection("series").updateOne({
+							"_id": ObjectId(_id)
+						}, {
+							$push: {
+								"notaAvaliacao": {
+									"notaAvaliacao": notaAvaliacao
+								}
+							}
+						});
+						database.collection("series").updateOne({
+							"_id": ObjectId(_id)
+						}, {
+							$push: {
+								"comments": {
+									"_id": commentId,
+									"user": {
+										"_id": user._id,
+										"name": user.name,
+										"profileImage": user.profileImage,
+									},
+									"comment": comment,
+									"createdAt": createdAt,
+									"userId": user._id,
+									"notaAvaliacao": notaAvaliacao,
+									"name": user.name,
+									"profileImage": user.profileImage,
+									"replies": []
+								}
+							}
+						}, function (error, data) {
+
+							
+							database.collection("users").updateOne({
+								$and: [{
+									"_id": serie.user._id
+								}, {
+									"series._id": serie._id
+								}]
+							}, {
+								$push: {
+									"series.$[].comments": {
+										"_id": commentId,
+										"user": {
+											"_id": user._id,
+											"name": user.name,
+											"profileImage": user.profileImage,
+										},
+										"comment": comment,
+										"createdAt": createdAt,
+										"userId": user._id,
+										"notaAvaliacao": notaAvaliacao,
+										"name": user.name,
+										"profileImage": user.profileImage,
+										"replies": []
+									}
+								}
+							});
+
+							database.collection("series").findOne({
 								"_id": ObjectId(_id)
 							}, function (error, updatePost) {
 								result.json({
@@ -1578,11 +1998,13 @@ app.get("/friends", function (request, result) {
 		//return livros
 
 		app.get("/pages", function (request, result){
-			result.render("pages");
-		});
+			
+		result.render("pages");
+	});
 
 		app.post("/getPages", function (request, result){
 			var accessToken = request.fields.accessToken;
+			const sort = { length: -1 };
 			
 			database.collection("users").findOne({
 				"accessToken": accessToken
@@ -1594,12 +2016,16 @@ app.get("/friends", function (request, result) {
 					});
 				} else {
 					database.collection("pages").find({
+						
 						$or: [{
 							
 						},{
 							"likers._id": user._id,
 							"comments._id": user._id
 						}]
+						
+					}).sort({
+						"likers._id.length": 1
 					}).toArray(function (error, data){
 						result.json({
 							"status": "success",
@@ -1641,6 +2067,101 @@ app.get("/friends", function (request, result) {
 							"comments.user._id": user._id
 						}]
 						
+						
+					}).sort({
+						"createdAt": -1
+					})
+					.limit(20)
+					.toArray(function (error, data){
+						result.json({
+							"status": "success",
+							"message": "Record has been fetched.",
+							"data": data							
+						});
+					});
+				}
+			});
+		});
+
+		//TIMELINE PESSOAL FILMES
+
+		app.post("/getAvaliacaoMovie", function (request, result){
+			var accessToken = request.fields.accessToken;
+			
+			database.collection("users").findOne({
+				"accessToken": accessToken
+			}, function(error, user){
+				if(user == null){					
+					result.json({
+						"status": "error",
+						"message": "User has been logged out. Please login again."
+					});
+				} else {
+
+
+					
+
+					
+					var commentId = ObjectId();
+					database.collection("movies").find({
+						$or: [{
+							"comments":{
+								"user._id": user._id,
+								"user.name": user.name,
+								"user.profileImage": user.profileImage
+							}
+							
+						},{
+							"comments.user._id": user._id
+						}]
+						
+					}).sort({
+						"createdAt": -1
+					})
+					.limit(20)
+					.toArray(function (error, data){
+						result.json({
+							"status": "success",
+							"message": "Record has been fetched.",
+							"data": data							
+						});
+					});
+				}
+			});
+		});
+
+		//TIMELINE PESSOAL FILMES
+
+		app.post("/getAvaliacaoSerie", function (request, result){
+			var accessToken = request.fields.accessToken;
+			
+			database.collection("users").findOne({
+				"accessToken": accessToken
+			}, function(error, user){
+				if(user == null){					
+					result.json({
+						"status": "error",
+						"message": "User has been logged out. Please login again."
+					});
+				} else {
+
+
+					
+
+					
+					var commentId = ObjectId();
+					database.collection("series").find({
+						$or: [{
+							"comments":{
+								"user._id": user._id,
+								"user.name": user.name,
+								"user.profileImage": user.profileImage
+							}
+							
+						},{
+							"comments.user._id": user._id
+						}]
+						
 					}).toArray(function (error, data){
 						result.json({
 							"status": "success",
@@ -1651,6 +2172,7 @@ app.get("/friends", function (request, result) {
 				}
 			});
 		});
+
 
 		//return movies
 
@@ -1674,7 +2196,8 @@ app.get("/friends", function (request, result) {
 						$or: [{
 							
 						},{
-							"likers._id": user._id
+							"likers._id": user._id,
+							"comments._id": user._id
 						}]
 					}).toArray(function (error, data){
 						result.json({
@@ -1709,7 +2232,8 @@ app.get("/friends", function (request, result) {
 						$or: [{
 							
 						},{
-							"likers._id": user._id
+							"likers._id": user._id,
+							"comments._id": user._id
 						}]
 					}).toArray(function (error, data){
 						result.json({
@@ -1817,6 +2341,216 @@ app.get("/friends", function (request, result) {
 										result.json({
 											"status": "success",
 											"message": "Livro foi curtido."
+											});
+										});									
+									
+								}
+							}
+						});						
+					}
+				});
+			});
+
+			//like MOVIES
+		app.post("/toggleLikeMovie", function(request, result){
+			var accessToken = request.fields.accessToken;
+			var _id = request.fields._id;
+			
+			database.collection("users").findOne({
+				"accessToken": accessToken
+			}, function(error, user){
+				if(user == null){
+					result.json({
+						"status": "error",
+						"message": "User has been logged out.Please login again."
+					});
+				} else {
+					database.collection("movies").findOne({
+						"_id": ObjectId(_id)
+					}, function(error, movie){
+						if(movie == null){
+							result.json({
+								"status": "error",
+								"message": "movie does not exist."
+							});
+						} else {
+							var isLiked = false;
+							for (var a = 0; a < movie.likers.length; a++){
+								var liker = movie.likers[a];
+								
+								if(liker._id.toString() == user._id.toString()){
+									isLiked = true;
+									break;
+								}
+							}
+							
+							if(isLiked){
+								database.collection("movies").updateOne({
+									"_id": ObjectId(_id)
+								},{
+									$pull: {
+										"likers": {
+											"_id": user._id
+										}
+									}
+								}, function(error, data){
+									database.collection("users").updateOne({
+										$and: [{
+											"_id": movie.user._id
+										},{
+											"movie._id": movie._id
+										}]
+									},{
+										$pull: {
+											"movies.$[].likers": {
+												"_id": user._id,
+											}
+										}
+									});
+									
+									result.json({
+										"status": "unliked",
+										"message": "Filme foi descurtido."
+									});
+								})
+							} else{
+									
+									database.collection("movies").updateOne({
+										"_id": ObjectId(_id)
+									},{
+										$push: {
+											"likers": {
+												"_id": user._id,
+												"name": user.name,
+												"profileImage": user.profileImage
+											}
+										}
+									}, function(error, data){
+										
+										database.collection("users").updateOne({
+											$and: [{
+												"_id": movie.user._id
+											},{
+												"movies._id": movie._id
+											}]
+										},{
+											$push: {
+												"movies.$[].likers": {
+													"_id": user._id,
+													"name": user.name,
+													"profileImage": user.profileImage
+												}
+											}
+										});
+										
+										result.json({
+											"status": "success",
+											"message": "Filme foi curtido."
+											});
+										});									
+									
+								}
+							}
+						});						
+					}
+				});
+			});
+
+			//like SERIES
+		app.post("/toggleLikeSerie", function(request, result){
+			var accessToken = request.fields.accessToken;
+			var _id = request.fields._id;
+			
+			database.collection("users").findOne({
+				"accessToken": accessToken
+			}, function(error, user){
+				if(user == null){
+					result.json({
+						"status": "error",
+						"message": "User has been logged out.Please login again."
+					});
+				} else {
+					database.collection("series").findOne({
+						"_id": ObjectId(_id)
+					}, function(error, serie){
+						if(serie == null){
+							result.json({
+								"status": "error",
+								"message": "Serie não existe."
+							});
+						} else {
+							var isLiked = false;
+							for (var a = 0; a < serie.likers.length; a++){
+								var liker = serie.likers[a];
+								
+								if(liker._id.toString() == user._id.toString()){
+									isLiked = true;
+									break;
+								}
+							}
+							
+							if(isLiked){
+								database.collection("series").updateOne({
+									"_id": ObjectId(_id)
+								},{
+									$pull: {
+										"likers": {
+											"_id": user._id
+										}
+									}
+								}, function(error, data){
+									database.collection("users").updateOne({
+										$and: [{
+											"_id": serie.user._id
+										},{
+											"serie._id": serie._id
+										}]
+									},{
+										$pull: {
+											"series.$[].likers": {
+												"_id": user._id,
+											}
+										}
+									});
+									
+									result.json({
+										"status": "unliked",
+										"message": "Serie foi descurtida."
+									});
+								})
+							} else{
+									
+									database.collection("series").updateOne({
+										"_id": ObjectId(_id)
+									},{
+										$push: {
+											"likers": {
+												"_id": user._id,
+												"name": user.name,
+												"profileImage": user.profileImage
+											}
+										}
+									}, function(error, data){
+										
+										database.collection("users").updateOne({
+											$and: [{
+												"_id": serie.user._id
+											},{
+												"series._id": serie._id
+											}]
+										},{
+											$push: {
+												"series.$[].likers": {
+													"_id": user._id,
+													"name": user.name,
+													"profileImage": user.profileImage
+												}
+											}
+										});
+										
+										result.json({
+											"status": "success",
+											"message": "Serie foi curtida."
 											});
 										});									
 									
@@ -2121,6 +2855,8 @@ app.get("/friends", function (request, result) {
 						});
 					}
 				});
+
+				
 			});
 
 
@@ -2274,10 +3010,10 @@ app.get("/friends", function (request, result) {
 		});
 
 		app.post("/getPosts", function(request, result) {
-		var _id = request.fields._id;
 		
+		var accessToken = request.fields.accessToken;
 		database.collection("users").findOne({
-			"_id": ObjectId(_id)
+			"accessToken": accessToken
 		}, function(error, user){
 			if(user == null){
 				result.json({
@@ -2290,14 +3026,11 @@ app.get("/friends", function (request, result) {
 				/* var username = [];
 				username.push(user.name); */
 
-				for(var a = 0 ; a < user.pages.length; a++){
-					ids.push(user.pages[a]._id);
-				}
 				
-				database.collection("posts").find({					
-					"user._id": {
-						$in: ids
-					}
+				
+				database.collection("pages").find({	
+					"comments.user._id": user._id			
+					
 				})
 				.sort({
 					"createdAt": -1
@@ -2314,6 +3047,230 @@ app.get("/friends", function (request, result) {
 			}
 		});
 	});
+
+	app.post("/getFilmes", function(request, result) {
+		
+		var accessToken = request.fields.accessToken;
+		database.collection("users").findOne({
+			"accessToken": accessToken
+		}, function(error, user){
+			if(user == null){
+				result.json({
+					"status": "error",
+					"message": "User has been logged out. Please login again."				
+				});
+			} else {				
+				var ids = [];
+				ids.push(user._id);				
+				/* var username = [];
+				username.push(user.name); */
+
+				
+				
+				database.collection("movies").find({	
+					"comments.user._id": user._id			
+					
+				})
+				.sort({
+					"createdAt": -1
+				})
+				.limit(20)
+				.toArray(function(error, data){
+					
+					result.json({
+						"status": "success",
+						"message": "Record has been fetched",						
+						"data": data
+					});					
+				});			
+			}
+		});
+	});
+
+	app.post("/getSeriesPerfil", function(request, result) {
+		
+		var accessToken = request.fields.accessToken;
+		database.collection("users").findOne({
+			"accessToken": accessToken
+		}, function(error, user){
+			if(user == null){
+				result.json({
+					"status": "error",
+					"message": "User has been logged out. Please login again."				
+				});
+			} else {				
+				var ids = [];
+				ids.push(user._id);				
+				/* var username = [];
+				username.push(user.name); */
+
+				
+				
+				database.collection("series").find({	
+					"comments.user._id": user._id			
+					
+				})
+				.sort({
+					"createdAt": -1
+				})
+				.limit(20)
+				.toArray(function(error, data){
+					
+					result.json({
+						"status": "success",
+						"message": "Record has been fetched",						
+						"data": data
+					});					
+				});			
+			}
+		});
+	});
+
+	app.post("/getFriendsProfile", function(request, result) {
+		
+		var _id = request.fields._id;
+		database.collection("users").findOne({
+			"_id": ObjectId(_id)
+		}, function(error, user){
+			if(user == null){
+				result.json({
+					"status": "error",
+					"message": "User has been logged out. Please login again."				
+				});
+			
+			}
+		});
+	});
+
+	
+
+
+	app.post("/getTimeline", function(request, result) {
+		
+		var _id = request.fields._id;
+		database.collection("users").findOne({
+			"_id": ObjectId(_id)
+		}, function(error, user){
+			if(user == null){
+				result.json({
+					"status": "error",
+					"message": "User has been logged out. Please login again."				
+				});
+			} else {				
+				var ids = [];
+				ids.push(user._id);				
+				/* var username = [];
+				username.push(user.name); */
+
+				
+				
+				database.collection("pages").find({
+					
+					"comments.user._id": {
+						$in: ids
+					}		
+					
+				})
+				.sort({
+					"createdAt": -1
+				})
+				.limit(20)
+				.toArray(function(error, data){
+					
+					result.json({
+						"status": "success",
+						"message": "Record has been fetched",						
+						"data": data
+					});					
+				});			
+			}
+		});
+	});
+
+	app.post("/getTimeline2", function(request, result) {
+		
+		var _id = request.fields._id;
+		database.collection("users").findOne({
+			"_id": ObjectId(_id)
+		}, function(error, user){
+			if(user == null){
+				result.json({
+					"status": "error",
+					"message": "User has been logged out. Please login again."				
+				});
+			} else {				
+				var ids = [];
+				ids.push(user._id);				
+				/* var username = [];
+				username.push(user.name); */
+
+				
+				
+				database.collection("movies").find({
+					
+					"comments.user._id": {
+						$in: ids
+					}		
+					
+				})
+				.sort({
+					"createdAt": -1
+				})
+				.limit(20)
+				.toArray(function(error, data){
+					
+					result.json({
+						"status": "success",
+						"message": "Record has been fetched",						
+						"data": data
+					});					
+				});			
+			}
+		});
+	});
+
+	app.post("/getTimeline3", function(request, result) {
+		
+		var _id = request.fields._id;
+		database.collection("users").findOne({
+			"_id": ObjectId(_id)
+		}, function(error, user){
+			if(user == null){
+				result.json({
+					"status": "error",
+					"message": "User has been logged out. Please login again."				
+				});
+			} else {				
+				var ids = [];
+				ids.push(user._id);				
+				/* var username = [];
+				username.push(user.name); */
+
+				
+				
+				database.collection("series").find({
+					
+					"comments.user._id": {
+						$in: ids
+					}		
+					
+				})
+				.sort({
+					"createdAt": -1
+				})
+				.limit(20)
+				.toArray(function(error, data){
+					
+					result.json({
+						"status": "success",
+						"message": "Record has been fetched",						
+						"data": data
+					});					
+				});			
+			}
+		});
+	});
+
 
 		app.post("/do-delete", function(req, res){
 			var _id = request.fields._id;

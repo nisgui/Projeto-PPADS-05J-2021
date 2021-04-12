@@ -16,7 +16,7 @@
 			<div class="col-md-2">
 				<div class="user-avatar">
 					<figure>
-					<img class="profile-image" id="profile-image" style="width: 100%; height: 150px; object-fit=cover;">
+					<img class="profile-image" id="profile-image" style="width: 100%; height: 150px; object-fit:cover;">
 					</figure>
 				</div>
 			</div>
@@ -33,43 +33,46 @@
 </div>
 </div>
 </div>
+
 	
 	
-	<section>
-		<div class="gap gray-bg">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row" id="page-container">
-						
-						<ul>
-						<p style="font-size: 21px; font-style: italic; color: black;" > Dados do perfil: </p>
 
-						<p class = "username" id = "username" style="font-size: 21px;"></p> 
-						<p class = "date" id = "date" style="font-size: 21px;"> </p> 
-						<p class = "email" id = "email" style="font-size: 21px;"> </p> 
-						<p class = "estado" id = "estado" style="font-size: 21px;"> </p> 
-						<p class = "cidade" id = "cidade" style="font-size: 21px;"> </p>
+	<div class="col-md-12">
+		<div class="row" id="page-contents">
+
+			<div class="col-md-3">
+				<ul>
+					<p style="font-size: 23px; font-style: italic; color: black;" > Dados do perfil: </p>
+
+					<p style="font-size: 21px; color :black;" > Username: </p> <p class = "username" id = "username" style="font-size: 18px;"></p> 
+					<p style="font-size: 21px; color :black;"> Data de aniversário: </p><p class = "date" id = "date" style="font-size: 18px;"> </p> 
+					<p style="font-size: 21px; color :black;"> Email: </p><p class = "email" id = "email" style="font-size: 18px;"> </p> 
+					<p style="font-size: 21px; color :black;"> Estado: </p><p class = "estado" id = "estado" style="font-size: 18px;"> </p> 
+					<p style="font-size: 21px; color :black;"> Cidade: </p><p class = "cidade" id = "cidade" style="font-size: 18px;"> </p>
 
 
 
 
-						</ul>
-
-
-							
-							<div class="col-md-3">
-
-							</div>
+					</ul>
+				
+			</div>
 			
-							
-						</div>
-					</div>
-				</div>
+			<div class="col-md-6">
+				<div class="tab-content">
+					
+			<div id="add-post-box"></div>
+
+				
+
+			<ul class="liked-pages2" id="all-pages"></ul>
+			<ul class="liked-pages2" id="all-movies"></ul>
+			<ul class="liked-pages2" id="all-series"></ul>
+
+
 			</div>
 		</div>
-	</section>
-
+	</div>
+</div>
 
 <script>
 	var meuPerfil = true;
@@ -84,12 +87,225 @@
 		document.querySelector(".email").innerHTML = window.user.email;
 		document.querySelector(".cidade").innerHTML = window.user.cidade;
 		document.querySelector(".estado").innerHTML = window.user.estado;
-		document.querySelector(".seguidores").innerHTML = window.user.friends.length + " Amigos";
+		var status_array = [];
+		for (var a = 0; a < window.user.friends.length; a++) {
+			var data = window.user.friends[a];
+			console.log(data);
+
+			status_array.push(data.status);
+		}
+		var contar = 0;
+		for(y = 0; y < status_array.length; y++){
+			if(status_array[y] == "Accepted"){
+				contar++;
+			}
+		}
+		console.log("accepted aparece " +  contar  + " vezes!");
+
+		document.querySelector(".seguidores").innerHTML = contar + " Amigos";
 
 	}
+
+
+	var showPosts = true;
+		
+		function getPosts(){
+			var ajax = new XMLHttpRequest();
+			ajax.open("POST", "/getPosts", true);
+			
+			ajax.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status == 200){
+					var response = JSON.parse(this.responseText);
+
+
+					var html = "";
+					for (var a = 0; a < response.data.length; a++){
+						var data = response.data[a];
+						console.log(data);
+						html += '<div class="avaliacaopage">';
+						html += '<li>';
+							html += createCommentsSection2(data);
+						html += '<div class="">';
+							
+						html += '<div class="">';
+							
+						html += '<figure>';
+						html += '<a href="/page/' + data._id + '">';
+						html += '</a>';
+
+						
+
+						if(data.image != ""){
+									html += '<img src="' + mainURL + "/" + data.image + '" style="width: 300px;  object-fit: cover;>';
+								}
+						
+						html += '<div class="page-infos2">';
+						html += '<h4><a href="/page/' + data._id + '">' + data.name + '</a></h4>';
+						html += '<p> Local de publicação: <span>' + data.autor + '</span></p>';
+						html += '<p>Ano de publicação: <span>' + data.ano + '</span></p>';
+						html += '<p>URL: <span>' + data.editora + '</span></p>';
+						html += '<p>Resumo: <span>' + data.pais + '</span></p>';
+
+						
+
+						
+
+							html += '</div>';						
+							html += '</div>';
+							
+						html += '</div>';
+						html += '</div>';
+						html += '</li>';
+						html += '</div>';
+
+						
+					}
+					document.getElementById("all-pages").innerHTML = html;
+				}
+			};
+			
+			var formData = new FormData();
+			formData.append("accessToken", localStorage.getItem("accessToken"));
+			
+
+			ajax.send(formData);			
+		}
+
+		var showMovies = true;
+		
+		function getFilmes(){
+			var ajax = new XMLHttpRequest();
+			ajax.open("POST", "/getFilmes", true);
+			
+			ajax.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status == 200){
+					var response = JSON.parse(this.responseText);
+
+
+					var html = "";
+					for (var a = 0; a < response.data.length; a++){
+						var data = response.data[a];
+						console.log(data);
+						html += '<div class="avaliacaopage">';
+						html += '<li>';
+							html += createCommentsSection2(data);
+						html += '<div class="">';
+							
+						html += '<div class="">';
+							
+						html += '<figure>';
+						html += '<a href="/page/' + data._id + '">';
+						html += '</a>';
+
+						
+
+						if(data.image != ""){
+									html += '<img src="' + mainURL + "/" + data.image + '" style="width: 300px;  object-fit: cover;>';
+								}
+						
+								html += '<div class="page-infos2">';
+							html += '<p>Tipo: <span>' + data.tipo + '</span></p>';
+						html += '<h4><a href="/page/' + data._id + '">' + data.name + '</a></h4>';
+						html += '<p> Diretor: <span>' + data.diretor + '</span></p>';
+						html += '<p>Ano de publicação: <span>' + data.ano + '</span></p>';
+						html += '<p>Elenco: <span>' + data.elenco + '</span></p>';
+						html += '<p>País: <span>' + data.pais + '</span></p>';
+
+						
+
+						
+
+							html += '</div>';						
+							html += '</div>';
+							
+						html += '</div>';
+						html += '</div>';
+						html += '</li>';
+						html += '</div>';
+
+						
+					}
+					document.getElementById("all-movies").innerHTML = html;
+				}
+			};
+			
+			var formData = new FormData();
+			formData.append("accessToken", localStorage.getItem("accessToken"));
+			
+
+			ajax.send(formData);			
+		}
+
+
+		var showSeries = true;
+		
+		function getSeriesPerfil(){
+			var ajax = new XMLHttpRequest();
+			ajax.open("POST", "/getSeriesPerfil", true);
+			
+			ajax.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status == 200){
+					var response = JSON.parse(this.responseText);
+
+
+					var html = "";
+					for (var a = 0; a < response.data.length; a++){
+						var data = response.data[a];
+						console.log(data);
+						html += '<div class="avaliacaopage">';
+						html += '<li>';
+							html += createCommentsSection2(data);
+						html += '<div class="">';
+							
+						html += '<div class="">';
+							
+						html += '<figure>';
+						html += '<a href="/page/' + data._id + '">';
+						html += '</a>';
+
+						
+
+						if(data.image != ""){
+									html += '<img src="' + mainURL + "/" + data.image + '" style="width: 300px;  object-fit: cover;>';
+								}
+						
+								html += '<div class="page-infos2">';
+							html += '<p>Tipo: <span>' + data.tipo + '</span></p>';
+						html += '<h4><a href="/page/' + data._id + '">' + data.name + '</a></h4>';
+						html += '<p> Diretor: <span>' + data.diretor + '</span></p>';
+						html += '<p>Ano de publicação: <span>' + data.ano + '</span></p>';
+						html += '<p>Elenco: <span>' + data.elenco + '</span></p>';
+						html += '<p>Número de temporadas: <span>' + data.temporadas + '</span></p>';
+						html += '<p>País: <span>' + data.pais + '</span></p>';
+
+						
+
+						
+
+							html += '</div>';						
+							html += '</div>';
+							
+						html += '</div>';
+						html += '</div>';
+						html += '</li>';
+						html += '</div>';
+
+						
+					}
+					document.getElementById("all-series").innerHTML = html;
+				}
+			};
+			
+			var formData = new FormData();
+			formData.append("accessToken", localStorage.getItem("accessToken"));
+			
+
+			ajax.send(formData);			
+		}
+
 		
 
-	</script>
+	
 
 </script>
 
