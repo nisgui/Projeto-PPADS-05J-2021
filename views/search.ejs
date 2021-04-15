@@ -12,7 +12,7 @@
 								<a data-toggle="tab" href="#pages">Livros</a>
 								<a data-toggle="tab" href="#movies">Filmes</a>
 								<a data-toggle="tab" href="#series">Series</a>
-								<a data-toggle="tab" href="#groups">Groups</a>
+								
 							</li>
 						</ul>
 					</div>
@@ -52,8 +52,6 @@
 
 										</div>
 
-										<div class="tab-pane active fade" id="groups">
-											<ul class="nearby-contct" id="search-result-groups"></ul>
 
 
 										</div>
@@ -818,49 +816,7 @@
 						
 						document.getElementById("search-result-series").innerHTML = html;
 
-						//search Group list display
-						var html = "";
-						for (var a=0; a < response.groups.length; a++){
-							var data = response.groups[a];
 							
-							var isMember = false;
-							for (var b=0; b < window.user.groups.length; b++){
-								var tempData = window.user.groups[b];
-								if(tempData._id.toString() == data._id.toString()){
-									isMember = true;
-									break;
-								}
-							}
-							
-							html += '<li>';
-							html += '<div class="nearly-pepls">';
-							html += '<figure>';
-							html += '<a href="/group/' + data._id + '">';
-							html += '<img src="' + mainURL + '/' + data.coverPhoto + '">';
-							html += '</a>';
-							html += '</figure>';
-							
-							html += '<div class="pepl-info">';
-							html += '<h4>';
-							html += '<a href="/group/' + data._id + '">' + data.name + '</a>';
-							html += '</h4>';
-							
-							html += '<span>Public Group</span>';
-							html += '<em>' + data.members.length + ' Members</em>';
-							
-							if(localStorage.getItem("accessToken")){
-								if(isMember){
-									html += '<a href="javascript:void(0);" data-id="' + data._id + '" onclick="toggleJoinGroup(this);" class="add-butn btn-unfriend"> Leave</a>';
-								} else {
-									html += '<a href="javascript:void(0);" data-id="' + data._id + '" onclick="toggleJoinGroup(this);" class="add-butn"> Join</a>';
-								}
-							}
-							
-							html += '</div>';
-							html += '</div>';
-							html += '</li>';
-						}						
-						document.getElementById("search-result-groups").innerHTML = html;  					
 						
 				} else{
 						alert(response.message);

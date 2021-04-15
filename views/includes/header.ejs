@@ -45,7 +45,7 @@
 			</div>
 
 			<script>
-				var mainURL ="http://localhost:3000";
+				var mainURL ="https://damp-oasis-60460.herokuapp.com/";
 
 				var months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
 
@@ -112,27 +112,7 @@
 								html += '<p>' + comment.comment + '</p>';
 								
 							html += '</div>';
-							html += '<ul>';
-								comment.replies = comment.replies.reverse();
-								for (var c = 0; c < comment.replies.length; c++) {
-									var reply = comment.replies[c];
-									html += '<li>';
-										html += '<div class="comet-avatar">';
-											html += '<img src="' + mainURL + '/' + reply.user.profileImage + '" style="width: 35px; height: 35px; object-fit: cover; border-radius: 50%">';
-										html += '</div>';
-										html += '<div class="we-comment">';
-											html += '<div class="coment-head">';
-												html += '<h5><a href="/">' + reply.user.name + '</a></h5>';
-												var createdAt = new Date(reply.createdAt);
-												var date = createdAt.getDate() + "";
-												date = date.padStart(2, "0") + " " + months[createdAt.getMonth()] + ", " + createdAt.getFullYear();
-												html += '<span>' + date + '</span>';
-											html += '</div>';
-											html += '<p>' + reply.reply + '</p>';
-										html += '</div>';
-									html += '</li>';
-								}
-								html += '</ul>';
+							
 						html += '</li>';
 					}
 					html += '</ul>';
@@ -217,27 +197,7 @@
 								html += '<p>' + comment.comment + '</p>';
 								
 							html += '</div>';
-							html += '<ul>';
-								comment.replies = comment.replies.reverse();
-								for (var c = 0; c < comment.replies.length; c++) {
-									var reply = comment.replies[c];
-									html += '<li>';
-										html += '<div class="comet-avatar">';
-											html += '<img src="' + mainURL + '/' + reply.user.profileImage + '" style="width: 35px; height: 35px; object-fit: cover; border-radius: 50%">';
-										html += '</div>';
-										html += '<div class="we-comment">';
-											html += '<div class="coment-head">';
-												html += '<h5><a href="/">' + reply.user.name + '</a></h5>';
-												var createdAt = new Date(reply.createdAt);
-												var date = createdAt.getDate() + "";
-												date = date.padStart(2, "0") + " " + months[createdAt.getMonth()] + ", " + createdAt.getFullYear();
-												html += '<span>' + date + '</span>';
-											html += '</div>';
-											html += '<p>' + reply.reply + '</p>';
-										html += '</div>';
-									html += '</li>';
-								}
-								html += '</ul>';
+							
 						html += '</li>';
 					}
 					html += '</ul>';
@@ -323,27 +283,7 @@
 								html += '<p>' + comment.comment + '</p>';
 								
 							html += '</div>';
-							html += '<ul>';
-								comment.replies = comment.replies.reverse();
-								for (var c = 0; c < comment.replies.length; c++) {
-									var reply = comment.replies[c];
-									html += '<li>';
-										html += '<div class="comet-avatar">';
-											html += '<img src="' + mainURL + '/' + reply.user.profileImage + '" style="width: 35px; height: 35px; object-fit: cover; border-radius: 50%">';
-										html += '</div>';
-										html += '<div class="we-comment">';
-											html += '<div class="coment-head">';
-												html += '<h5><a href="/">' + reply.user.name + '</a></h5>';
-												var createdAt = new Date(reply.createdAt);
-												var date = createdAt.getDate() + "";
-												date = date.padStart(2, "0") + " " + months[createdAt.getMonth()] + ", " + createdAt.getFullYear();
-												html += '<span>' + date + '</span>';
-											html += '</div>';
-											html += '<p>' + reply.reply + '</p>';
-										html += '</div>';
-									html += '</li>';
-								}
-								html += '</ul>';
+							
 						html += '</li>';
 					}
 					html += '</ul>';
@@ -465,6 +405,92 @@
 					return html;
 				}
 
+				/* filmes like section */
+				function createLikesSection3(data){
+					
+					var isLiked = false;
+					
+					for (var b = 0; b < data.likers.length; b++){
+						var liker = data.likers[b];
+						if(liker._id == window.user._id){
+							isLiked = true;
+							break;
+						}
+					}
+					var html = "";
+					html += '<div class="we-video-info">';
+					html += '<ul>';
+					html += '<li>';
+							var className = "";
+							if(isLiked){
+								className = "like";
+							}else{
+								className = "none";
+							}
+					html += '<span class="' + className + '" onclick="toggleLikeMovie(this);" data-id="' +  data._id + '">';
+					html += '<i class="ti-thumb-up"></i>';
+					html += '<ins>' + data.likers.length + '</ins>';
+					html += '</span>';
+					html += '</li>';
+
+					html += '<li>';
+							html += '<span class="comment" title="Comments">';
+								html += '<i class="fa fa-comments-o"></i>';
+								html += '<ins id="count-post-comments-' + data._id + '">' + data.comments.length + '</ins>';
+							html += '</span>';
+						html += '</li>';
+
+
+					
+					
+					html += '</ul>';
+					html += '</div>';
+					return html;
+				}
+
+				/* series like section */
+				function createLikesSection4(data){
+					
+					var isLiked = false;
+					
+					for (var b = 0; b < data.likers.length; b++){
+						var liker = data.likers[b];
+						if(liker._id == window.user._id){
+							isLiked = true;
+							break;
+						}
+					}
+					var html = "";
+					html += '<div class="we-video-info">';
+					html += '<ul>';
+					html += '<li>';
+							var className = "";
+							if(isLiked){
+								className = "like";
+							}else{
+								className = "none";
+							}
+					html += '<span class="' + className + '" onclick="toggleLikeSerie(this);" data-id="' +  data._id + '">';
+					html += '<i class="ti-thumb-up"></i>';
+					html += '<ins>' + data.likers.length + '</ins>';
+					html += '</span>';
+					html += '</li>';
+
+					html += '<li>';
+							html += '<span class="comment" title="Comments">';
+								html += '<i class="fa fa-comments-o"></i>';
+								html += '<ins id="count-post-comments-' + data._id + '">' + data.comments.length + '</ins>';
+							html += '</span>';
+						html += '</li>';
+
+
+					
+					
+					html += '</ul>';
+					html += '</div>';
+					return html;
+				}
+
 
 				////////////////////////////////////////////////////////////////////////////////
 				/* PERFIL PESSOAL USUARIOS comments section */
@@ -515,6 +541,74 @@
 					var _id = self.getAttribute("data-id");
 					var ajax = new XMLHttpRequest();
 					ajax.open("POST", "/toggleLikePage", true);
+					
+					ajax.onreadystatechange = function(){
+						if(this.readyState == 4 && this.status == 200){
+							var response = JSON.parse(this.responseText);				
+							alert(response.message);					
+							
+							if(response.status == "success"){
+								self.className = "like";
+								var likes = parseInt(self.querySelector("ins").innerHTML);
+								likes++;
+								self.querySelector("ins").innerHTML = likes;
+							}
+							if(response.status == "unliked"){
+								self.className = "none";
+								var likes = parseInt(self.querySelector("ins").innerHTML);
+								likes--;
+								self.querySelector("ins").innerHTML = likes;
+							}
+							if(response.status == "error"){
+								alert(response.message);
+							}							
+						}
+					};
+					var formData = new FormData();
+					formData.append("accessToken", localStorage.getItem("accessToken"));
+					formData.append("_id", _id);
+					ajax.send(formData);
+				}
+
+				/* like section */
+			function toggleLikeMovie(self){
+					var _id = self.getAttribute("data-id");
+					var ajax = new XMLHttpRequest();
+					ajax.open("POST", "/toggleLikeMovie", true);
+					
+					ajax.onreadystatechange = function(){
+						if(this.readyState == 4 && this.status == 200){
+							var response = JSON.parse(this.responseText);				
+							alert(response.message);					
+							
+							if(response.status == "success"){
+								self.className = "like";
+								var likes = parseInt(self.querySelector("ins").innerHTML);
+								likes++;
+								self.querySelector("ins").innerHTML = likes;
+							}
+							if(response.status == "unliked"){
+								self.className = "none";
+								var likes = parseInt(self.querySelector("ins").innerHTML);
+								likes--;
+								self.querySelector("ins").innerHTML = likes;
+							}
+							if(response.status == "error"){
+								alert(response.message);
+							}							
+						}
+					};
+					var formData = new FormData();
+					formData.append("accessToken", localStorage.getItem("accessToken"));
+					formData.append("_id", _id);
+					ajax.send(formData);
+				}
+
+				/* like section */
+			function toggleLikeSerie(self){
+					var _id = self.getAttribute("data-id");
+					var ajax = new XMLHttpRequest();
+					ajax.open("POST", "/toggleLikeSerie", true);
 					
 					ajax.onreadystatechange = function(){
 						if(this.readyState == 4 && this.status == 200){
@@ -623,12 +717,26 @@
 		///////////////////////////////////////////////////////////////////////////////////////////	
 
 
+
+		
 				
 
 			function prepareToReply(self) {
 				$("#replyModal input[name='postId']").val(self.getAttribute("data-post-id"));
 				$("#replyModal input[name='commentId']").val(self.getAttribute("data-comment-id"));
 				$("#replyModal").modal("show");
+			}
+
+			function prepareToReply2(self) {
+				$("#replyModal2 input[name='postId']").val(self.getAttribute("data-post-id"));
+				$("#replyModal2 input[name='commentId']").val(self.getAttribute("data-comment-id"));
+				$("#replyModal2").modal("show");
+			}
+
+			function prepareToReply3(self) {
+				$("#replyModal3 input[name='postId']").val(self.getAttribute("data-post-id"));
+				$("#replyModal3 input[name='commentId']").val(self.getAttribute("data-comment-id"));
+				$("#replyModal3").modal("show");
 			}
 			function doPostReply(form) {
 				var ajax = new XMLHttpRequest();
@@ -640,8 +748,50 @@
 						if (response.status == "success") {
 							form.reply.value = "";
 							$("#replyModal").modal("hide");
-							var commentsHtml = createCommentsSection(response.updatePost);
-							document.getElementById("post-comments-" + form.postId.value).innerHTML = commentsHtml;
+							
+							
+						}
+					}
+				};
+				var formData = new FormData(form);
+				formData.append("accessToken", localStorage.getItem("accessToken"));
+				ajax.send(formData);
+				return false;
+			}
+
+			function doMovieReply(form) {
+				var ajax = new XMLHttpRequest();
+				ajax.open("POST", "/filmeReply", true);
+				ajax.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						var response = JSON.parse(this.responseText);
+						alert(response.message);
+						if (response.status == "success") {
+							form.reply.value = "";
+							$("#replyModal2").modal("hide");
+							
+							
+						}
+					}
+				};
+				var formData = new FormData(form);
+				formData.append("accessToken", localStorage.getItem("accessToken"));
+				ajax.send(formData);
+				return false;
+			}
+
+			function doSerieReply(form) {
+				var ajax = new XMLHttpRequest();
+				ajax.open("POST", "/serieReply", true);
+				ajax.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						var response = JSON.parse(this.responseText);
+						alert(response.message);
+						if (response.status == "success") {
+							form.reply.value = "";
+							$("#replyModal3").modal("hide");
+							
+							
 						}
 					}
 				};

@@ -14,9 +14,9 @@
 						<div class="col-md-6">							
 							<div class="row justify-content-md-center">
 								<div class="groups">
-									<span><i class="fa fa-file-text-o"></i> Livros </span>
+									<span><i class="fa fa-file-text-o"></i> Suas Series Curtidas </span>
 								</div>
-								<ul class="liked-pages" id="all-pages"></ul>
+								<ul class="liked-pages" id="all-series"></ul>
 							</div>							
 						</div>
 						
@@ -26,29 +26,22 @@
 		</div>
 	</div>
 </section>
-
-<script>
-	
-	 var isPages = true;
-	 function getPages(){
-		var ajax = new XMLHttpRequest();
-		ajax.open("POST", "/getPages", true);
-			
-		ajax.onreadystatechange = function(){
-			if(this.readyState == 4 && this.status == 200){
-				var response = JSON.parse(this.responseText);
-				
-				if(response.status == "error"){
-					alert(response.message);
-					return;
-				}
-				
-				
-				var html = "";
-				for (var a = 0; a < response.data.length; a++){
-					var data = response.data[a];
-					
-					html += '<li>';
+	<script>
+		var seriesLiked = true;
+		function likedSeries() {
+			var ajax = new XMLHttpRequest();
+			ajax.open("POST", "/likedSeries", true);
+			ajax.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status == 200) {
+					var response = JSON.parse(this.responseText);
+					if (response.status == "error") {
+						alert(response.message);
+						return;
+					}
+					var html = "";
+					for (var a = 0; a < response.data.length; a++) {
+						var data = response.data[a];
+						html += '<li>';
 					html += '<div class="f-page">';
 					html += '<figure>';
 					html += '<a href="/page/' + data._id + '">';
@@ -63,30 +56,29 @@
 					
 					html += '<div class="page-infos2">';
 					html += '<h4><a href="/page/' + data._id + '">' + data.name + '</a></h4>';
-					html += '<p> Autor(es): <span>' + data.autor + '</span></p>';
-					html += '<p>Editora: <span>' + data.editora + '</span></p>';
+					html += '<p> Diretor(es): <span>' + data.diretor + '</span></p>';
+					html += '<p>Elenco: <span>' + data.elenco + '</span></p>';
 					html += '<p>País: <span>' + data.pais + '</span></p>';
 					html += '<p>Ano de lançamento: <span>' + data.ano + '</span></p>';
+                    html += '<p>Número de temporadas: <span>' + data.temporadas + '</span></p>';
 
-					
-							html += '</div>';						
+					html += '</div>';						
 							html += '</div>';
-							html += createLikesSection2(data);
+							html += createLikesSection4(data);
 							html += "<div id='post-comments-" + data._id + "'>";
-							html += createCommentsSection(data);
+							html += createCommentsSerie(data);
 
 					html += '</div>';
 					html += '</div>';
 					html += '</li>';
+					}
+					document.getElementById("all-series").innerHTML = html;
 				}
-				document.getElementById("all-pages").innerHTML = html;
 			}
-		};
-		
-	var formData = new FormData();
-	formData.append("accessToken", localStorage.getItem("accessToken"));
-	ajax.send(formData);		
-	}	 
-</script>
+			var formData = new FormData();
+			formData.append("accessToken", localStorage.getItem("accessToken"));
+			ajax.send(formData);
+		}
+	</script>
 
 <%- include ("includes/foooter") %>

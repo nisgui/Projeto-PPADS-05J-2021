@@ -29,7 +29,7 @@ var socketID = "";
 var users = [];
 
 
-var mainURL = "http://localhost:3000";
+var mainURL = "https://damp-oasis-60460.herokuapp.com/";
 
 socketIO.on("connection", function(socket){
 	console.log("User connected", socket.id);
@@ -168,7 +168,7 @@ http.listen(port, function() {
 						}, function(error, data){
 							result.json({
 								"status": "sucess",
-								"message": "Signed up sucessfully. You can login now"
+								"message": "Registro realizado com sucesso. Você pode fazer login agora."
 
 							});
 						});
@@ -176,7 +176,7 @@ http.listen(port, function() {
 				} else{
 					result.json({
 						"status": "error",
-						"message": "Email or username already exist"
+						"message": "Email ou username ja existentes."
 					});
 				}
 
@@ -198,7 +198,7 @@ http.listen(port, function() {
 				if(user == null){
 					result.json({
 						"status": "error",
-						"message": "Email does not exist"
+						"message": "Email não existe."
 					});
 				} else {
 					bcrypt.compare(password, user.password, function (error, isVerify){
@@ -213,14 +213,14 @@ http.listen(port, function() {
 							}, function (error, data){
 								result.json({
 									"status": "success",
-									"message": "Login Successfully",
+									"message": "Login realizado com sucesso.",
 									"accessToken": accessToken,
 								});
 							});
 						} else {
 							result.json({
 								"status": "error",
-								"message": "Password is not Correct"
+								"message": "Senha está incorreta"
 							});
 						}
 					});
@@ -328,7 +328,7 @@ http.listen(port, function() {
 							});
 						}
 						profileImage = "public/images/" + new Date().getTime() + "-" + request.files.profileImage.name;
-						fileSystem.rename(request.files.profileImage.path, profileImage, function(error){
+						fileSystem.copyFile(request.files.profileImage.path, profileImage, function(error){
 							
 						});
 						database.collection("users").updateOne({
@@ -419,14 +419,14 @@ http.listen(port, function() {
 
 					if (request.files.image.size > 0 && request.files.image.type.includes("image")) {
 						image = "public/images/" + new Date().getTime() + "-" + request.files.image.name;
-						fileSystem.rename(request.files.image.path, image, function (error) {
+						fileSystem.copyFile(request.files.image.path, image, function (error) {
 							//
 						});
 					}
 
 					if (request.files.video.size > 0 && request.files.video.type.includes("video")) {
 						video = "public/videos/" + new Date().getTime() + "-" + request.files.video.name;
-						fileSystem.rename(request.files.video.path, video, function (error) {
+						fileSystem.copyFile(request.files.video.path, video, function (error) {
 							//
 						});
 					}
@@ -862,19 +862,24 @@ http.listen(port, function() {
 				});
 			} else {
 
-				database.collection("posts").findOne({
+				
+
+				database.collection("pages").findOne({
 					"_id": ObjectId(postId)
 				}, function (error, post) {
 					if (post == null) {
 						result.json({
 							"status": "error",
-							"message": "Post does not exist."
+							"message": "pages does not exist."
 						});
 					} else {
 
+
 						var replyId = ObjectId();
 
-						database.collection("posts").updateOne({
+						
+
+						database.collection("pages").updateOne({
 							$and: [{
 								"_id": ObjectId(postId)
 							}, {
@@ -899,13 +904,13 @@ http.listen(port, function() {
 								$and: [{
 									"_id": post.user._id
 								}, {
-									"posts._id": post._id
+									"pages._id": post._id
 								}, {
-									"posts.comments._id": ObjectId(commentId)
+									"pages.comments._id": ObjectId(commentId)
 								}]
 							}, {
 								$push: {
-									"posts.$.comments.$[i].replies": {
+									"pages.$.comments.$[i].replies": {
 										"_id": replyId,
 										"user": {
 											"_id": user._id,
@@ -921,12 +926,200 @@ http.listen(port, function() {
 									arrayFilters: [{ 'i._id': ObjectId(commentId) }]
 								});
 
-							database.collection("posts").findOne({
+							database.collection("pages").findOne({
 								"_id": ObjectId(postId)
 							}, function (error, updatePost) {
 								result.json({
 									"status": "success",
-									"message": "Reply has been posted.",
+									"message": "Comentário postado com sucesso.",
+									"updatePost": updatePost
+								});
+							});
+						});
+
+					}
+				});
+			}
+		});
+	});
+
+	app.post("/filmeReply", function (request, result) {
+
+		var accessToken = request.fields.accessToken;
+		var postId = request.fields.postId;
+		var commentId = request.fields.commentId;
+		var reply = request.fields.reply;
+		var createdAt = new Date().getTime();
+
+		database.collection("users").findOne({
+			"accessToken": accessToken
+		}, function (error, user) {
+			if (user == null) {
+				result.json({
+					"status": "error",
+					"message": "User has been logged out. Please login again."
+				});
+			} else {
+
+				database.collection("movies").findOne({
+					"_id": ObjectId(postId)
+				}, function (error, post) {
+					if (post == null) {
+						result.json({
+							"status": "error",
+							"message": "movies does not exist."
+						});
+					} else {
+
+						var replyId = ObjectId();
+
+						database.collection("movies").updateOne({
+							$and: [{
+								"_id": ObjectId(postId)
+							}, {
+								"comments._id": ObjectId(commentId)
+							}]
+						}, {
+							$push: {
+								"comments.$.replies": {
+									"_id": replyId,
+									"user": {
+										"_id": user._id,
+										"name": user.name,
+										"profileImage": user.profileImage,
+									},
+									"reply": reply,
+									"createdAt": createdAt
+								}
+							}
+						}, function (error, data) {
+
+							database.collection("users").updateOne({
+								$and: [{
+									"_id": post.user._id
+								}, {
+									"movies._id": post._id
+								}, {
+									"movies.comments._id": ObjectId(commentId)
+								}]
+							}, {
+								$push: {
+									"movies.$.comments.$[i].replies": {
+										"_id": replyId,
+										"user": {
+											"_id": user._id,
+											"name": user.name,
+											"profileImage": user.profileImage,
+										},
+										"reply": reply,
+										"createdAt": createdAt
+									}
+								}
+							},
+								{
+									arrayFilters: [{ 'i._id': ObjectId(commentId) }]
+								});
+
+							database.collection("movies").findOne({
+								"_id": ObjectId(postId)
+							}, function (error, updatePost) {
+								result.json({
+									"status": "success",
+									"message": "Comentário postado com sucesso.",
+									"updatePost": updatePost
+								});
+							});
+						});
+
+					}
+				});
+			}
+		});
+	});
+
+	app.post("/serieReply", function (request, result) {
+
+		var accessToken = request.fields.accessToken;
+		var postId = request.fields.postId;
+		var commentId = request.fields.commentId;
+		var reply = request.fields.reply;
+		var createdAt = new Date().getTime();
+
+		database.collection("users").findOne({
+			"accessToken": accessToken
+		}, function (error, user) {
+			if (user == null) {
+				result.json({
+					"status": "error",
+					"message": "User has been logged out. Please login again."
+				});
+			} else {
+
+				database.collection("series").findOne({
+					"_id": ObjectId(postId)
+				}, function (error, post) {
+					if (post == null) {
+						result.json({
+							"status": "error",
+							"message": "series does not exist."
+						});
+					} else {
+
+						var replyId = ObjectId();
+
+						database.collection("series").updateOne({
+							$and: [{
+								"_id": ObjectId(postId)
+							}, {
+								"comments._id": ObjectId(commentId)
+							}]
+						}, {
+							$push: {
+								"comments.$.replies": {
+									"_id": replyId,
+									"user": {
+										"_id": user._id,
+										"name": user.name,
+										"profileImage": user.profileImage,
+									},
+									"reply": reply,
+									"createdAt": createdAt
+								}
+							}
+						}, function (error, data) {
+
+							database.collection("users").updateOne({
+								$and: [{
+									"_id": post.user._id
+								}, {
+									"series._id": post._id
+								}, {
+									"series.comments._id": ObjectId(commentId)
+								}]
+							}, {
+								$push: {
+									"series.$.comments.$[i].replies": {
+										"_id": replyId,
+										"user": {
+											"_id": user._id,
+											"name": user.name,
+											"profileImage": user.profileImage,
+										},
+										"reply": reply,
+										"createdAt": createdAt
+									}
+								}
+							},
+								{
+									arrayFilters: [{ 'i._id': ObjectId(commentId) }]
+								});
+
+							database.collection("series").findOne({
+								"_id": ObjectId(postId)
+							}, function (error, updatePost) {
+								result.json({
+									"status": "success",
+									"message": "Comentário postado com sucesso.",
 									"updatePost": updatePost
 								});
 							});
@@ -1181,7 +1374,7 @@ app.get("/friends", function (request, result) {
 									"notifications": {
 										"_id": ObjectId(),
 										"type": "friend request accepted",
-										"content": me.name + " accept your friend request.",
+										"content": me.name + " aceitou seu pedido de amizade.",
 										"profileImage": me.profileImage,
 										"isRead": true,
 										"createdAt": new Date().getTime()
@@ -1298,6 +1491,47 @@ app.get("/friends", function (request, result) {
 				}
 			});
 		});
+
+		app.post("/findFriends", function(request, result) {
+		
+			var _id = request.fields._id;
+			database.collection("users").findOne({
+				"_id": ObjectId(_id)
+			}, function(error, user){
+				if(user == null){
+					result.json({
+						"status": "error",
+						"message": "User has been logged out. Please login again."				
+					});
+				} else {				
+					var ids = [];
+					ids.push(user._id);				
+					/* var username = [];
+					username.push(user.name); */
+	
+					
+					
+					database.collection("users").find({
+						
+						"friends._id": user._id,
+						"friends.status": "Accepted"
+						
+					})
+					.toArray(function(error, data){
+						
+						result.json({
+							"status": "success",
+							"message": "Record has been fetched",						
+							"data": data
+						});					
+					});			
+				}
+			});
+		});
+
+		
+
+
 		//cadastrar livro
 		app.get("/createPage", function(request, result){
 			result.render("createpage");
@@ -1312,6 +1546,7 @@ app.get("/friends", function (request, result) {
 			var pais = request.fields.pais;
 			var image = request.fields.image;
 			var tipo = request.fields.tipo;
+			var genero = request.fields.genero;
 
 
 
@@ -1327,7 +1562,7 @@ app.get("/friends", function (request, result) {
 				}else {
 						if(request.files.image.size > 0 && request.files.image.type.includes("image")){
 							image = "public/images/" + "-" + request.files.image.name;
-							fileSystem.rename(request.files.image.path, image, function(error){
+							fileSystem.copyFile(request.files.image.path, image, function(error){
 								
 							});
 					
@@ -1340,6 +1575,7 @@ app.get("/friends", function (request, result) {
 							"pais": pais,
 							"image": image,
 							"tipo": tipo,
+							"genero": genero,
 							"notaAvaliacao": [],
 							"likers": [],
 							"comments": [],
@@ -1879,6 +2115,7 @@ app.get("/friends", function (request, result) {
 			var ano = request.fields.ano;
 			var image = request.fields.image;
 			var tipo = request.fields.tipo;
+			var genero = request.fields.genero;
 
 
 
@@ -1895,7 +2132,7 @@ app.get("/friends", function (request, result) {
 				}else {
 					if(request.files.image.size > 0 && request.files.image.type.includes("image")){
 						image = "public/images/" + "-" + request.files.image.name;
-						fileSystem.rename(request.files.image.path, image, function(error){
+						fileSystem.copyFile(request.files.image.path, image, function(error){
 							
 						});
 				
@@ -1909,6 +2146,7 @@ app.get("/friends", function (request, result) {
 							"likers": [],
 							"image": image,
 							"tipo": tipo,
+							"genero": genero,
 							"notaAvaliacao": [],
 							"comments": [],
 							"shares": [],
@@ -1944,7 +2182,7 @@ app.get("/friends", function (request, result) {
 			var temporadas = request.fields.temporadas;
 			var image = request.fields.image;
 			var tipo = request.fields.tipo;
-
+			var genero = request.fields.genero;
 
 
 
@@ -1960,7 +2198,7 @@ app.get("/friends", function (request, result) {
 				}else {
 					if(request.files.image.size > 0 && request.files.image.type.includes("image")){
 						image = "public/images/" + "-" + request.files.image.name;
-						fileSystem.rename(request.files.image.path, image, function(error){
+						fileSystem.copyFile(request.files.image.path, image, function(error){
 							
 						});
 				
@@ -1973,6 +2211,7 @@ app.get("/friends", function (request, result) {
 							"ano": ano,
 							"temporadas": temporadas,
 							"tipo": tipo,
+							"genero": genero,
 							"notaAvaliacao": [],
 							"comments": [],
 							"shares": [],
@@ -2035,6 +2274,114 @@ app.get("/friends", function (request, result) {
 					});
 				}
 			});
+		});
+
+		app.get("/pagesLiked", function (request, result) {
+			result.render("pagesLiked");
+		});
+
+		app.post("/likedPages", function (request, result) {
+			var accessToken = request.fields.accessToken;
+
+			database.collection("users").findOne({
+				"accessToken": accessToken
+			},
+				function (error, user) {
+					if (user == null) {
+						result.json({
+							"status": "error",
+							"message": "User has been logged out. Please login again."
+						});
+					}
+					else {
+						database.collection("pages").find({
+							$or: [{
+								"user._id": user._id,
+								"likers._id": user._id
+							}, {
+								"likers._id": user._id
+							}]
+						}).toArray(function (error, data) {
+							result.json({
+								"status": "success",
+								"message": "Record has been fectched.",
+								"data": data
+							});
+						});
+					}
+				});
+		});
+
+		app.get("/moviesLiked", function (request, result) {
+			result.render("moviesLiked");
+		});
+
+		app.post("/likedMovies", function (request, result) {
+			var accessToken = request.fields.accessToken;
+
+			database.collection("users").findOne({
+				"accessToken": accessToken
+			},
+				function (error, user) {
+					if (user == null) {
+						result.json({
+							"status": "error",
+							"message": "User has been logged out. Please login again."
+						});
+					}
+					else {
+						database.collection("movies").find({
+							$or: [{
+								"user._id": user._id,
+								"likers._id": user._id
+							}, {
+								"likers._id": user._id
+							}]
+						}).toArray(function (error, data) {
+							result.json({
+								"status": "success",
+								"message": "Record has been fectched.",
+								"data": data
+							});
+						});
+					}
+				});
+		});
+
+		app.get("/seriesLiked", function (request, result) {
+			result.render("seriesLiked");
+		});
+
+		app.post("/likedSeries", function (request, result) {
+			var accessToken = request.fields.accessToken;
+
+			database.collection("users").findOne({
+				"accessToken": accessToken
+			},
+				function (error, user) {
+					if (user == null) {
+						result.json({
+							"status": "error",
+							"message": "User has been logged out. Please login again."
+						});
+					}
+					else {
+						database.collection("series").find({
+							$or: [{
+								"user._id": user._id,
+								"likers._id": user._id
+							}, {
+								"likers._id": user._id
+							}]
+						}).toArray(function (error, data) {
+							result.json({
+								"status": "success",
+								"message": "Record has been fectched.",
+								"data": data
+							});
+						});
+					}
+				});
 		});
 
 		app.post("/getAvaliacao", function (request, result){
@@ -2585,7 +2932,7 @@ app.get("/friends", function (request, result) {
 						
 						if(request.files.coverPhoto.size > 0 && request.files.coverPhoto.type.includes("image")){
 							coverPhoto = "public/images/" + new Date().getTime() + "-" + request.files.coverPhoto.name;
-							fileSystem.rename(request.files.coverPhoto.path, coverPhoto, function(error){
+							fileSystem.copyFile(request.files.coverPhoto.path, coverPhoto, function(error){
 								//
 							});
 							

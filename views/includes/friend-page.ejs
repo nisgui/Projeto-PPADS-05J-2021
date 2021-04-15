@@ -1,9 +1,6 @@
 <div class="col-md-6">
     <div class="tab-content">
-        
-<div id="add-post-box"></div>
 
-    
 
 <ul class="liked-pages2" id="all-pages"></ul>
 <ul class="liked-pages2" id="all-movies"></ul>
@@ -11,8 +8,75 @@
 
 </div>
 </div>
+
+<div class="col-md-3">
+<div class="box-friend">
+    <h4 class="widget-title2" >Amigos</h4>
+        
+            
+           
+    <div id="scrolling-wrapper2">
+
+        <div id="friends-widget">
+
+        </div>
+
 </div>
+
+</div> 
+
+          
 </div>
+
+
+
+
+<script>
+    var friendsFind = true;
+
+    function findFriends(){
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST", "/findFriends", true);
+
+        ajax.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                var response = JSON.parse(this.responseText);
+                console.log("frieeeeeeends",response.data.length);
+                var html = "";
+                for (var a = 0; a < response.data.length; a++) {
+                    
+                    var data = response.data[a];
+                    console.log("amigoos", data);
+
+                    html += '<li style="display: flex;">';
+                    html += '<figure>';
+                        html += '<a href="/user/' + data._id + '">';
+                    html += '<img src="' + mainURL + '/' + data.profileImage + '" style="width: 40px; height: 40px; object-fit: cover; border-radius: 50%;">';
+                    html += '</a>';
+                    html += '</figure>';
+                    html += '<div class="friend-meta">';
+                    html += '<h4 style="margin-top: 10px;">';
+                    html += '<a href="/user/' + data._id + '" style="color: #088dcd;">' + data.name + '</a>';
+                    html += '</h4>';
+                    html += '</div>';
+                    
+                    html += '</li>';
+
+                    }
+
+                
+
+                
+                document.getElementById("friends-widget").innerHTML = html;
+                }
+            };
+            var formData = new FormData();
+               
+            formData.append("_id", document.getElementById("_id").value);
+
+            ajax.send(formData);			
+    }
+</script>
 
 
 
@@ -84,7 +148,7 @@ function getTimeline(){
                         html += '</a>';
 
                         
-
+                        html += '<p>Tipo: <span>' + data.tipo + '</span></p>';
                         if(data.image != ""){
                                     html += '<img src="' + mainURL + "/" + data.image + '" style="width: 300px;  object-fit: cover;>';
                                 }
@@ -97,7 +161,7 @@ function getTimeline(){
                         html += '<p>Resumo: <span>' + data.pais + '</span></p>';
 
                         
-
+                        var data_id = data._id;
                         
 
                             html += '</div>';						
@@ -109,12 +173,61 @@ function getTimeline(){
                         html += '</div>';
                             
                        
-                        
-                        
-                        
-                        
+                        html += '<div class="coment-area">';
+					html += '<ul class="we-comet" style="max-height: 150px; overflow-y: scroll;">';
+						data.comments = data.comments.reverse();
+						for (var b = 0; b < data.comments.length; b++) {
+							var comment = data.comments[b];
+					
+							var y = comment.userId;
+					
+						    if( y == _id.value){
+                                var x = comment._id;
+								console.log(comment._id);
+								comment.replies = comment.replies.reverse();
+								for (var c = 0; c < comment.replies.length; c++) {
+									var reply = comment.replies[c];
+									
+									
+									
+									html += '<li>';
+										html += '<div class="comet-avatar">';
+											html += '<img src="' + mainURL + '/' + reply.user.profileImage + '" style="width: 35px; height: 35px; object-fit: cover; border-radius: 50%">';
+										html += '</div>';
+										html += '<div class="we-comment">';
+											html += '<div class="coment-head">';
+												html += '<h5><a href="/">' + reply.user.name + '</a></h5>';
+												var createdAt = new Date(reply.createdAt);
+												var date = createdAt.getDate() + "";
+												date = date.padStart(2, "0") + " " + months[createdAt.getMonth()] + ", " + createdAt.getFullYear();
+												html += '<span>' + date + '</span>';
+											html += '</div>';
+											html += '<p>' + reply.reply + '</p>';
+										html += '</div>';
+									html += '</li>';
+											}
+										
+								html += '</ul>';
+						html += '</li>';
+					
+					
+					
+				html += '</div>';
+							}
+						}
+						
+						
+						
+					}
+					console.log(data_id);
+					if(response.data.length <= 0){
+						console.log("é menos");
+						console.log(response.data.length);
+					}else{
 
-            }
+						html += '<a class="we-reply" href="javascript:void(0);" data-post-id="' + data_id + '" data-comment-id="' + x + '" onclick="prepareToReply(this);" title="Comentar"><button class="comentarHome">Comentar</button></a>';
+						
+					}
             document.getElementById("all-pages").innerHTML = html;
         }
     };
@@ -202,7 +315,7 @@ function getTimeline2(){
                         
                         html += '<p>País: <span>' + data.pais + '</span></p>';
 
-                        
+                        var data_id = data._id;
 
                         
 
@@ -214,13 +327,61 @@ function getTimeline2(){
                         html += '</li>';
                         html += '</div>';
                             
-                        
-                        
-                        
-                        
-                        
+                        html += '<div class="coment-area">';
+					html += '<ul class="we-comet" style="max-height: 150px; overflow-y: scroll;">';
+						data.comments = data.comments.reverse();
+						for (var b = 0; b < data.comments.length; b++) {
+							var comment = data.comments[b];
+					
+							var y = comment.userId;
+					
+						    if( y == _id.value){
+                                var x = comment._id;
+								console.log(comment._id);
+								comment.replies = comment.replies.reverse();
+								for (var c = 0; c < comment.replies.length; c++) {
+									var reply = comment.replies[c];
+									
+									
+									
+									html += '<li>';
+										html += '<div class="comet-avatar">';
+											html += '<img src="' + mainURL + '/' + reply.user.profileImage + '" style="width: 35px; height: 35px; object-fit: cover; border-radius: 50%">';
+										html += '</div>';
+										html += '<div class="we-comment">';
+											html += '<div class="coment-head">';
+												html += '<h5><a href="/">' + reply.user.name + '</a></h5>';
+												var createdAt = new Date(reply.createdAt);
+												var date = createdAt.getDate() + "";
+												date = date.padStart(2, "0") + " " + months[createdAt.getMonth()] + ", " + createdAt.getFullYear();
+												html += '<span>' + date + '</span>';
+											html += '</div>';
+											html += '<p>' + reply.reply + '</p>';
+										html += '</div>';
+									html += '</li>';
+											}
+										
+								html += '</ul>';
+						html += '</li>';
+					
+					
+					
+				html += '</div>';
+							}
+						}
+						
+						
+						
+					}
+					console.log(data_id);
+					if(response.data.length <= 0){
+						console.log("é menos");
+						console.log(response.data.length);
+					}else{
 
-            }
+						html += '<a class="we-reply" href="javascript:void(0);" data-post-id="' + data_id + '" data-comment-id="' + x + '" onclick="prepareToReply2(this);" title="Comentar"><button class="comentarHome">Comentar</button></a>';
+						
+					}
             document.getElementById("all-movies").innerHTML = html;
         }
     };
@@ -307,9 +468,9 @@ function getTimeline3(){
                         html += '<p>Número de temporadas: <span>' + data.temporadas + '</span></p>';
                         html += '<p>País: <span>' + data.pais + '</span></p>';
 
-                        
+                        var data_id = data._id;
 
-                        
+                       
 
                             html += '</div>';						
                             html += '</div>';
@@ -319,14 +480,61 @@ function getTimeline3(){
                         html += '</li>';
                         html += '</div>';
                             
-                        
-                        
-                        
-                        
-                        
+                        html += '<div class="coment-area">';
+					html += '<ul class="we-comet" style="max-height: 150px; overflow-y: scroll;">';
+						data.comments = data.comments.reverse();
+						for (var b = 0; b < data.comments.length; b++) {
+							var comment = data.comments[b];
+					
+							var y = comment.userId;
+					
+						    if( y == _id.value){
+                                var x = comment._id;
+								console.log(comment._id);
+								comment.replies = comment.replies.reverse();
+								for (var c = 0; c < comment.replies.length; c++) {
+									var reply = comment.replies[c];
+									
+									
+									
+									html += '<li>';
+										html += '<div class="comet-avatar">';
+											html += '<img src="' + mainURL + '/' + reply.user.profileImage + '" style="width: 35px; height: 35px; object-fit: cover; border-radius: 50%">';
+										html += '</div>';
+										html += '<div class="we-comment">';
+											html += '<div class="coment-head">';
+												html += '<h5><a href="/">' + reply.user.name + '</a></h5>';
+												var createdAt = new Date(reply.createdAt);
+												var date = createdAt.getDate() + "";
+												date = date.padStart(2, "0") + " " + months[createdAt.getMonth()] + ", " + createdAt.getFullYear();
+												html += '<span>' + date + '</span>';
+											html += '</div>';
+											html += '<p>' + reply.reply + '</p>';
+										html += '</div>';
+									html += '</li>';
+											}
+										
+								html += '</ul>';
+						html += '</li>';
+					
+					
+					
+				html += '</div>';
+							}
+						}
+						
+						
+						
+					}
+					console.log(data_id);
+					if(response.data.length <= 0){
+						console.log("é menos");
+						console.log(response.data.length);
+					}else{
 
-            }
-                
+						html += '<a class="we-reply" href="javascript:void(0);" data-post-id="' + data_id + '" data-comment-id="' + x + '" onclick="prepareToReply3(this);" title="Comentar"><button class="comentarHome">Comentar</button></a>';
+						
+					}
             
             document.getElementById("all-series").innerHTML = html;
         }

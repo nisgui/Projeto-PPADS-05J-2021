@@ -55,6 +55,29 @@
 										</div>
 
 										<div class="form-group">
+											<select name="genero" id="genero">
+												<option value="romance">Romance</option>
+												<option value="drama">Drama</option>
+												<option value="biografia">Biografia</option>
+												<option value="aventura">Aventura</option>
+												<option value="comedia">Comédia</option>
+												<option value="terror">Terror</option>
+												<option value="misterio">Mistério</option>
+												<option value="cientifica">Ficção Científica</option>
+												<option value="fantasia">Fantasia</option>
+												<option value="suspense">Suspense</option>
+												<option value="acao">Ação</option>
+												<option value="historico">Histórico</option>
+												<option value="musical">Musical</option>
+												<option value="documentario">Documentário</option>
+												<option value="outros">Outro</option>
+											  </select>
+											<label class="control-label"> Gênero: </label>
+											<i class="mtrl-select"></i>
+											<br><br>
+										</div>
+
+										<div class="form-group">
 											<input type="file" name="image" accept="image/*">
 											<label class="control-label"> Poster filme </label>
 											<i class="mtrl-select"></i>
@@ -100,6 +123,7 @@
 					form.ano.value= "";
 					form.image.value= "";
 					form.tipo.value= "";
+					form.genero.value= "";
 
 				}
 			}

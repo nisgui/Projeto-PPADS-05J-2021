@@ -59,6 +59,28 @@
 										</div>
 
 										<div class="form-group">
+											<select name="genero" id="genero">
+												<option value="romance">Romance</option>
+												<option value="drama">Drama</option>
+												<option value="biografia">Biografia</option>
+												<option value="aventura">Aventura</option>
+												<option value="quadrinhos">História em Quadrinhos</option>
+												<option value="terror">Terror</option>
+												<option value="misterio">Mistério</option>
+												<option value="cientifica">Ficção Científica</option>
+												<option value="fantasia">Fantasia</option>
+												<option value="espiritualidade">Espiritualidade</option>
+												<option value="tecnologia">Tecnologia</option>
+												<option value="psico">Psicologia</option>
+												<option value="autoajuda">Autoajuda</option>
+												<option value="outros">Outro</option>
+											  </select>
+											<label class="control-label"> Gênero: </label>
+											<i class="mtrl-select"></i>
+											<br><br>
+										</div>
+
+										<div class="form-group">
 											<input type="file" name="image" accept="image/*">
 											<label class="control-label"> Imagem capa do livro </label>
 											<i class="mtrl-select"></i>
@@ -103,6 +125,7 @@
 					form.pais.value = "";
 					form.image.value = "";
 					form.tipo.value= "";
+					form.genero.value= "";
 				}
 			}
 		};

@@ -14,7 +14,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title"> Reply</h5>
+					<h5 class="modal-title"> Comentar </h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true"> &times; </span>
 					</button>
@@ -23,8 +23,50 @@
 					<form onsubmit="return doPostReply(this)">
 						<input type="hidden" name="postId"> <br>
 						<input type="hidden" name="commentId">
-						<textarea name="reply" placeholder="Post your reply"></textarea>
-						<button type="submit"> Post</button>
+						<textarea name="reply" placeholder="Poste seu comentário"></textarea>
+						<button type="submit"> Enviar </button>
+					</form>				
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="replyModal2" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title"> Comentar </h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true"> &times; </span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form onsubmit="return doMovieReply(this)">
+						<input type="hidden" name="postId"> <br>
+						<input type="hidden" name="commentId">
+						<textarea name="reply" placeholder="Poste seu comentário"></textarea>
+						<button type="submit"> Enviar </button>
+					</form>				
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="replyModal3" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title"> Comentar </h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true"> &times; </span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form onsubmit="return doSerieReply(this)">
+						<input type="hidden" name="postId"> <br>
+						<input type="hidden" name="commentId">
+						<textarea name="reply" placeholder="Poste seu comentário"></textarea>
+						<button type="submit"> Enviar </button>
 					</form>				
 				</div>
 			</div>
@@ -150,6 +192,20 @@
 							if(typeof teste !== "undefined" && teste){
 								test();
 							}
+							if(typeof friendsFind !== "undefined" && friendsFind){
+								findFriends();
+							}
+							if(typeof pagesLiked !== "undefined" && pagesLiked){
+								likedPages();
+							}
+
+							if(typeof seriesLiked !== "undefined" && seriesLiked){
+								likedSeries();
+							}
+
+							if(typeof moviesLiked !== "undefined" && moviesLiked){
+								likedMovies();
+							}
 
 
 
@@ -180,17 +236,41 @@
 
 
 
-
+				
 					html += '<li>';
 					html += '<a href="/pages">Livros</a>';
+						html += '<ul>';
+							html += '<li>';
+								html += '<a href="/pages">Livros</a>';
+								html += '<a href="/pagesLiked">Livros Curtidos</a>';
+								html += '<a href="/pages">Sugestão de Livros</a>';
+							html += '</li>';
+						html += '</ul>';
 					html += '</li>';
 					html += '<li>';
-					html += '<a href="/movies">Filmes</a>';
+						html += '<a href="/movies">Filmes</a>';
+						html += '<ul>';
+							
+							html += '<li>';
+								html += '<a href="/movies">Filmes</a>';
+								html += '<a href="/moviesLiked">Filmes Curtidos</a>';
+								html += '<a href="/pages">Sugestão de Filmes</a>';
+							html += '</li>';
+						html += '</ul>';
+					
 					html += '</li>';
 					html += '<li>';
-					html += '<a href="/series">Series</a>';
+						html += '<a href="/series">Séries</a>';
+						html += '<ul>';
+							html += '<li>';
+								html += '<a href="/series">Séries</a>';
+								html += '<a href="/seriesLiked">Séries Curtidas</a>';
+								html += '<a href="/pages">Sugestão de Séries</a>';
+							html += '</li>';
+						html += '</ul>';
+					
 					html += '</li>';
-
+					
 
 
 

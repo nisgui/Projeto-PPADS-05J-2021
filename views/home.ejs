@@ -247,20 +247,74 @@
 						html += '<p>Ano de publicação: <span>' + data.ano + '</span></p>';
 						html += '<p>Editora: <span>' + data.editora + '</span></p>';
 						html += '<p>País: <span>' + data.pais + '</span></p>';
-						
-						
 
+						var data_id = data._id;
 						
 
 							html += '</div>';						
 							html += '</div>';
 							
 							
+							
 						html += '</div>';
 						html += '</div>';
+						
 						html += '</li>';
 						html += '</div>';
+						html += '<div class="coment-area">';
+					html += '<ul class="we-comet" style="max-height: 150px; overflow-y: scroll;">';
+						data.comments = data.comments.reverse();
+						for (var b = 0; b < data.comments.length; b++) {
+							var comment = data.comments[b];
+					
+							if( comment.userId == user._id){
+								var y = comment._id;
+								console.log(comment._id);
+								comment.replies = comment.replies.reverse();
+								for (var c = 0; c < comment.replies.length; c++) {
+									var reply = comment.replies[c];
+									
+									
+									
+									html += '<li>';
+										html += '<div class="comet-avatar">';
+											html += '<img src="' + mainURL + '/' + reply.user.profileImage + '" style="width: 35px; height: 35px; object-fit: cover; border-radius: 50%">';
+										html += '</div>';
+										html += '<div class="we-comment">';
+											html += '<div class="coment-head">';
+												html += '<h5><a href="/">' + reply.user.name + '</a></h5>';
+												var createdAt = new Date(reply.createdAt);
+												var date = createdAt.getDate() + "";
+												date = date.padStart(2, "0") + " " + months[createdAt.getMonth()] + ", " + createdAt.getFullYear();
+												html += '<span>' + date + '</span>';
+											html += '</div>';
+											html += '<p>' + reply.reply + '</p>';
+										html += '</div>';
+									html += '</li>';
+											}
+										
+								html += '</ul>';
+						html += '</li>';
+					
+					
+					
+				html += '</div>';
+							}
+						}
+						
+						
+						
 					}
+					console.log(data_id);
+					if(response.data.length <= 0){
+						console.log("é menos");
+						console.log(response.data.length);
+					}else{
+
+						html += '<a class="we-reply" href="javascript:void(0);" data-post-id="' + data_id + '" data-comment-id="' + y + '" onclick="prepareToReply(this);" title="Comentar"><button class="comentarHome">Comentar</button></a>';
+						
+					}
+					
 					document.getElementById("all-pages").innerHTML = html;
 				}
 			};
@@ -311,6 +365,7 @@
 						html += '<p>Elenco: <span>' + data.elenco + '</span></p>';
 						html += '<p>País: <span>' + data.pais + '</span></p>';
 
+						var data_id = data._id;
 						
 
 						
@@ -318,13 +373,68 @@
 							html += '</div>';						
 							html += '</div>';
 							
+							
 						html += '</div>';
 						html += '</div>';
+						
 						html += '</li>';
 						html += '</div>';
+						html += '<div class="coment-area">';
+					html += '<ul class="we-comet" style="max-height: 150px; overflow-y: scroll;">';
+						data.comments = data.comments.reverse();
+						for (var b = 0; b < data.comments.length; b++) {
+							var comment = data.comments[b];
+					
+							if( comment.userId == user._id){
+								var y = comment._id;
+								console.log(comment._id);
+								comment.replies = comment.replies.reverse();
+								for (var c = 0; c < comment.replies.length; c++) {
+									var reply = comment.replies[c];
+									
+									
+									
+									html += '<li>';
+										html += '<div class="comet-avatar">';
+											html += '<img src="' + mainURL + '/' + reply.user.profileImage + '" style="width: 35px; height: 35px; object-fit: cover; border-radius: 50%">';
+										html += '</div>';
+										html += '<div class="we-comment">';
+											html += '<div class="coment-head">';
+												html += '<h5><a href="/">' + reply.user.name + '</a></h5>';
+												var createdAt = new Date(reply.createdAt);
+												var date = createdAt.getDate() + "";
+												date = date.padStart(2, "0") + " " + months[createdAt.getMonth()] + ", " + createdAt.getFullYear();
+												html += '<span>' + date + '</span>';
+											html += '</div>';
+											html += '<p>' + reply.reply + '</p>';
+										html += '</div>';
+									html += '</li>';
+											}
+										
+								html += '</ul>';
+						html += '</li>';
+					
+					
+					
+				html += '</div>';
+							}
+						}
+						
+						
+						
 					}
+					if(response.data.length <= 0){
+						console.log("é menos");
+						console.log(response.data.length);
+					}else{
+
+						html += '<a class="we-reply" href="javascript:void(0);" data-post-id="' + data_id + '" data-comment-id="' + y + '" onclick="prepareToReply2(this);" title="Comentar"><button class="comentarHome">Comentar</button></a>';
+						
+					}
+					
 					document.getElementById("all-movies").innerHTML = html;
 				}
+				
 			};
 			
 		var formData = new FormData();
@@ -373,11 +483,9 @@
 						html += '<p>Elenco: <span>' + data.elenco + '</span></p>';
 						html += '<p>Número de temporadas: <span>' + data.temporadas + '</span></p>';
 						html += '<p>País: <span>' + data.pais + '</span></p>';
-
 						
-
+						var data_id = data._id;
 						
-
 							html += '</div>';						
 							html += '</div>';
 							
@@ -385,7 +493,62 @@
 						html += '</div>';
 						html += '</li>';
 						html += '</div>';
+						html += '<div class="coment-area">';
+					html += '<ul class="we-comet" style="max-height: 150px; overflow-y: scroll;">';
+						data.comments = data.comments.reverse();
+						for (var b = 0; b < data.comments.length; b++) {
+							var comment = data.comments[b];
+					
+							if( comment.userId == user._id){
+								var y = comment._id;
+								console.log(comment._id);
+								comment.replies = comment.replies.reverse();
+								for (var c = 0; c < comment.replies.length; c++) {
+									var reply = comment.replies[c];
+									
+									
+									
+									html += '<li>';
+										html += '<div class="comet-avatar">';
+											html += '<img src="' + mainURL + '/' + reply.user.profileImage + '" style="width: 35px; height: 35px; object-fit: cover; border-radius: 50%">';
+										html += '</div>';
+										html += '<div class="we-comment">';
+											html += '<div class="coment-head">';
+												html += '<h5><a href="/">' + reply.user.name + '</a></h5>';
+												var createdAt = new Date(reply.createdAt);
+												var date = createdAt.getDate() + "";
+												date = date.padStart(2, "0") + " " + months[createdAt.getMonth()] + ", " + createdAt.getFullYear();
+												html += '<span>' + date + '</span>';
+											html += '</div>';
+											html += '<p>' + reply.reply + '</p>';
+										html += '</div>';
+									html += '</li>';
+											}
+										
+								html += '</ul>';
+						html += '</li>';
+					
+					
+					
+				html += '</div>';
+							}
+						}
+						
+						
+						
 					}
+					
+					if(response.data.length <= 0){
+						console.log("é menos");
+						console.log(response.data.length);
+					}else{
+
+						html += '<a class="we-reply" href="javascript:void(0);" data-post-id="' + data_id + '" data-comment-id="' + y + '" onclick="prepareToReply3(this);" title="Comentar"><button class="comentarHome">Comentar</button></a>';
+						
+					}
+					
+					
+					
 					document.getElementById("all-series").innerHTML = html;
 				}
 			};
