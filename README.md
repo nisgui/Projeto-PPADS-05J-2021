@@ -8,7 +8,7 @@
 
 * Nicole Francani Godinho. TIA: 31716946
 * Aleixo Afonso da Cunha Menezes Neto. TIA: 31852246
-* Marcos Vinicius Lozardo da Rosa
+
 
 
 Recado para o professor:
