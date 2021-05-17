@@ -45,7 +45,7 @@
 			</div>
 
 			<script>
-				var mainURL ="https://damp-oasis-60460.herokuapp.com";
+				var mainURL ="http://localhost:3000";
 
 				var months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
 
@@ -362,6 +362,149 @@
 				return false;
 			}
 
+			/* livros like AVALIACAO section */
+			function createLikesAvaliacao1(data){
+					
+					var isLiked = false;
+					
+					for (var b = 0; b < data.comments.length; b++){
+						var comment = data.comments[b];
+						if( comment.userId == user._id){
+								var x = comment._id;
+						}
+
+						for (var y = 0; y < comment.likers2.length; y++){
+						var liker = comment.likers2[y];
+						if(liker._id == window.user._id){
+							console.log(liker._id, window.user._id);
+							isLiked = true;
+							break;
+						}
+
+					}
+					}
+					var html = "";
+					html += '<div class="we-video-info">';
+					html += '<ul>';
+					html += '<li>';
+							var className = "";
+							if(isLiked){
+								className = "like";
+							}else{
+								className = "none";
+							}
+							
+					html += '<span class="' + className + '" onclick="toggleLikePageAvaliacao(this);" data-id="' + x + '">';
+					html += '<i class="ti-thumb-up"></i>';
+					
+					html += '</span>';
+					html += '</li>';
+
+
+
+					
+					
+					html += '</ul>';
+					html += '</div>';
+					return html;
+				}
+
+				/* FILMES like AVALIACAO section */
+			function createLikesAvaliacao2(data){
+					
+					var isLiked = false;
+					
+					for (var b = 0; b < data.comments.length; b++){
+						var comment = data.comments[b];
+						if( comment.userId == user._id){
+								var x = comment._id;
+						}
+
+						for (var y = 0; y < comment.likers2.length; y++){
+						var liker = comment.likers2[y];
+						if(liker._id == window.user._id){
+							console.log(liker._id, window.user._id);
+							isLiked = true;
+							break;
+						}
+
+					}
+					}
+					var html = "";
+					html += '<div class="we-video-info">';
+					html += '<ul>';
+					html += '<li>';
+							var className = "";
+							if(isLiked){
+								className = "like";
+							}else{
+								className = "none";
+							}
+							
+					html += '<span class="' + className + '" onclick="toggleLikeMovieAvaliacao(this);" data-id="' + x + '">';
+					html += '<i class="ti-thumb-up"></i>';
+					
+					html += '</span>';
+					html += '</li>';
+
+
+
+					
+					
+					html += '</ul>';
+					html += '</div>';
+					return html;
+				}
+////////////////////////////////////////////////////////////////////////////////
+				/* livros like AVALIACAO section */
+				function createLikesAvaliacao3(data){
+					
+					var isLiked = false;
+					
+					for (var b = 0; b < data.comments.length; b++){
+						var comment = data.comments[b];
+						if( comment.userId == user._id){
+								var x = comment._id;
+						}
+
+						for (var y = 0; y < comment.likers2.length; y++){
+						var liker = comment.likers2[y];
+						if(liker._id == window.user._id){
+							console.log(liker._id, window.user._id);
+							isLiked = true;
+							break;
+						}
+
+					}
+					}
+					var html = "";
+					html += '<div class="we-video-info">';
+					html += '<ul>';
+					html += '<li>';
+							var className = "";
+							if(isLiked){
+								className = "like";
+							}else{
+								className = "none";
+							}
+							
+					html += '<span class="' + className + '" onclick="toggleLikeSerieAvaliacao(this);" data-id="' + x + '">';
+					html += '<i class="ti-thumb-up"></i>';
+					
+					html += '</span>';
+					html += '</li>';
+
+
+
+					
+					
+					html += '</ul>';
+					html += '</div>';
+					return html;
+				}
+
+				
+			//////////////////////////////////////////////////////////////////////////
 				/* livros like section */
 				function createLikesSection2(data){
 					
@@ -536,6 +679,110 @@
 				return html;
 			}
 
+			/* like section AVALIACAO LIVRO */
+			function toggleLikePageAvaliacao(self){
+					var _id = self.getAttribute("data-id");
+					var ajax = new XMLHttpRequest();
+					ajax.open("POST", "/toggleLikePageAvaliacao", true);
+					
+					ajax.onreadystatechange = function(){
+						if(this.readyState == 4 && this.status == 200){
+							var response = JSON.parse(this.responseText);				
+							alert(response.message);					
+							
+							if(response.status == "success"){
+								self.className = "like";
+								//var likes = parseInt(self.querySelector("ins").innerHTML);
+								//likes++;
+								//self.querySelector("ins").innerHTML = likes;
+							}
+							if(response.status == "unliked"){
+								self.className = "none";
+								//var likes = parseInt(self.querySelector("ins").innerHTML);
+								//likes--;
+								//self.querySelector("ins").innerHTML = likes;
+							}
+							if(response.status == "error"){
+								alert(response.message);
+							}							
+						}
+					};
+					var formData = new FormData();
+					formData.append("accessToken", localStorage.getItem("accessToken"));
+					formData.append("_id", _id);
+					ajax.send(formData);
+				}
+
+			
+				/* like section AVALIACAO FILME */
+			function toggleLikeMovieAvaliacao(self){
+					var _id = self.getAttribute("data-id");
+					var ajax = new XMLHttpRequest();
+					ajax.open("POST", "/toggleLikeMovieAvaliacao", true);
+					
+					ajax.onreadystatechange = function(){
+						if(this.readyState == 4 && this.status == 200){
+							var response = JSON.parse(this.responseText);				
+							alert(response.message);					
+							
+							if(response.status == "success"){
+								self.className = "like";
+								//var likes = parseInt(self.querySelector("ins").innerHTML);
+								//likes++;
+								//self.querySelector("ins").innerHTML = likes;
+							}
+							if(response.status == "unliked"){
+								self.className = "none";
+								//var likes = parseInt(self.querySelector("ins").innerHTML);
+								//likes--;
+								//self.querySelector("ins").innerHTML = likes;
+							}
+							if(response.status == "error"){
+								alert(response.message);
+							}							
+						}
+					};
+					var formData = new FormData();
+					formData.append("accessToken", localStorage.getItem("accessToken"));
+					formData.append("_id", _id);
+					ajax.send(formData);
+				}
+
+				/* like section AVALIACAO SERIE */
+			function toggleLikeSerieAvaliacao(self){
+					var _id = self.getAttribute("data-id");
+					var ajax = new XMLHttpRequest();
+					ajax.open("POST", "/toggleLikeSerieAvaliacao", true);
+					
+					ajax.onreadystatechange = function(){
+						if(this.readyState == 4 && this.status == 200){
+							var response = JSON.parse(this.responseText);				
+							alert(response.message);					
+							
+							if(response.status == "success"){
+								self.className = "like";
+								//var likes = parseInt(self.querySelector("ins").innerHTML);
+								//likes++;
+								//self.querySelector("ins").innerHTML = likes;
+							}
+							if(response.status == "unliked"){
+								self.className = "none";
+								//var likes = parseInt(self.querySelector("ins").innerHTML);
+								//likes--;
+								//self.querySelector("ins").innerHTML = likes;
+							}
+							if(response.status == "error"){
+								alert(response.message);
+							}							
+						}
+					};
+					var formData = new FormData();
+					formData.append("accessToken", localStorage.getItem("accessToken"));
+					formData.append("_id", _id);
+					ajax.send(formData);
+				}
+
+
 			/* like section */
 			function toggleLikePage(self){
 					var _id = self.getAttribute("data-id");
@@ -649,7 +896,7 @@
 					data.comments = data.comments.reverse();
 					for (var b = 0; b < data.comments.length; b++) {
 						var comment = data.comments[b];
-					
+										
 						if( comment.userId == user._id){
 
 

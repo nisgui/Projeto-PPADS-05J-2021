@@ -373,7 +373,7 @@ a:hover.pinterest {
     width: 23px;
 }
 
-}
+
 
 a:hover.youtube {
     background: #e62117;
@@ -1947,6 +1947,7 @@ for some reason nth-child(1) is always busy and elements starting from 2 */
 
 .comentarHome{
     background: #3D94F6;
+    position: relative;
     background-image: -webkit-linear-gradient(top, #3D94F6, #1E62D0);
     background-image: -moz-linear-gradient(top, #3D94F6, #1E62D0);
     background-image: -ms-linear-gradient(top, #3D94F6, #1E62D0);
@@ -1967,8 +1968,11 @@ for some reason nth-child(1) is always busy and elements starting from 2 */
     text-align: center;
     margin-bottom: 10px;
     margin-top: 10px;
+    left: 450px;
+
 
 }
+
 .comentarHome:hover {
     border: solid #337FED 1px;
     background: #1E62D0;
@@ -10378,3 +10382,6 @@ aside.sidebar.full-style {
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }
+
+/* comentarios e likes avaliações */
+

@@ -11,6 +11,7 @@
 								<%- include ("includes/left-sidebar") %>
 							</div>
 							
+							
 							<div class="col-md-6">
 								<div class="tab-content">
 									
@@ -223,11 +224,11 @@
 					
 					var html = "";
 					for (var a = 0; a < response.data.length; a++){
-						
 						var data = response.data[a];
 						html += '<div class="avaliacaopage">';
 						html += '<li>';
 							html += createCommentsSection2(data);
+							
 						html += '<div class="">';
 							
 						html += '<figure>';
@@ -240,20 +241,28 @@
 									html += '<img src="' + mainURL + "/" + data.image + '" style="width: 300px;  object-fit: cover;>';
 								}
 						
-						html += '<div class="page-infos2">';
-							html += '<p>Tipo: <span>' + data.tipo + '</span></p>';
-						html += '<h4><a href="/page/' + data._id + '">' + data.name + '</a></h4>';
-						html += '<p> Autor: <span>' + data.autor + '</span></p>';
-						html += '<p>Ano de publicação: <span>' + data.ano + '</span></p>';
-						html += '<p>Editora: <span>' + data.editora + '</span></p>';
-						html += '<p>País: <span>' + data.pais + '</span></p>';
+								html += '<div class="page-infos2">';
+                        html += '<h4><a href="/page/' + data._id + '">' + data.name + '</a></h4>';
+                        html += '<p> Local de publicação: <span>' + data.autor + '</span></p>';
+                        html += '<p>Ano de publicação: <span>' + data.ano + '</span></p>';
+                        html += '<p>URL: <span>' + data.editora + '</span></p>';
+                        html += '<p>Resumo: <span>' + data.pais + '</span></p>';
 
 						var data_id = data._id;
 						
+						html += createLikesAvaliacao1(data);
+						
+						
+						data.comments = data.comments.reverse();
+						for (var b = 0; b < data.comments.length; b++) {
+							
+							var comment = data.comments[b];
+					
+							if( comment.userId == user._id){
+								html += '<p>Likes: <ins>' + comment.likers2.length + '</ins></p>';
 
 							html += '</div>';						
 							html += '</div>';
-							
 							
 							
 						html += '</div>';
@@ -263,11 +272,7 @@
 						html += '</div>';
 						html += '<div class="coment-area">';
 					html += '<ul class="we-comet" style="max-height: 150px; overflow-y: scroll;">';
-						data.comments = data.comments.reverse();
-						for (var b = 0; b < data.comments.length; b++) {
-							var comment = data.comments[b];
-					
-							if( comment.userId == user._id){
+						
 								var y = comment._id;
 								console.log(comment._id);
 								comment.replies = comment.replies.reverse();
@@ -305,18 +310,23 @@
 						
 						
 					}
-					console.log(data_id);
 					if(response.data.length <= 0){
 						console.log("é menos");
 						console.log(response.data.length);
 					}else{
+						html += '<div class="avaliacao-cl">'
+						html += '<div class="row">'
+							
 
+							
 						html += '<a class="we-reply" href="javascript:void(0);" data-post-id="' + data_id + '" data-comment-id="' + y + '" onclick="prepareToReply(this);" title="Comentar"><button class="comentarHome">Comentar</button></a>';
-						
+						html += '</div>'
+						html += '</div>'
 					}
 					
 					document.getElementById("all-pages").innerHTML = html;
 				}
+				
 			};
 			
 		var formData = new FormData();
@@ -345,6 +355,7 @@
 						html += '<div class="avaliacaopage">';
 						html += '<li>';
 							html += createCommentsSection2(data);
+							
 						html += '<div class="">';
 							
 						html += '<figure>';
@@ -367,7 +378,7 @@
 
 						var data_id = data._id;
 						
-
+						html += createLikesAvaliacao2(data);
 						
 
 							html += '</div>';						
@@ -427,9 +438,14 @@
 						console.log("é menos");
 						console.log(response.data.length);
 					}else{
+						html += '<div class="avaliacao-cl">'
+						html += '<div class="row">'
+							
 
+							html += '<p>Likes: <ins>' + comment.likers2.length + '</ins></p>';
 						html += '<a class="we-reply" href="javascript:void(0);" data-post-id="' + data_id + '" data-comment-id="' + y + '" onclick="prepareToReply2(this);" title="Comentar"><button class="comentarHome">Comentar</button></a>';
-						
+						html += '</div>'
+						html += '</div>'
 					}
 					
 					document.getElementById("all-movies").innerHTML = html;
@@ -462,6 +478,8 @@
 						html += '<div class="avaliacaopage">';
 						html += '<li>';
 							html += createCommentsSection2(data);
+							
+							
 						html += '<div class="">';
 							
 						html += '<figure>';
@@ -485,6 +503,7 @@
 						html += '<p>País: <span>' + data.pais + '</span></p>';
 						
 						var data_id = data._id;
+						html += createLikesAvaliacao3(data);
 						
 							html += '</div>';						
 							html += '</div>';
@@ -543,8 +562,15 @@
 						console.log(response.data.length);
 					}else{
 
-						html += '<a class="we-reply" href="javascript:void(0);" data-post-id="' + data_id + '" data-comment-id="' + y + '" onclick="prepareToReply3(this);" title="Comentar"><button class="comentarHome">Comentar</button></a>';
 						
+						html += '<div class="avaliacao-cl">'
+						html += '<div class="row">'
+							
+
+							html += '<p>Likes: <ins>' + comment.likers2.length + '</ins></p>';
+							html += '<a class="we-reply" href="javascript:void(0);" data-post-id="' + data_id + '" data-comment-id="' + y + '" onclick="prepareToReply3(this);" title="Comentar"><button class="comentarHome">Comentar</button></a>';
+						html += '</div>'
+						html += '</div>'
 					}
 					
 					

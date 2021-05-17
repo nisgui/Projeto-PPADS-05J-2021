@@ -13,7 +13,7 @@
 <div class="box-friend">
     <h4 class="widget-title2" >Amigos</h4>
         
-            
+  
            
     <div id="scrolling-wrapper2">
 
@@ -162,9 +162,22 @@ function getTimeline(){
 
                         
                         var data_id = data._id;
+                        html += createLikesProfile(data);
                         
 
-                            html += '</div>';						
+                            
+                        
+						data.comments = data.comments.reverse();
+						for (var b = 0; b < data.comments.length; b++) {
+							var comment = data.comments[b];
+					
+							var y = comment.userId;
+					
+						    if( y == _id.value){
+                                var x = comment._id;
+                                html += '<p>Likes: <ins>' + comment.likers2.length + '</ins></p>';
+
+                                html += '</div>';						
                             html += '</div>';
                             
                         html += '</div>';
@@ -175,14 +188,7 @@ function getTimeline(){
                        
                         html += '<div class="coment-area">';
 					html += '<ul class="we-comet" style="max-height: 150px; overflow-y: scroll;">';
-						data.comments = data.comments.reverse();
-						for (var b = 0; b < data.comments.length; b++) {
-							var comment = data.comments[b];
-					
-							var y = comment.userId;
-					
-						    if( y == _id.value){
-                                var x = comment._id;
+                                
 								console.log(comment._id);
 								comment.replies = comment.replies.reverse();
 								for (var c = 0; c < comment.replies.length; c++) {
@@ -225,7 +231,15 @@ function getTimeline(){
 						console.log(response.data.length);
 					}else{
 
-						html += '<a class="we-reply" href="javascript:void(0);" data-post-id="' + data_id + '" data-comment-id="' + x + '" onclick="prepareToReply(this);" title="Comentar"><button class="comentarHome">Comentar</button></a>';
+						html += '<div class="avaliacao-cl">'
+						html += '<div class="row">'
+							
+
+							
+                            //console.log("likes friend page: ", avaliacoes.length );
+						html += '<a class="we-reply" href="javascript:void(0);" data-post-id="' + data_id + '" data-comment-id="' + y + '" onclick="prepareToReply(this);" title="Comentar"><button class="comentarHome">Comentar</button></a>';
+						html += '</div>'
+						html += '</div>'
 						
 					}
             document.getElementById("all-pages").innerHTML = html;

@@ -29,7 +29,7 @@ var socketID = "";
 var users = [];
 
 
-var mainURL = "https://damp-oasis-60460.herokuapp.com";
+var mainURL = "http://localhost:3000";
 
 socketIO.on("connection", function(socket){
 	console.log("User connected", socket.id);
@@ -306,6 +306,12 @@ http.listen(port, function() {
 				}
 			});
 		});
+
+		//admin section
+
+		
+
+		////////////////////////////////////////////////////////
 
 		app.post("/uploadProfileImage", function(request, result){
 			var accessToken = request.fields.accessToken;
@@ -1945,7 +1951,8 @@ app.get("/friends", function (request, result) {
 									"notaAvaliacao": notaAvaliacao,
 									"name": user.name,
 									"profileImage": user.profileImage,
-									"replies": []
+									"replies": [],
+									"likers2": []
 								}
 							}
 						}, function (error, data) {
@@ -1972,7 +1979,8 @@ app.get("/friends", function (request, result) {
 										"notaAvaliacao": notaAvaliacao,
 										"name": user.name,
 										"profileImage": user.profileImage,
-										"replies": []
+										"replies": [],
+										"likers2": []
 									}
 								}
 							});
@@ -2051,7 +2059,8 @@ app.get("/friends", function (request, result) {
 									"notaAvaliacao": notaAvaliacao,
 									"name": user.name,
 									"profileImage": user.profileImage,
-									"replies": []
+									"replies": [],
+									"likers2": []
 								}
 							}
 						}, function (error, data) {
@@ -2078,7 +2087,8 @@ app.get("/friends", function (request, result) {
 										"notaAvaliacao": notaAvaliacao,
 										"name": user.name,
 										"profileImage": user.profileImage,
-										"replies": []
+										"replies": [],
+										"likers2": []
 									}
 								}
 							});
@@ -2396,10 +2406,6 @@ app.get("/friends", function (request, result) {
 						"message": "User has been logged out. Please login again."
 					});
 				} else {
-
-
-					
-
 					
 					var commentId = ObjectId();
 					database.collection("pages").find({
@@ -2408,6 +2414,9 @@ app.get("/friends", function (request, result) {
 								"user._id": user._id,
 								"user.name": user.name,
 								"user.profileImage": user.profileImage
+							},
+							"likers2":{
+								"user._id": user._id
 							}
 							
 						},{
@@ -2456,6 +2465,9 @@ app.get("/friends", function (request, result) {
 								"user._id": user._id,
 								"user.name": user.name,
 								"user.profileImage": user.profileImage
+							},
+							"likers2":{
+								"user._id": user._id
 							}
 							
 						},{
@@ -2463,7 +2475,8 @@ app.get("/friends", function (request, result) {
 						}]
 						
 					}).sort({
-						"createdAt": -1
+						"createdAt": -1,
+						"comments.likers2._id.length": 1
 					})
 					.limit(20)
 					.toArray(function (error, data){
@@ -2503,13 +2516,21 @@ app.get("/friends", function (request, result) {
 								"user._id": user._id,
 								"user.name": user.name,
 								"user.profileImage": user.profileImage
+							},
+							"likers2":{
+								"user._id": user._id
 							}
 							
 						},{
 							"comments.user._id": user._id
 						}]
 						
-					}).toArray(function (error, data){
+					}).sort({
+						"createdAt": -1,
+						"comments.likers2._id.length": 1
+					})
+					.limit(20)
+					.toArray(function (error, data){
 						result.json({
 							"status": "success",
 							"message": "Record has been fetched.",
@@ -2592,6 +2613,382 @@ app.get("/friends", function (request, result) {
 				}
 			});
 		});
+		////////////////////////////////////////////////////////
+
+		//LIKE LIVROS AVALIACAO
+		app.post("/toggleLikePageProfile", function(request, result){
+			var accessToken = request.fields.accessToken;
+			var _id = request.fields._id;
+			
+			database.collection("users").findOne({
+				"accessToken": accessToken
+			}, function(error, user){
+				if(user == null){
+					result.json({
+						"status": "error",
+						"message": "User has been logged out.Please login again."
+					});
+				} else {
+					database.collection("pages").findOne({
+						"comments._id": ObjectId(_id)
+					}, function(error, page){
+						if(page == null){
+							result.json({
+								"status": "error",
+								"message": "Comment does not exist."
+							});
+						} else {
+							var isLiked = false;
+							for (var a = 0; a < page.comments.length; a++){
+								var comment = page.comments[a];
+								if( comment.userId == _id.value){
+								
+								for (var y = 0; y < comment.likers2.length; y++){
+									var liker = comment.likers2[y];
+								
+								if(liker._id.toString() == window.user._id.toString()){
+									isLiked = true;
+									break;
+								}
+							}
+							}
+							
+							}
+							
+							if(isLiked == true){
+								database.collection("pages").updateOne({
+									$and: [{
+											
+									}, {
+										"comments._id": ObjectId(_id)
+									}]
+								}, {
+									$pull: {
+										"comments.$.likers2": {
+											"_id": user._id
+
+										
+										}
+									}
+								}, function(error, data){
+									result.json({
+										"status": "unliked",
+										"message": "Avaliação foi descurtida."
+									});
+									
+								})
+							} else{
+									
+									database.collection("pages").updateOne({
+										$and: [{
+											
+										}, {
+											"comments._id": ObjectId(_id)
+										}]
+									}, {
+										$push: {
+											"comments.$.likers2": {
+												"_id": user._id
+
+											
+											}
+										}
+									}, function(error, data){
+										
+										
+										
+										result.json({
+											"status": "success",
+											"message": "Avaliação foi curtida."
+											});
+										});									
+									
+								}
+							}
+						});						
+					}
+				});
+			});
+
+		///////////////////////////////////////////////////////
+
+		//LIKE LIVROS AVALIACAO
+		app.post("/toggleLikePageAvaliacao", function(request, result){
+			var accessToken = request.fields.accessToken;
+			var _id = request.fields._id;
+			
+			database.collection("users").findOne({
+				"accessToken": accessToken
+			}, function(error, user){
+				if(user == null){
+					result.json({
+						"status": "error",
+						"message": "User has been logged out.Please login again."
+					});
+				} else {
+					database.collection("pages").findOne({
+						"comments._id": ObjectId(_id)
+					}, function(error, page){
+						if(page == null){
+							result.json({
+								"status": "error",
+								"message": "Comment does not exist."
+							});
+						} else {
+							var isLiked = false;
+							for (var a = 0; a < page.comments.length; a++){
+								var comment = page.comments[a];
+								for (var y = 0; y < comment.likers2.length; y++){
+									var liker = comment.likers2[y];
+								
+								if(liker._id.toString() == user._id.toString()){
+									isLiked = true;
+									break;
+								}
+							}
+							
+							}
+							
+							if(isLiked){
+								database.collection("pages").updateOne({
+									$and: [{
+											
+									}, {
+										"comments._id": ObjectId(_id)
+									}]
+								}, {
+									$pull: {
+										"comments.$.likers2": {
+											"_id": user._id
+
+										
+										}
+									}
+								}, function(error, data){
+									result.json({
+										"status": "unliked",
+										"message": "Avaliação foi descurtida."
+									});
+									
+								})
+							} else{
+									
+									database.collection("pages").updateOne({
+										$and: [{
+											
+										}, {
+											"comments._id": ObjectId(_id)
+										}]
+									}, {
+										$push: {
+											"comments.$.likers2": {
+												"_id": user._id
+
+											
+											}
+										}
+									}, function(error, data){
+										
+										
+										
+										result.json({
+											"status": "success",
+											"message": "Avaliação foi curtida."
+											});
+										});									
+									
+								}
+							}
+						});						
+					}
+				});
+			});
+
+	//LIKE FILMES AVALIACAO
+	app.post("/toggleLikeMovieAvaliacao", function(request, result){
+		var accessToken = request.fields.accessToken;
+		var _id = request.fields._id;
+		
+		database.collection("users").findOne({
+			"accessToken": accessToken
+		}, function(error, user){
+			if(user == null){
+				result.json({
+					"status": "error",
+					"message": "User has been logged out.Please login again."
+				});
+			} else {
+				database.collection("movies").findOne({
+					"comments._id": ObjectId(_id)
+				}, function(error, movie){
+					if(movie == null){
+						result.json({
+							"status": "error",
+							"message": "Comment does not exist."
+						});
+					} else {
+						var isLiked = false;
+						for (var a = 0; a < movie.comments.length; a++){
+							var comment = movie.comments[a];
+							for (var y = 0; y < comment.likers2.length; y++){
+								var liker = comment.likers2[y];
+							
+							if(liker._id.toString() == user._id.toString()){
+								isLiked = true;
+								break;
+							}
+						}
+						
+						}
+						
+						if(isLiked){
+							database.collection("movies").updateOne({
+								$and: [{
+										
+								}, {
+									"comments._id": ObjectId(_id)
+								}]
+							}, {
+								$pull: {
+									"comments.$.likers2": {
+										"_id": user._id
+
+									
+									}
+								}
+							}, function(error, data){
+								result.json({
+									"status": "unliked",
+									"message": "Avaliação foi descurtida."
+								});
+								
+							})
+						} else{
+								
+								database.collection("movies").updateOne({
+									$and: [{
+										
+									}, {
+										"comments._id": ObjectId(_id)
+									}]
+								}, {
+									$push: {
+										"comments.$.likers2": {
+											"_id": user._id
+
+										
+										}
+									}
+								}, function(error, data){
+									
+									
+									
+									result.json({
+										"status": "success",
+										"message": "Avaliação foi curtida."
+										});
+									});									
+								
+							}
+						}
+					});						
+				}
+			});
+		});
+
+		//LIKE SERIES AVALIAÇÃO
+	app.post("/toggleLikeSerieAvaliacao", function(request, result){
+		var accessToken = request.fields.accessToken;
+		var _id = request.fields._id;
+		
+		database.collection("users").findOne({
+			"accessToken": accessToken
+		}, function(error, user){
+			if(user == null){
+				result.json({
+					"status": "error",
+					"message": "User has been logged out.Please login again."
+				});
+			} else {
+				database.collection("series").findOne({
+					"comments._id": ObjectId(_id)
+				}, function(error, serie){
+					if(serie == null){
+						result.json({
+							"status": "error",
+							"message": "Comment does not exist."
+						});
+					} else {
+						var isLiked = false;
+						for (var a = 0; a < serie.comments.length; a++){
+							var comment = serie.comments[a];
+							for (var y = 0; y < comment.likers2.length; y++){
+								var liker = comment.likers2[y];
+							
+							if(liker._id.toString() == user._id.toString()){
+								isLiked = true;
+								break;
+							}
+						}
+						
+						}
+						
+						if(isLiked){
+							database.collection("series").updateOne({
+								$and: [{
+										
+								}, {
+									"comments._id": ObjectId(_id)
+								}]
+							}, {
+								$pull: {
+									"comments.$.likers2": {
+										"_id": user._id
+
+									
+									}
+								}
+							}, function(error, data){
+								result.json({
+									"status": "unliked",
+									"message": "Avaliação foi descurtida."
+								});
+								
+							})
+						} else{
+								
+								database.collection("series").updateOne({
+									$and: [{
+										
+									}, {
+										"comments._id": ObjectId(_id)
+									}]
+								}, {
+									$push: {
+										"comments.$.likers2": {
+											"_id": user._id
+
+										
+										}
+									}
+								}, function(error, data){
+									
+									
+									
+									result.json({
+										"status": "success",
+										"message": "Avaliação foi curtida."
+										});
+									});									
+								
+							}
+						}
+					});						
+				}
+			});
+		});
+
+		
 
 		//like livros
 		app.post("/toggleLikePage", function(request, result){
@@ -3515,11 +3912,13 @@ app.get("/friends", function (request, result) {
 					
 					"comments.user._id": {
 						$in: ids
-					}		
+					},
+					
 					
 				})
 				.sort({
-					"createdAt": -1
+					"createdAt": -1,
+					"comments.likers2._id.length": 1
 				})
 				.limit(20)
 				.toArray(function(error, data){
@@ -3619,12 +4018,91 @@ app.get("/friends", function (request, result) {
 	});
 
 
-		app.post("/do-delete", function(req, res){
-			var _id = request.fields._id;
-			console.log("ta indo")
+	app.post("/delete-post", async function (request, result) {
+        var accessToken = request.fields.accessToken;
+        var _id = request.fields._id;
 
-			database.collection("posts").remove({
+        var user = await database.collection("users").findOne({
+            "accessToken": accessToken
+        });
+
+        if (user == null) {
+            result.json({
+                "status": "error",
+                "message": "User has been logged out. Please login again."
+            });
+            return;
+        }
+
+        const post = await database.collection("pages").findOne({
 			"_id": ObjectId(_id)
+
+        });
+
+        if (post == null) {
+            result.json({
+                "status": "error",
+                "message": "Something went wrong."
+            });
+            return;
+        }
+
+            await database.collection("pages").deleteOne({
+				"_id": ObjectId(_id)
+
+            });
+
+            result.json({
+                "status": "success",
+                "message": "Cadastro de livro deletado."
+            });
+
+    });
+
+	app.get("/admin", async function (request, result) {
+        result.render("admin");
+    });
+
+	app.post("/delete-page", function (request, result) {
+
+		var accessToken = request.fields.accessToken;
+		var _id = request.fields._id;
+		
+
+		database.collection("users").findOne({
+			"accessToken": accessToken
+		}, function (error, user) {
+			if (accessToken != "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwiaWF0IjoxNjE5NDY5MzM5fQ.2tbXgdGceEJMdybfqdcLuJduNPZrux_-H43fLZF7KqE") {
+				result.json({
+					"status": "error",
+					"message": "User has been logged out. Please login again."
+				});
+			} else {
+
+				
+
+				database.collection("pages").findOne({
+					"_id": ObjectId(_id)
+				}, function (error, post) {
+					if (post == null) {
+						result.json({
+							"status": "error",
+							"message": "pages does not exist."
+						});
+					} else {
+
+							database.collection("pages").deleteOne({
+								"_id": ObjectId(_id)
+							}, function (error, updatePost) {
+								result.json({
+									"status": "success",
+									"message": "Livro deletado com suceeso.",
+									"updatePost": updatePost
+								});
+							});
+					}
+				});
+			}
 		});
 	});
 		
