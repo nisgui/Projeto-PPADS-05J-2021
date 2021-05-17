@@ -1540,7 +1540,7 @@ app.get("/friends", function (request, result) {
 
 		//cadastrar livro
 		app.get("/createPage", function(request, result){
-			result.render("createpage");
+			result.render("createPage");
 		});
 
 		app.post("/createPage", function(request, result){
@@ -2113,7 +2113,7 @@ app.get("/friends", function (request, result) {
 		//cadastrar filme
 
 		app.get("/createMovie", function(request, result){
-			result.render("createmovie");
+			result.render("createMovie");
 		});
 
 		app.post("/createMovie", function(request, result){
@@ -2179,7 +2179,7 @@ app.get("/friends", function (request, result) {
 		//cadastrar serie
 
 		app.get("/createSerie", function(request, result){
-			result.render("createserie");
+			result.render("createSerie");
 		});
 
 		app.post("/createSerie", function(request, result){
