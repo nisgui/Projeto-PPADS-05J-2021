@@ -29,7 +29,7 @@ var socketID = "";
 var users = [];
 
 
-var mainURL = "https://damp-oasis-60460.herokuapp.com/";
+var mainURL = "https://damp-oasis-60460.herokuapp.com";
 
 socketIO.on("connection", function(socket){
 	console.log("User connected", socket.id);
