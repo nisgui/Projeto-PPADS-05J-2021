@@ -62,6 +62,11 @@
                     
                     html += '</li>';
 
+                   
+                    console.log("id usuario logado",window.user._id);
+
+                    
+
                     }
 
                 
@@ -144,8 +149,7 @@ function getTimeline(){
                         html += '<div class="">';
                             
                         html += '<figure>';
-                        html += '<a href="/page/' + data._id + '">';
-                        html += '</a>';
+                        
 
                         
                         html += '<p>Tipo: <span>' + data.tipo + '</span></p>';
@@ -154,7 +158,7 @@ function getTimeline(){
                                 }
                         
                                 html += '<div class="page-infos2">';
-                        html += '<h4><a href="/page/' + data._id + '">' + data.name + '</a></h4>';
+                        html += '<h4><a' + data._id + '">' + data.name + '</a></h4>';
                         html += '<p> Local de publicação: <span>' + data.autor + '</span></p>';
                         html += '<p>Ano de publicação: <span>' + data.ano + '</span></p>';
                         html += '<p>URL: <span>' + data.editora + '</span></p>';
@@ -318,8 +322,7 @@ function getTimeline2(){
                         html += '<div class="">';
                             
                         html += '<figure>';
-                        html += '<a href="/page/' + data._id + '">';
-                        html += '</a>';
+                        
 
                         
 
@@ -329,7 +332,7 @@ function getTimeline2(){
                         
                                 html += '<div class="page-infos2">';
                             html += '<p>Tipo: <span>' + data.tipo + '</span></p>';
-                        html += '<h4><a href="/page/' + data._id + '">' + data.name + '</a></h4>';
+                        html += '<h4><a' + data._id + '">' + data.name + '</a></h4>';
                         html += '<p> Diretor: <span>' + data.diretor + '</span></p>';
                         html += '<p>Ano de publicação: <span>' + data.ano + '</span></p>';
                         html += '<p>Elenco: <span>' + data.elenco + '</span></p>';
@@ -471,8 +474,7 @@ function getTimeline3(){
                         html += '<div class="">';
                             
                         html += '<figure>';
-                        html += '<a href="/page/' + data._id + '">';
-                        html += '</a>';
+                        
 
                         
 
@@ -482,7 +484,7 @@ function getTimeline3(){
                         
                                 html += '<div class="page-infos2">';
                             html += '<p>Tipo: <span>' + data.tipo + '</span></p>';
-                        html += '<h4><a href="/page/' + data._id + '">' + data.name + '</a></h4>';
+                        html += '<h4><a' + data._id + '">' + data.name + '</a></h4>';
                         html += '<p> Diretor: <span>' + data.diretor + '</span></p>';
                         html += '<p>Ano de publicação: <span>' + data.ano + '</span></p>';
                         html += '<p>Elenco: <span>' + data.elenco + '</span></p>';

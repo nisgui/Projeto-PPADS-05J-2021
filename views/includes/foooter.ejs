@@ -221,6 +221,21 @@
 							if(typeof moviesLiked !== "undefined" && moviesLiked){
 								likedMovies();
 							}
+							if(typeof isSuggestPage !== "undefined" && isSuggestPage){
+								getSuggestBooks();
+							}
+
+							if(typeof isSuggestMovie !== "undefined" && isSuggestMovie){
+								getSuggestMovies();
+							}
+
+							if(typeof isSuggestSerie !== "undefined" && isSuggestSerie){
+								getSuggestSeries();
+							}
+
+							if(typeof isSuggestFriend !== "undefined" && isSuggestFriend){
+								getSuggestFriends();
+							}
 
 
 
@@ -252,7 +267,7 @@
 							html += '<li>';
 								html += '<a href="/pages">Livros</a>';
 								html += '<a href="/pagesLiked">Livros Curtidos</a>';
-								html += '<a href="/pages">Sugestão de Livros</a>';
+								html += '<a href="/suggestBooks">Sugestão de Livros</a>';
 							html += '</li>';
 						html += '</ul>';
 					html += '</li>';
@@ -263,7 +278,7 @@
 							html += '<li>';
 								html += '<a href="/movies">Filmes</a>';
 								html += '<a href="/moviesLiked">Filmes Curtidos</a>';
-								html += '<a href="/pages">Sugestão de Filmes</a>';
+								html += '<a href="/suggestMovies">Sugestão de Filmes</a>';
 							html += '</li>';
 						html += '</ul>';
 					
@@ -274,7 +289,7 @@
 							html += '<li>';
 								html += '<a href="/series">Séries</a>';
 								html += '<a href="/seriesLiked">Séries Curtidas</a>';
-								html += '<a href="/pages">Sugestão de Séries</a>';
+								html += '<a href="/suggestSeries">Sugestão de Séries</a>';
 							html += '</li>';
 						html += '</ul>';
 					

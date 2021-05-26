@@ -68,11 +68,13 @@
                        
                         console.log(aceitos);
 
-                        media = response.data.length / aceitos
+                        media =  aceitos / response.data.length
+
+                        var atual = (Math.round(media * 100) / 100).toFixed(2);
 
                         html += '<p style="font-size: 30px; color: black;"> Número médio de amigos nesta rede social:';
                             html += '</p>';
-                        html += '<p style="font-size: 100px; color: black; margin-top: 0;">' + media + '</p>';
+                        html += '<p style="font-size: 100px; color: black; margin-top: 0;">' + atual + '</p>';
                         html += '<p style="font-size: 15px; color: black; margin-top: -40px;"> Número de membros:' + response.data.length + '</p>';
                         html += '<p style="font-size: 15px; color: black; margin-top: -10px;"> Número total de amizades:' + aceitos + '</p>';
                        

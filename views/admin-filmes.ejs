@@ -74,8 +74,7 @@ var mainURL ="https://damp-oasis-60460.herokuapp.com";
 						html += '<li>';
 					html += '<div class="f-page">';
 					html += '<figure>';
-					html += '<a href="/page/' + data._id + '">';
-					html += '</a>';
+					
 					
 					
 					
@@ -85,7 +84,7 @@ var mainURL ="https://damp-oasis-60460.herokuapp.com";
 					
                             html += '<div class="page-infos2">';
 							html += '<p>Tipo: <span>' + data.tipo + '</span></p>';
-						html += '<h4><a href="/page/' + data._id + '">' + data.name + '</a></h4>';
+						html += '<h4><a' + data._id + '">' + data.name + '</a></h4>';
 						html += '<p> Diretor: <span>' + data.diretor + '</span></p>';
 						html += '<p>Ano de publicação: <span>' + data.ano + '</span></p>';
 						html += '<p>Elenco: <span>' + data.elenco + '</span></p>';

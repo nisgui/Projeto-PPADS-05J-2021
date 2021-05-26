@@ -49,8 +49,7 @@
 					html += '<li>';
 					html += '<div class="f-page">';
 					html += '<figure>';
-					html += '<a href="/page/' + data._id + '">';
-					html += '</a>';
+					
 					
 					html += '<em>' + data.likers.length + ' likes </em>';
 					html += '</figure>';
@@ -60,7 +59,7 @@
 							}
 					
 					html += '<div class="page-infos2">';
-					html += '<h4><a href="/page/' + data._id + '">' + data.name + '</a></h4>';
+					html += '<h4><a' + data._id + '">' + data.name + '</a></h4>';
 					html += '<p> Diretor(es): <span>' + data.diretor + '</span></p>';
 					html += '<p>Elenco: <span>' + data.elenco + '</span></p>';
 					html += '<p>País: <span>' + data.pais + '</span></p>';

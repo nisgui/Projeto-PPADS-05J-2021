@@ -1,0 +1,107 @@
+<%- include ("includes/header") %>
+
+<section>
+	<div class="gap gray-bg">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row" id="page-contents">
+					
+						<div class="col-md-3">
+							<%- include ("includes/left-sidebar") %>
+						</div>
+						
+						<div class="col-md-6">							
+							<div class="row justify-content-md-center">
+								<div class="groups">
+									<span><i class="fa fa-file-text-o"></i> Livros Sugeridos </span>
+								</div>
+								<ul class="liked-pages" id="all-pages"></ul>
+							</div>							
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	
+	 var isSuggestPage = true;
+	 function getSuggestBooks(){
+		var ajax = new XMLHttpRequest();
+		ajax.open("POST", "/getSuggestBooks", true);
+			
+		ajax.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+				var response = JSON.parse(this.responseText);
+				
+				if(response.status == "error"){
+					alert(response.message);
+					return;
+				}
+				
+				
+				var html = "";
+				for (var a = 0; a < response.data.length; a++){
+					var data = response.data[a];
+
+                    var isLiked = false;
+					for (var b = 0; b < data.likers.length; b++) {
+						var tempData = data.likers[b];
+						if (tempData._id.toString() == user._id.toString()) {
+							isLiked = true;
+							break;
+						}
+					}
+
+                    if (localStorage.getItem("accessToken")) {
+							if (!isLiked) {
+
+                            html += '<li>';
+                            html += '<div class="f-page">';
+                            html += '<figure>';
+                            
+                            
+                            html += '<em>' + data.likers.length + ' likes </em>';
+                            html += '</figure>';
+                            
+                            if(data.image != ""){
+                                        html += '<img src="' + mainURL + "/" + data.image + '" style="width:205px;">';
+                                    }
+                            
+                            html += '<div class="page-infos2">';
+                            html += '<h4><a' + data._id + '">' + data.name + '</a></h4>';
+                            html += '<p> Autor(es): <span>' + data.autor + '</span></p>';
+                            html += '<p>Editora: <span>' + data.editora + '</span></p>';
+                            html += '<p>País: <span>' + data.pais + '</span></p>';
+                            html += '<p>Ano de lançamento: <span>' + data.ano + '</span></p>';
+
+                            
+                                    html += '</div>';						
+                                    html += '</div>';
+                                    html += createLikesSection2(data);
+                                    html += "<div id='post-comments-" + data._id + "'>";
+                                    html += createCommentsSection(data);
+
+                            html += '</div>';
+                            html += '</div>';
+                            html += '</li>';
+                            }
+                        }
+					
+					
+				}
+				document.getElementById("all-pages").innerHTML = html;
+			}
+		};
+		
+	var formData = new FormData();
+	formData.append("accessToken", localStorage.getItem("accessToken"));
+	ajax.send(formData);		
+	}	 
+</script>
+
+<%- include ("includes/foooter") %>

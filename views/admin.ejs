@@ -73,8 +73,7 @@ var mainURL ="https://damp-oasis-60460.herokuapp.com";
 						html += '<li>';
 					html += '<div class="f-page">';
 					html += '<figure>';
-					html += '<a href="/page/' + data._id + '">';
-					html += '</a>';
+					
 					
 					
 					
@@ -83,7 +82,7 @@ var mainURL ="https://damp-oasis-60460.herokuapp.com";
 							}
 					
 					html += '<div class="page-infos2">';
-					html += '<h4><a href="/page/' + data._id + '">' + data.name + '</a></h4>';
+					html += '<h4><a' + data._id + '">' + data.name + '</a></h4>';
 					html += '<p> Autor(es): <span>' + data.autor + '</span></p>';
 					html += '<p>Editora: <span>' + data.editora + '</span></p>';
 					html += '<p>País: <span>' + data.pais + '</span></p>';

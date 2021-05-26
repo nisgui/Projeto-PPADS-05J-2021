@@ -4233,7 +4233,110 @@ app.get("/friends", function (request, result) {
 			}
 		});
 	});
-		
+
+	// SEÇÃO DE SUGESTÕES
+
+	app.post("/getSuggestBooks",function (request, result){
+		var accessToken = request.fields.accessToken;
+		database.collection("users").findOne({
+			"accessToken": accessToken
+		}, function (error, user){
+			if (user == null) {
+				result.json({
+					"status":"error",
+					"message":"User has been logged out. Please login again."
+				});
+			} else{
+				database.collection("pages").aggregate([{ $sample: { size: 4 } }]).toArray(function(error,data){
+					result.json({
+						"status":"success",
+						"message":"Record has been fetched.",
+						"data": data
+					});
+				});
+			}
+		});
+	});
+
+	app.post("/getSuggestMovies",function (request, result){
+		var accessToken = request.fields.accessToken;
+		database.collection("users").findOne({
+			"accessToken": accessToken
+		}, function (error, user){
+			if (user == null) {
+				result.json({
+					"status":"error",
+					"message":"User has been logged out. Please login again."
+				});
+			} else{
+				database.collection("movies").aggregate([{ $sample: { size: 4 } }]).toArray(function(error,data){
+					result.json({
+						"status":"success",
+						"message":"Record has been fetched.",
+						"data": data
+					});
+				});
+			}
+		});
+	});
+
+	app.post("/getSuggestSeries",function (request, result){
+		var accessToken = request.fields.accessToken;
+		database.collection("users").findOne({
+			"accessToken": accessToken
+		}, function (error, user){
+			if (user == null) {
+				result.json({
+					"status":"error",
+					"message":"User has been logged out. Please login again."
+				});
+			} else{
+				database.collection("series").aggregate([{ $sample: { size: 4 } }]).toArray(function(error,data){
+					result.json({
+						"status":"success",
+						"message":"Record has been fetched.",
+						"data": data
+					});
+				});
+			}
+		});
+	});
+
+	app.get("/suggestBooks", function (request, result) {
+		result.render("suggestBooks");
+	});
+	app.get("/suggestMovies", function (request, result) {
+		result.render("suggestMovies");
+	});
+	app.get("/suggestSeries", function (request, result) {
+		result.render("suggestSeries");
+	});
+
+	app.post("/getSuggestFriends",function (request, result){
+		var accessToken = request.fields.accessToken;
+		database.collection("users").findOne({
+			"accessToken": accessToken
+		}, function (error, user){
+			if (user == null) {
+				result.json({
+					"status":"error",
+					"message":"User has been logged out. Please login again."
+				});
+			} else{
+				database.collection("users").aggregate([{ $sample: { size: 5 } }]).toArray(function(error,data){
+					result.json({
+						"status":"success",
+						"message":"Record has been fetched.",
+						"data": data
+					});
+				});
+			}
+		});
+	});
+
+	app.get("/suggestFriends", function (request, result) {
+		result.render("suggestFriends");
+	});
 
 		
 	});		
