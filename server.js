@@ -1340,7 +1340,7 @@ app.get("/friends", function (request, result) {
 								}, function (error, data) {
 									result.json({
 										"status": "success",
-										"message": "Friend request has been sent"
+										"message": "Pedido de amizade foi enviado."
 									})
 								});
 							});
@@ -1424,7 +1424,7 @@ app.get("/friends", function (request, result) {
 								}, function (error, data) {
 									result.json({
 										"status": "success",
-										"message": "Friend request has been accepted."
+										"message": "Pedido de amizade foi aceito."
 									});
 								});
 
@@ -1488,7 +1488,7 @@ app.get("/friends", function (request, result) {
 								}, function (error, data) {
 									result.json({
 										"status": "success",
-										"message": "Friend has been remove"
+										"message": "Amigo foi removido."
 									});
 								});
 							});

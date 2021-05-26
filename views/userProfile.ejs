@@ -81,7 +81,7 @@
 					document.getElementById("profile-image").setAttribute("src", mainURL + '/' + response.data.profileImage);
 					
 					document.getElementById("user-name").innerHTML = response.data.name;
-					document.querySelector(".username").innerHTML = window.user.username;
+					document.querySelector(".username").innerHTML = response.data.username;
 					document.getElementById("estado").innerHTML = response.data.estado;
 					document.getElementById("cidade").innerHTML = response.data.cidade;
 					document.getElementById("date").innerHTML = response.data.date;
