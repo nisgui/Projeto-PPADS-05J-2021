@@ -4063,6 +4063,14 @@ app.get("/friends", function (request, result) {
         result.render("admin");
     });
 
+	app.get("/admin-filmes", async function (request, result) {
+        result.render("admin-filmes");
+    });
+
+	app.get("/admin-series", async function (request, result) {
+        result.render("admin-series");
+    });
+
 	app.post("/delete-page", function (request, result) {
 
 		var accessToken = request.fields.accessToken;
@@ -4071,8 +4079,8 @@ app.get("/friends", function (request, result) {
 
 		database.collection("users").findOne({
 			"accessToken": accessToken
-		}, function (error, user) {
-			if (accessToken != "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGhvdG1haWwuY29tIiwiaWF0IjoxNjE5NDY5MzM5fQ.2tbXgdGceEJMdybfqdcLuJduNPZrux_-H43fLZF7KqE") {
+		}, function(error, user){
+			if(user == null){
 				result.json({
 					"status": "error",
 					"message": "User has been logged out. Please login again."
@@ -4101,6 +4109,126 @@ app.get("/friends", function (request, result) {
 								});
 							});
 					}
+				});
+			}
+		});
+	});
+
+	app.post("/delete-movie", function (request, result) {
+
+		var accessToken = request.fields.accessToken;
+		var _id = request.fields._id;
+		
+
+		database.collection("users").findOne({
+			"accessToken": accessToken
+		}, function(error, user){
+			if(user == null){
+				result.json({
+					"status": "error",
+					"message": "User has been logged out. Please login again."
+				});
+			} else {
+
+				
+
+				database.collection("movies").findOne({
+					"_id": ObjectId(_id)
+				}, function (error, post) {
+					if (post == null) {
+						result.json({
+							"status": "error",
+							"message": "movie does not exist."
+						});
+					} else {
+
+							database.collection("movies").deleteOne({
+								"_id": ObjectId(_id)
+							}, function (error, updatePost) {
+								result.json({
+									"status": "success",
+									"message": "Filme deletado com suceeso.",
+									"updatePost": updatePost
+								});
+							});
+					}
+				});
+			}
+		});
+	});
+
+	app.post("/delete-serie", function (request, result) {
+
+		var accessToken = request.fields.accessToken;
+		var _id = request.fields._id;
+		
+
+		database.collection("users").findOne({
+			"accessToken": accessToken
+		}, function(error, user){
+			if(user == null){
+				result.json({
+					"status": "error",
+					"message": "User has been logged out. Please login again."
+				});
+			} else {
+
+				
+
+				database.collection("series").findOne({
+					"_id": ObjectId(_id)
+				}, function (error, post) {
+					if (post == null) {
+						result.json({
+							"status": "error",
+							"message": "serie does not exist."
+						});
+					} else {
+
+							database.collection("series").deleteOne({
+								"_id": ObjectId(_id)
+							}, function (error, updatePost) {
+								result.json({
+									"status": "success",
+									"message": "Série deletada com suceeso.",
+									"updatePost": updatePost
+								});
+							});
+					}
+				});
+			}
+		});
+	});
+
+	app.get("/gerente", async function (request, result) {
+        result.render("gerente");
+    });
+
+	app.post("/getGrafico", function (request, result){
+		var accessToken = request.fields.accessToken;
+		
+		database.collection("users").findOne({
+			"accessToken": accessToken
+		}, function(error, user){
+			if(user == null){					
+				result.json({
+					"status": "error",
+					"message": "User has been logged out. Please login again."
+				});
+			} else {
+				database.collection("users").find({
+
+					$or: [{
+							
+					},{
+						"friends.status": "Accepted"
+					}]
+				}).toArray(function (error, data){
+					result.json({
+						"status": "success",
+						"message": "Record has been fetched.",
+						"data": data							
+					});
 				});
 			}
 		});

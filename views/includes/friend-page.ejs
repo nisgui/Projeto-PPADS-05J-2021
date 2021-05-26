@@ -175,7 +175,14 @@ function getTimeline(){
 					
 						    if( y == _id.value){
                                 var x = comment._id;
-                                html += '<p>Likes: <ins>' + comment.likers2.length + '</ins></p>';
+
+                                if( comment.likers2.length == 0){
+                                    html += '<p>Likes: 0 <ins></ins></p>';
+                                }
+                                else{
+                                    html += '<p>Likes: <ins>' + comment.likers2.length + '</ins></p>';
+                                }
+                                
 
                                 html += '</div>';						
                             html += '</div>';

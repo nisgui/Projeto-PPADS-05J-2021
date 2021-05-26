@@ -146,11 +146,19 @@
 								getMovies();
 							}
 
+							if(typeof isMovies2 !== "undefined" && isMovies2){
+								getMovies();
+							}
+
 							if(typeof isBook !== "undefined" && isBook){
 								getBookComments();
 							}
 
 							if(typeof isSeries !== "undefined" && isSeries){
+								getSeries();
+							}
+
+							if(typeof isSeries2 !== "undefined" && isSeries2){
 								getSeries();
 							}
 							if(typeof isPageDetail !== "undefined" && isPageDetail){
@@ -198,6 +206,10 @@
 							if(typeof friendsFind !== "undefined" && friendsFind){
 								findFriends();
 							}
+
+							if(typeof friendsFind2 !== "undefined" && friendsFind2){
+								getGrafico();
+							}
 							if(typeof pagesLiked !== "undefined" && pagesLiked){
 								likedPages();
 							}
@@ -233,12 +245,6 @@
 
 			if(localStorage.getItem("accessToken")){
 				
-
-
-
-
-
-
 				
 					html += '<li>';
 					html += '<a href="/pages">Livros</a>';

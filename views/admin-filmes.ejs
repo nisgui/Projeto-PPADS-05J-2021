@@ -4,7 +4,7 @@
   <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Todos os livros cadastrados
+    <h1 class="mt-4 mb-3">Todos os filmes cadastrados
     </h1>
 
     <ol class="breadcrumb">
@@ -22,7 +22,7 @@
 
               <div class="col-md-12">
 
-				<a href="/admin-filmes"><button class="mtr-btn"> <span>Filmes</span> </button></a>
+				<a href="/admin"><button class="mtr-btn"> <span>Livros</span> </button></a>
 
 				<a href="/admin-series"><button class="mtr-btn"> <span>Séries</span> </button></a>
 
@@ -48,10 +48,11 @@
     <script>
 
 var mainURL ="http://localhost:3000";
-        var isPages2 = true;
-	 function getPages(){
+
+        var isMovies2 = true;
+	 function getMovies(){
 		var ajax = new XMLHttpRequest();
-		ajax.open("POST", "/getPages", true);
+		ajax.open("POST", "/getMovies", true);
 			
 		ajax.onreadystatechange = function(){
 			if(this.readyState == 4 && this.status == 200){
@@ -82,12 +83,13 @@ var mainURL ="http://localhost:3000";
 								html += '<img src="' + mainURL + "/" + data.image + '" style="width:205px;">';
 							}
 					
-					html += '<div class="page-infos2">';
-					html += '<h4><a href="/page/' + data._id + '">' + data.name + '</a></h4>';
-					html += '<p> Autor(es): <span>' + data.autor + '</span></p>';
-					html += '<p>Editora: <span>' + data.editora + '</span></p>';
-					html += '<p>País: <span>' + data.pais + '</span></p>';
-					html += '<p>Ano de lançamento: <span>' + data.ano + '</span></p>';
+                            html += '<div class="page-infos2">';
+							html += '<p>Tipo: <span>' + data.tipo + '</span></p>';
+						html += '<h4><a href="/page/' + data._id + '">' + data.name + '</a></h4>';
+						html += '<p> Diretor: <span>' + data.diretor + '</span></p>';
+						html += '<p>Ano de publicação: <span>' + data.ano + '</span></p>';
+						html += '<p>Elenco: <span>' + data.elenco + '</span></p>';
+						html += '<p>País: <span>' + data.pais + '</span></p>';
 
                     html +=' <form onsubmit="return doDeletePost(this);" style="margin-left: 5px;">';
                         html += '<input type="hidden" name="_id" value="' + data._id + '">';
@@ -127,7 +129,7 @@ var mainURL ="http://localhost:3000";
     //////////////////////////////////////////////////////
     function doDeletePost(form) {
 			var ajax = new XMLHttpRequest();
-			ajax.open("POST", "/delete-page", true);
+			ajax.open("POST", "/delete-movie", true);
 			ajax.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					var response = JSON.parse(this.responseText);

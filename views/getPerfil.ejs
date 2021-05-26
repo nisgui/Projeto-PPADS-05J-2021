@@ -167,7 +167,12 @@
 					
 							if( comment.userId == user._id){
 								var y = comment._id;
-								html += '<p>Likes: <ins>' + comment.likers2.length + '</ins></p>';
+								if( comment.likers2.length == 0){
+                                    html += '<p>Likes: 0 <ins></ins></p>';
+                                }
+                                else{
+                                    html += '<p>Likes: <ins>' + comment.likers2.length + '</ins></p>';
+                                }
 								html += '</div>';						
 							html += '</div>';
 							
@@ -219,7 +224,7 @@
 						
 						
 					}
-					console.log("dataaaa", comment.likers2.length);
+					
 					
 					console.log(data_id);
 					

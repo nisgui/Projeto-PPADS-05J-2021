@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title> Viewster</title>
+		
+		<link rel="stylesheet" href="/public/css/style.css">
+		
+	</head>
+
+    
+<body>
+    
+
+    <div class="theme-layout">
+
+        <div class="topbar">
+            <div class="logo2">
+                <a href="/home">
+                    <img src="/public/img/thumbnail.jpg">
+                </a>
+            </div>
+        </div>
+        </div>
+    <iframe style="background: #FFFFFF;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);" width="640" height="480" src="https://charts.mongodb.com/charts-projeto-ppads-shfbd/embed/charts?id=bc5d043c-9ef6-4190-bad4-f2239321162e&autoRefresh=10&theme=light"></iframe>
+
+
+    <iframe style="background: #FFFFFF;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);" width="440" height="480" src="https://charts.mongodb.com/charts-projeto-ppads-shfbd/embed/charts?id=e5fb66cd-a539-4413-8388-3664d14acca4&autoRefresh=10&theme=light"></iframe>
+
+
+    <div id="qntd"></div>
+    <script>
+        
+            var ajax = new XMLHttpRequest();
+            ajax.open("POST", "/getGrafico", true);
+    
+            ajax.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    var response = JSON.parse(this.responseText);
+                    console.log("frieeeeeeends",response.data.length);
+                    var html = "";
+                    var aceitos = 0;
+                    for (var a = 0; a < response.data.length; a++) {
+                        
+                        var data = response.data[a];
+                        var quantidade = data.length;
+                        
+
+                       
+                        var total = 0;
+                        
+                        for (var b = 0; b < data.friends.length; b++){
+                        
+						var friends = data.friends[b];
+                            if (friends.status == "Accepted"){
+                                aceitos++
+                                
+                                
+                            }
+                            
+						}
+                       
+                        
+                       
+                       
+                        
+    
+                        }
+                       
+                        console.log(aceitos);
+
+                        media = response.data.length / aceitos
+
+                        html += '<p style="font-size: 30px; color: black;"> Número médio de amigos nesta rede social:';
+                            html += '</p>';
+                        html += '<p style="font-size: 100px; color: black; margin-top: 0;">' + media + '</p>';
+                        html += '<p style="font-size: 15px; color: black; margin-top: -40px;"> Número de membros:' + response.data.length + '</p>';
+                        html += '<p style="font-size: 15px; color: black; margin-top: -10px;"> Número total de amizades:' + aceitos + '</p>';
+                       
+                    
+                    document.getElementById("qntd").innerHTML = html;
+                    }
+                };
+                var formData = new FormData();
+                   
+                formData.append("accessToken", localStorage.getItem("accessToken"));
+    
+                ajax.send(formData);			
+        
+    </script>
+
+
+</body>
+
+<footer>
+    <div class="container">
+
+        <div class="row">
+                Viewster &copy; <%= new Date().getFullYear() %>
+            </div>
+
+    </div>
+
+</footer>
+
+</html>

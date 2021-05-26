@@ -459,13 +459,7 @@ ul.owl-carousel {
     display: none !important;
 }
 
-iframe#html5boxiframevideo {
-    height: 100%;
-}
 
-iframe {
-    width: 100%;
-}
 
 .pdng0 {
     padding: 0;
@@ -741,6 +735,16 @@ header.sticky {
     width: 15%;
     position: relative;
     z-index: 10;
+}
+
+.logo2 {
+    position: relative;
+    display: inline-block;
+    vertical-align: inherit;
+    width: 15%;
+    position: relative;
+    z-index: 10;
+    top: 20px;
 }
 
 .topbar > form {
@@ -4641,6 +4645,8 @@ a.forgot-pwd {
     margin-top: 10px;
     padding-left: 0;
     width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .liked-pages > li {
