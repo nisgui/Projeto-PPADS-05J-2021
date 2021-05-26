@@ -13,8 +13,10 @@
 
 Recado para o professor:
 
-Especificação dentro da pasta docs/especificacao.md
+Especificação dentro da pasta docs/
 
 Link para Trello: https://trello.com/b/40HUlR1a/projeto-ppads ou https://trello.com/b/40HUlR1a
 
 Link do site no heroku: https://damp-oasis-60460.herokuapp.com/
+
+Acessar a página gerencial logado em uma conta: https://damp-oasis-60460.herokuapp.com/gerente
