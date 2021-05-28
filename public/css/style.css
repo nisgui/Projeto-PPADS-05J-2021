@@ -2371,7 +2371,7 @@ footer::before {
     background: #fdfdfd;
     border: 1px solid #ede9e9;
     border-radius: 3px;
-    height: 350px;
+    height: 400px;
     overflow-y: scroll;
 
 }
@@ -4608,6 +4608,7 @@ a.forgot-pwd {
     margin-top: 10px;
     padding-left: 0;
     width: 100%;
+    
     
     
     

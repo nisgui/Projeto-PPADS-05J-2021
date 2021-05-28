@@ -43,11 +43,19 @@
                 var response = JSON.parse(this.responseText);
                 console.log("frieeeeeeends",response.data.length);
                 var html = "";
+                var friends1 = [];
+                var friends2 = [];
+               
+                var mutual = [];
                 for (var a = 0; a < response.data.length; a++) {
                     
+                    
+                    
                     var data = response.data[a];
-                    console.log("amigoos", data);
+                    
+                    friends1.push(data._id);
 
+                    
                     html += '<li style="display: flex;">';
                     html += '<figure>';
                         html += '<a href="/user/' + data._id + '">';
@@ -62,15 +70,68 @@
                     
                     html += '</li>';
 
-                   
-                    console.log("id usuario logado",window.user._id);
-
                     
+                   
+                    //console.log("id usuario logado",window.user._id);
+          
 
                     }
 
-                
+                    for (var x = 0; x < window.user.friends.length; x++) {
+           
+                    var data2 = window.user.friends[x];
 
+
+
+
+
+
+
+
+
+
+
+                    if (data2.status == "Accepted"){
+                        friends2.push(data2._id);
+                        }
+                    }
+
+                    console.log("amigos friends1: ", friends1);
+                    console.log("amigos friends2: ", friends2);
+
+                    for (var i = 0; i < friends1.length; i++) {
+                        for (var b = 0; b < friends2.length; b++) {
+                            if (friends1[i] === friends2[b]) {
+                                mutual.push(friends2[b])
+                                
+
+                                }
+                            }
+                        }
+
+                    console.log("mutual: ", mutual);
+
+                    
+                    
+                    html += '<h4 class="widget-title2"> AMIGOS EM COMUM </h4>';
+
+                    for (var y = 0; y < response.data.length; y++) {
+                    var data3 = response.data[y];
+
+                    if (data3._id == mutual){
+                        html += '<a href="/user/' + data3._id + '">';
+                        html += '<img src="' + mainURL + '/' + data3.profileImage + '" style="width: 40px; height: 40px; object-fit: cover; border-radius: 50%;">';
+                        html += '</a>';
+                        html += '<div class="friend-meta">';
+                        html += '<h4 style="margin-top: 10px;">';
+                        html += '<a href="/user/' + data3._id + '" style="color: #088dcd;">' + data3.name + '</a>';
+                        html += '</h4>';
+                        html += '</div>';
+
+                    }
+
+                    }
+                    
                 
                 document.getElementById("friends-widget").innerHTML = html;
                 }
@@ -169,26 +230,7 @@ function getTimeline(){
                         html += createLikesProfile(data);
                         
 
-                            
-                        
-						data.comments = data.comments.reverse();
-						for (var b = 0; b < data.comments.length; b++) {
-							var comment = data.comments[b];
-					
-							var y = comment.userId;
-					
-						    if( y == _id.value){
-                                var x = comment._id;
-
-                                if( comment.likers2.length == 0){
-                                    html += '<p>Likes: 0 <ins></ins></p>';
-                                }
-                                else{
-                                    html += '<p>Likes: <ins>' + comment.likers2.length + '</ins></p>';
-                                }
-                                
-
-                                html += '</div>';						
+                              html += '</div>';						
                             html += '</div>';
                             
                         html += '</div>';
@@ -199,7 +241,14 @@ function getTimeline(){
                        
                         html += '<div class="coment-area">';
 					html += '<ul class="we-comet" style="max-height: 150px; overflow-y: scroll;">';
-                                
+                        data.comments = data.comments.reverse();
+						for (var b = 0; b < data.comments.length; b++) {
+							var comment = data.comments[b];
+					
+							var y = comment.userId;
+					
+						    if( y == _id.value){
+                                var x = comment._id;
 								console.log(comment._id);
 								comment.replies = comment.replies.reverse();
 								for (var c = 0; c < comment.replies.length; c++) {
@@ -340,6 +389,8 @@ function getTimeline2(){
                         html += '<p>País: <span>' + data.pais + '</span></p>';
 
                         var data_id = data._id;
+                        html += createLikesProfile2(data);
+
 
                         
 
@@ -492,7 +543,7 @@ function getTimeline3(){
                         html += '<p>País: <span>' + data.pais + '</span></p>';
 
                         var data_id = data._id;
-
+                        html += createLikesProfile3(data);
                        
 
                             html += '</div>';						

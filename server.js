@@ -1594,7 +1594,7 @@ app.get("/friends", function (request, result) {
 						}, function(error, data){
 							result.json({
 								"status": "success",
-								"message": "Livro cadastrado."
+								"message": "Livro cadastrado e enviado para o Administrador."
 							});
 						});				
 				}					
@@ -2168,7 +2168,7 @@ app.get("/friends", function (request, result) {
 						}, function(error, data){
 							result.json({
 								"status": "success",
-								"message": "Filme cadastrado."
+								"message": "Filme cadastrado e enviado para o Administrador."
 							});
 						});
 					
@@ -2235,7 +2235,7 @@ app.get("/friends", function (request, result) {
 						}, function(error, data){
 							result.json({
 								"status": "success",
-								"message": "Serie cadastrada."
+								"message": "Serie cadastrada e enviado para o Administrador."
 							});
 						});
 					
