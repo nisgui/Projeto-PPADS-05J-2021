@@ -1,189 +1,255 @@
 <script>
-
     /////////////////////////////////////////////////////////////////////
-				//USER PROFILES - CURTIDAS
-				/* livros like AVALIACAO section */
-			function createLikesProfile(data){
-					
-					var isLiked = false;
-					
-					for (var b = 0; b < data.comments.length; b++){
-						var comment = data.comments[b];
-						if( comment.userId == _id.value){
-								var x = comment._id;
-							for (var y = 0; y < comment.likers2.length; y++){
-								var liker = comment.likers2[y];
-								console.log(liker._id, window.user._id);
-								if(liker._id == window.user._id){
-									
-									isLiked = true;
-									break;
-								}
-						}
-						
+    //USER PROFILES - CURTIDAS
+    /* livros like AVALIACAO section */
+    function createLikesProfile(data) {
 
-						
+        var isLiked = false;
 
-					}
-					}
-					var html = "";
-					html += '<div class="we-video-info">';
-					html += '<ul>';
-					html += '<li>';
-							var className = "";
-							
-							if(isLiked){
-								className = "like";
-							}else{
-								className = "none";
-							}
-							
-					html += '<span class="' + className + '" onclick="toggleLikePageProfile(this);" data-id="' + x + '">';
-					html += '<i class="ti-thumb-up"></i>';
-					html += '<ins>' + comment.likers2.length + '</ins>';
-					
-					html += '</span>';
-					html += '</li>';
+        for (var b = 0; b < data.comments.length; b++) {
+            var comment = data.comments[b];
+            if (comment.userId == _id.value) {
+                var x = comment._id;
+                for (var y = 0; y < comment.likers2.length; y++) {
+                    var liker = comment.likers2[y];
+                    console.log(liker._id, window.user._id);
+                    if (liker._id == window.user._id) {
+
+                        isLiked = true;
+                        break;
+                    }
+                }
 
 
 
-					
-					
-					html += '</ul>';
-					html += '</div>';
-					return html;
-				}
 
-				/* FILMES like AVALIACAO section PROFILE */
-			function createLikesProfile2(data){
-					
-					var isLiked = false;
-					
-					for (var b = 0; b < data.comments.length; b++){
-						var comment = data.comments[b];
-						if( comment.userId == _id.value){
-								var x = comment._id;
-						}
+            }
+        }
+        var html = "";
+        html += '<div class="we-video-info">';
+        html += '<ul>';
+        html += '<li>';
+        var className = "";
 
-						for (var y = 0; y < comment.likers2.length; y++){
-						var liker = comment.likers2[y];
-						if(liker._id == window.user._id){
-							console.log(liker._id, window.user._id);
-							isLiked = true;
-							break;
-						}
+        if (isLiked) {
+            className = "like";
+        } else {
+            className = "none";
+        }
 
-					}
-					}
-					var html = "";
-					html += '<div class="we-video-info">';
-					html += '<ul>';
-					html += '<li>';
-							var className = "";
-							if(isLiked){
-								className = "like";
-							}else{
-								className = "none";
-							}
-							
-					html += '<span class="' + className + '" onclick="toggleLikeMovieAvaliacao(this);" data-id="' + x + '">';
-					html += '<i class="ti-thumb-up"></i>';
-					html += '<ins>' + comment.likers2.length + '</ins>';
-					
-					html += '</span>';
-					html += '</li>';
+        html += '<span class="' + className + '" onclick="toggleLikePageProfile(this);" data-id="' + x + '">';
+        html += '<i class="ti-thumb-up"></i>';
+        html += '<ins>' + comment.likers2.length + '</ins>';
+
+        html += '</span>';
+        html += '</li>';
 
 
 
-					
-					
-					html += '</ul>';
-					html += '</div>';
-					return html;
-				}
-////////////////////////////////////////////////////////////////////////////////
-				/* livros like AVALIACAO section */
-				function createLikesProfile3(data){
-					
-					var isLiked = false;
-					
-					for (var b = 0; b < data.comments.length; b++){
-						var comment = data.comments[b];
-						if( comment.userId == _id.value){
-								var x = comment._id;
-						}
-						
-						
 
-						for (var y = 0; y < comment.likers2.length; y++){
-						var liker = comment.likers2[y];
-						if(liker._id == window.user._id){
-							console.log(liker._id, window.user._id);
-							isLiked = true;
-							break;
-						}
 
-					}
-					}
-					var html = "";
-					html += '<div class="we-video-info">';
-					html += '<ul>';
-					html += '<li>';
-							var className = "";
-							if(isLiked){
-								className = "like";
-							}else{
-								className = "none";
-							}
-							
-					html += '<span class="' + className + '" onclick="toggleLikeSerieAvaliacao(this);" data-id="' + x + '">';
-					html += '<i class="ti-thumb-up"></i>';
-					html += '<ins>' + comment.likers2.length + '</ins>';
-					
-					html += '</span>';
-					html += '</li>';
+        html += '</ul>';
+        html += '</div>';
+        return html;
+    }
+
+    /* FILMES like AVALIACAO section PROFILE */
+    function createLikesProfile2(data) {
+
+        var isLiked = false;
+
+        for (var b = 0; b < data.comments.length; b++) {
+            var comment = data.comments[b];
+            if (comment.userId == _id.value) {
+                var x = comment._id;
+            }
+
+            for (var y = 0; y < comment.likers2.length; y++) {
+                var liker = comment.likers2[y];
+                if (liker._id == window.user._id) {
+                    console.log(liker._id, window.user._id);
+                    isLiked = true;
+                    break;
+                }
+
+            }
+        }
+        var html = "";
+        html += '<div class="we-video-info">';
+        html += '<ul>';
+        html += '<li>';
+        var className = "";
+        if (isLiked) {
+            className = "like";
+        } else {
+            className = "none";
+        }
+
+        html += '<span class="' + className + '" onclick="toggleLikeMovieProfile(this);" data-id="' + x + '">';
+        html += '<i class="ti-thumb-up"></i>';
+        html += '<ins>' + comment.likers2.length + '</ins>';
+
+        html += '</span>';
+        html += '</li>';
 
 
 
-					
-					
-					html += '</ul>';
-					html += '</div>';
-					return html;
-				}
+
+
+        html += '</ul>';
+        html += '</div>';
+        return html;
+    }
+    ////////////////////////////////////////////////////////////////////////////////
+    /* livros like AVALIACAO section */
+    function createLikesProfile3(data) {
+
+        var isLiked = false;
+
+        for (var b = 0; b < data.comments.length; b++) {
+            var comment = data.comments[b];
+            if (comment.userId == _id.value) {
+                var x = comment._id;
+            }
+
+
+
+            for (var y = 0; y < comment.likers2.length; y++) {
+                var liker = comment.likers2[y];
+                if (liker._id == window.user._id) {
+                    console.log(liker._id, window.user._id);
+                    isLiked = true;
+                    break;
+                }
+
+            }
+        }
+        var html = "";
+        html += '<div class="we-video-info">';
+        html += '<ul>';
+        html += '<li>';
+        var className = "";
+        if (isLiked) {
+            className = "like";
+        } else {
+            className = "none";
+        }
+
+        html += '<span class="' + className + '" onclick="toggleLikeSerieProfile(this);" data-id="' + x + '">';
+        html += '<i class="ti-thumb-up"></i>';
+        html += '<ins>' + comment.likers2.length + '</ins>';
+
+        html += '</span>';
+        html += '</li>';
+
+
+
+
+
+        html += '</ul>';
+        html += '</div>';
+        return html;
+    }
 
     /* like section AVALIACAO LIVRO */
-			function toggleLikePageProfile(self){
-					var _id = self.getAttribute("data-id");
-					var ajax = new XMLHttpRequest();
-					ajax.open("POST", "/toggleLikePageProfile", true);
-					
-					ajax.onreadystatechange = function(){
-						if(this.readyState == 4 && this.status == 200){
-							var response = JSON.parse(this.responseText);				
-							alert(response.message);					
-							
-							if(response.status == "success"){
-								self.className = "like";
-								//var likes = parseInt(self.querySelector("ins").innerHTML);
-								//likes++;
-								//self.querySelector("ins").innerHTML = likes;
-							}
-							if(response.status == "unliked"){
-								self.className = "none";
-								//var likes = parseInt(self.querySelector("ins").innerHTML);
-								//likes--;
-								//self.querySelector("ins").innerHTML = likes;
-							}
-							if(response.status == "error"){
-								alert(response.message);
-							}							
-						}
-					};
-					var formData = new FormData();
-					formData.append("accessToken", localStorage.getItem("accessToken"));
-					formData.append("_id", _id);
-					ajax.send(formData);
-				}
+    function toggleLikePageProfile(self) {
+        var _id = self.getAttribute("data-id");
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST", "/toggleLikePageProfile", true);
 
+        ajax.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var response = JSON.parse(this.responseText);
+                alert(response.message);
+
+                if (response.status == "success") {
+                    self.className = "like";
+                    var likes = parseInt(self.querySelector("ins").innerHTML);
+                    likes++;
+                    self.querySelector("ins").innerHTML = likes;
+                }
+                if (response.status == "unliked") {
+                    self.className = "none";
+                    var likes = parseInt(self.querySelector("ins").innerHTML);
+                    likes--;
+                    self.querySelector("ins").innerHTML = likes;
+                }
+                if (response.status == "error") {
+                    alert(response.message);
+                }
+            }
+        };
+        var formData = new FormData();
+        formData.append("accessToken", localStorage.getItem("accessToken"));
+        formData.append("_id", _id);
+        ajax.send(formData);
+    }
+
+    /* like section AVALIACAO LIVRO */
+    function toggleLikeMovieProfile(self) {
+        var _id = self.getAttribute("data-id");
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST", "/toggleLikeMovieProfile", true);
+
+        ajax.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var response = JSON.parse(this.responseText);
+                alert(response.message);
+
+                if (response.status == "success") {
+                    self.className = "like";
+                    var likes = parseInt(self.querySelector("ins").innerHTML);
+                    likes++;
+                    self.querySelector("ins").innerHTML = likes;
+                }
+                if (response.status == "unliked") {
+                    self.className = "none";
+                    var likes = parseInt(self.querySelector("ins").innerHTML);
+                    likes--;
+                    self.querySelector("ins").innerHTML = likes;
+                }
+                if (response.status == "error") {
+                    alert(response.message);
+                }
+            }
+        };
+        var formData = new FormData();
+        formData.append("accessToken", localStorage.getItem("accessToken"));
+        formData.append("_id", _id);
+        ajax.send(formData);
+    }
+
+    /* like section AVALIACAO LIVRO */
+    function toggleLikeSerieProfile(self) {
+        var _id = self.getAttribute("data-id");
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST", "/toggleLikeSerieProfile", true);
+
+        ajax.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var response = JSON.parse(this.responseText);
+                alert(response.message);
+
+                if (response.status == "success") {
+                    self.className = "like";
+                    var likes = parseInt(self.querySelector("ins").innerHTML);
+                    likes++;
+                    self.querySelector("ins").innerHTML = likes;
+                }
+                if (response.status == "unliked") {
+                    self.className = "none";
+                    var likes = parseInt(self.querySelector("ins").innerHTML);
+                    likes--;
+                    self.querySelector("ins").innerHTML = likes;
+                }
+                if (response.status == "error") {
+                    alert(response.message);
+                }
+            }
+        };
+        var formData = new FormData();
+        formData.append("accessToken", localStorage.getItem("accessToken"));
+        formData.append("_id", _id);
+        ajax.send(formData);
+    }
 </script>
